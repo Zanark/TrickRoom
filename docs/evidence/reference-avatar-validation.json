@@ -1,0 +1,343 @@
+{
+  "recorded_at": "2026-10-11T23:01:20.533599+05:30",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10",
+  "source": {
+    "kind": "uncommitted-working-tree",
+    "sha256": "8c610ce1e0050b9cfed28b6a6779bd9cf7840ba38412165f04a0547447924e94",
+    "files": {
+      "pyproject.toml": "161fd150e6a1b04696a3faed33196411c5b3d317d6d6648040faca54fdbde153",
+      "requirements-lock.txt": "e31bba7282d9440beaf2f1fd5d43208a6b5637ab44761982d2b02407b43d6ed1",
+      "Setup-TrickRoom.ps1": "2470681db7fb6cb969dc7a9334c79cc309d45cb58c3ca710d0c97f2c2a23d9c9",
+      "src/trickroom/__init__.py": "d2788cd782bca764ac0652eb1ff2679d9a444a5c97c7fe6609a852ba21ca25c2",
+      "src/trickroom/__main__.py": "25e1e754936490279c81e7a820dfa95136c6842eb4c3ca2b6fde78396c7a5d71",
+      "src/trickroom/avatar.py": "08208382d8f8601fa415489d5d2b2dff7001517cea6bb227f1aa16d117332bf0",
+      "src/trickroom/camera.py": "03d2d0c50a515726f941ed3727c42fd8f18d2b2a35d8f017b0546868e70287df",
+      "src/trickroom/cli.py": "78c691494bab4878901ebb92126e9bddef6266fd4e6b9c26df8ffa85376753c8",
+      "src/trickroom/demo.py": "aa744ff208e65ebeaaa5c53e3541a2ccf02bdaa6d3fd082168c53ff0a7b92e8e",
+      "src/trickroom/filters.py": "4f0d681fe0ce2bcf8353283970907ef0bb97a9b9cfdc3417b16298a9f6c507ec",
+      "src/trickroom/models.py": "0a39549b1bc238bdc500e154d1a4f89d18cbceb8aaa21fe04a0ce468d0ca5ab6",
+      "src/trickroom/raster.py": "4d0560c94d68cff7c260d9f80b7801c8450d93c038783065a2eecfc8b8dd4592",
+      "src/trickroom/render.py": "82cbf3e061cc4be5dbcc8f40ec39fd3bd25823c19605a1f3e27578443f70e72a",
+      "src/trickroom/runtime.py": "c4e4dd35ae80ab024b3613df6fc799a223f81d690cba8df834fdd6aefad3b65e",
+      "src/trickroom/state.py": "fa887776210a3ee507f0707738e2370bee831354b27b1e5ea4143307a6924f0e",
+      "src/trickroom/studio.py": "9444babbdd7ba6ec6896f99c5a698e5eaa1febf2544b5ca7c380fd0b092b5d40",
+      "src/trickroom/tracking.py": "af49f95e91bf6314fb53ffdcd62a6606a1a0c05b5d81255a27103db2608b1645",
+      "Start-TrickRoom.ps1": "d2ef25594c307bf9ca33c4e253cf35e07e115c8fa339a1f8cf5b9febd8d17737",
+      "tests/test_avatar.py": "9bbd61d7b32b8e9582e4762d30a601d703b101b6491cdd7827ed8cc23846e5d5",
+      "tests/test_camera.py": "0a007b6d92f239c9252c65508e2770aad3543aa5a71fd2306a630cbddf072390",
+      "tests/test_models_cli_runtime.py": "7667144b26ba2efea833c7de4389393cea0f9b79c3b6e2c3536621887c24da4a",
+      "tests/test_render.py": "eef9a5578dfb23e884962cdf19253193ced1434020dac38feb24daa29008e1e5",
+      "tests/test_state_and_filters.py": "bdaac6ef5ab5e3fc24b4deb3224996858e7ac7513d2d602d11984d8c079245f4",
+      "tests/test_tracking_contracts.py": "4fe50fb1ec60adf12133d18cbee05c78ed685136715fddc2779466349857baa5",
+      "tools/check_docs.py": "0fa7836f7aa8c1e05c7b7a06adffaa6e09ed669923915f588411915f1ff06bda",
+      "tools/check_studio.py": "9aae64855462ed0bd83387fa18069b316f2749e14acec85eb4bee744ecbdd8a7",
+      "tools/record_evidence.py": "f40dc4901e36d9dec33473a280619d233fe3ba11dd0376143c6f03045b2ef31b",
+      "tools/render_avatar_gallery.py": "29f8aad00b9f0d6e88bf8e8877a42bcc410572b0d1341112a228926af54b52d8",
+      "tools/render_gallery.py": "3f83420900931b1d24735b68e72431209bdf187994c2824ccb9b716b54183933",
+      "tools/verify_stream.py": "d4206f300dd14f920e4c7cdb1f89cfb121e9ccff09493c31b1462b8c53d0ffad",
+      "tools/verify_tracking.py": "c032a9220cf291940f602334ec02f1a2e7f4176da815729a3fd09e66979dd6ee"
+    }
+  },
+  "unit_tests": {
+    "tests": 90,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "docs": {
+    "markdown_files": 16,
+    "local_links": 30,
+    "workstreams": 11
+  },
+  "receipts": {
+    "actual_inference": {
+      "recorded_at": "2026-10-11T22:57:43.943304+05:30",
+      "evidence_class": "actual-model inference on a public still and deterministic crops",
+      "fixtures": [
+        {
+          "url": "https://storage.googleapis.com/mediapipe-assets/pose.jpg",
+          "sha256": "c8a830ed683c0276d713dd5aeda28f415f10cd6291972084a40d0d8b934ed62b"
+        },
+        {
+          "url": "https://cdn.pixabay.com/photo/2019/03/12/20/39/girl-4051811_960_720.jpg",
+          "sha256": "99e0649aa4f2553b0213982f544146565a1028877c4bb9fbe3884453659d8cdc"
+        }
+      ],
+      "input_media_in_report": false,
+      "owner_camera_tested": false,
+      "real_motion_or_end_to_end_latency_measured": false,
+      "cases": {
+        "full-body-profile": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            667
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 27.36,
+          "warm_p95_inference_ms": 32.51,
+          "synthetic_image": "full-body-profile-synthetic.png",
+          "passed": true
+        },
+        "body-and-expressive-face": {
+          "frames": 16,
+          "input_size": [
+            960,
+            640
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 16,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": true,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 28.35,
+          "warm_p95_inference_ms": 31.64,
+          "synthetic_image": "body-and-expressive-face-synthetic.png",
+          "passed": true
+        },
+        "cropped-lower-legs": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            527
+          ],
+          "visible_landmarks": 24,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "PARTIAL BODY",
+          "warm_mean_inference_ms": 24.28,
+          "warm_p95_inference_ms": 27.11,
+          "synthetic_image": "cropped-lower-legs-synthetic.png",
+          "passed": true
+        },
+        "portrait-frame": {
+          "frames": 16,
+          "input_size": [
+            460,
+            667
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 23.7,
+          "warm_p95_inference_ms": 26.77,
+          "synthetic_image": "portrait-frame-synthetic.png",
+          "passed": true
+        },
+        "blank": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            667
+          ],
+          "visible_landmarks": 0,
+          "face_frames": 0,
+          "body_frames": 0,
+          "contours": 0,
+          "face_crop_used": false,
+          "status": "NOT FOUND",
+          "warm_mean_inference_ms": 19.02,
+          "warm_p95_inference_ms": 21.25,
+          "synthetic_image": "blank-synthetic.png",
+          "passed": true
+        }
+      },
+      "same_session_motion_and_reacquisition": {
+        "kind": "deterministic image translation, not a real motion recording",
+        "translated_input_px": 35,
+        "observed_body_shift_px": 31.98,
+        "observed_face_shift_px": 34.48,
+        "blank_clears_tracking": true,
+        "body_and_face_reacquired": true,
+        "passed": true
+      }
+    },
+    "stream": {
+      "recorded_at": "2026-10-11T22:57:55.999642+05:30",
+      "evidence_class": "30 Hz loopback MJPEG, transformed public still, real inference",
+      "owner_camera_opened": false,
+      "real_motion_recording": false,
+      "camera_to_display_latency_measured": false,
+      "input_frames": 110,
+      "inferred_frames": 108,
+      "body_frames": 108,
+      "face_frames": 108,
+      "dropped_frames": 1,
+      "reported_inference_hz": 31.54,
+      "mean_inference_ms": 31.35,
+      "mean_renderer_ms": 15.55,
+      "mean_postdecode_observation_age_ms": 51.93,
+      "p95_postdecode_observation_age_ms": 82.02,
+      "passed": true,
+      "graphics": {
+        "GL_VENDOR": "ATI Technologies Inc.",
+        "GL_RENDERER": "AMD Radeon(TM) 780M",
+        "GL_VERSION": "3.3.0 Core Profile Context 25.20.24.13.251216"
+      },
+      "shutdown_complete": true
+    },
+    "native_ui": {
+      "checks": [
+        "native-window-render",
+        "demo-labelled-no-camera",
+        "cropped-body-status",
+        "presentation-controls",
+        "reference-avatar-defaults-and-optional-diagnostics",
+        "clean-output-window",
+        "invalid-source-no-camera",
+        "disconnect",
+        "restart-demo",
+        "actual-model-synthetic-replay-and-eof-controls",
+        "close"
+      ],
+      "callback_errors": [],
+      "passed": true,
+      "owner_camera_opened": false,
+      "user_approval_claimed": false
+    },
+    "reference_avatar": {
+      "kind": "authored-poses-not-live-camera-validation",
+      "geometry": {
+        "vertices": 16848,
+        "triangles": 5616,
+        "note": "Includes coplanar material tiles; not the sheet's illustrative counts."
+      },
+      "warm_renderer_median_ms": 9.64,
+      "warm_renderer_p95_ms": 10.84,
+      "palette_bgr": {
+        "skin": [
+          95,
+          149,
+          206
+        ],
+        "skin_shadow": [
+          68,
+          108,
+          165
+        ],
+        "stubble": [
+          57,
+          80,
+          113
+        ],
+        "eye": [
+          25,
+          28,
+          35
+        ],
+        "hair": [
+          36,
+          35,
+          44
+        ],
+        "hair_light": [
+          50,
+          51,
+          69
+        ],
+        "hoodie": [
+          47,
+          44,
+          46
+        ],
+        "hoodie_dark": [
+          38,
+          34,
+          35
+        ],
+        "hoodie_seam": [
+          59,
+          56,
+          60
+        ],
+        "drawstring": [
+          128,
+          146,
+          158
+        ],
+        "cargo": [
+          61,
+          96,
+          91
+        ],
+        "cargo_dark": [
+          47,
+          73,
+          66
+        ],
+        "cargo_flap": [
+          70,
+          109,
+          108
+        ],
+        "headphones": [
+          147,
+          170,
+          185
+        ],
+        "headphone_rim": [
+          160,
+          190,
+          212
+        ],
+        "padding": [
+          44,
+          46,
+          48
+        ],
+        "shoe": [
+          130,
+          152,
+          169
+        ],
+        "shoe_panel": [
+          95,
+          105,
+          113
+        ],
+        "sole": [
+          157,
+          184,
+          205
+        ]
+      },
+      "files": {
+        "body-back-three-quarter.png": "f162dab29c515e14ae15e7d032753b54887ff97f42eb3497f0ecd06da5f87fb3",
+        "body-back.png": "e37cbfbb0d2d95ccce490debcb18be1b401c234f667d5f80827240c23ee87df7",
+        "body-front-three-quarter.png": "51b473572e826da8c759a04e85ef7a33d5c3d9850738c909865d7f8d910005fa",
+        "body-front.png": "1e5cc208c0ebf49226711b544f655da1aca811bad5711a8ec3b9501c2a74e2a5",
+        "body-left-side.png": "f4f306e46e1745bcad23990d5f83bd37274eb7b6c34bfece42c28274b5edc41a",
+        "body-right-side.png": "e379e5dd2344a7198f00a4ac923ad21236209721d7655ef0219755eae4d32bb9",
+        "head-turnaround.png": "ea996b169d27d6e8e04af8d6b02f796dc298ca52f622a587def127eadcf9b759",
+        "reference-expressions.png": "447fe65d3baf693012f0ac15f9d12273f9dcb1ab71fcf112ace674e3add5b7e7",
+        "reference-turnaround.png": "3ff457f05c778f4b19a710f0e9e73029c9978769ee28d5aeab46c36cb4e2cb2b"
+      },
+      "owner_visual_approval": false,
+      "renderer": {
+        "GL_VENDOR": "ATI Technologies Inc.",
+        "GL_RENDERER": "AMD Radeon(TM) 780M",
+        "GL_VERSION": "3.3.0 Core Profile Context 25.20.24.13.251216"
+      }
+    }
+  },
+  "boundaries": {
+    "owner_camera_tested": false,
+    "real_motion_recording_tested": false,
+    "user_visual_approval_obtained": false,
+    "physical_camera_to_display_latency_measured": false,
+    "final_blender_avatar_or_rig_built": false,
+    "raw_camera_media_committed": false
+  }
+}

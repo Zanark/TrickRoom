@@ -1,0 +1,37 @@
+# Collapsible studio control sections
+
+Status: DONE
+Milestone: Compact control-panel navigation
+Dependencies: 05_STUDIO_AND_LAUNCH.todo
+
+## Purpose
+Reduce scrolling by allowing every numbered control-panel section to expand or collapse
+independently without recreating controls or changing the running tracking session.
+
+## Tasks
+- [x] Use a shared collapsible container for all seven numbered sections.
+- [x] Start with Input open and the remaining sections folded.
+- [x] Add always-visible Expand all and Collapse all actions.
+- [x] Support header mouse/keyboard activation and safe focus when controls are folded.
+- [x] Preserve control values and widget identity; folding is not a disconnect or debug toggle.
+- [x] Complete native layout/keyboard/scroll checks, documentation and artifact handoff.
+
+## Acceptance criteria
+- [x] Every numbered section can be toggled independently, with its state visibly indicated.
+- [x] Collapsed section bodies stop taking up layout space, including at the minimum window size.
+- [x] Collapse all returns the scroll view to the top; toolbar actions remain visible.
+- [x] Folding controls preserves their settings and the active runtime.
+- [x] New previews, scoped evidence and guide reflect the compact layout.
+
+## Completion evidence
+- Focused tests:39cases in collapsible sections, video controls and CLI/runtime modules.
+-19native studio groups and9model groups passed, including retained replay and debug windows.
+- Initial native layout:2088pxfully expanded,780pxdefault,273pxall collapsed.
+- Keyboard Space/Enter, focused-child handover, independent toggles and minimum1020x720layout passed.
+- No tracking, rendering, camera/credential handling, model, or recording changes.
+- Current native previews and handbook updated; aggregate receipt:
+  docs\evidence\collapsible-sections-validation.json.
+
+## Completion log
+- 2026-10-13 - Collapsible sections completed and verified locally.
+- 2026-10-13 00:30 +05:30 - All-section folding requested and implemented.

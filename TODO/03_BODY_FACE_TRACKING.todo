@@ -1,0 +1,27 @@
+# Body and facial tracking
+
+Status: DONE
+Milestone: M1
+Dependencies: 01_FOUNDATION.todo
+
+## Purpose
+Track a single performer's full visible body and expressions from the same camera frame.
+
+## Tasks
+- [x] MediaPipe pose joints/world points and segmentation-derived outline.
+- [x] Original-resolution pose-guided face crop and fallback acquisition.
+- [x] Blinks/winks, mouth opening, smile, brows and head pose.
+- [x] Confidence, freshness, cropped limbs, anatomical sides and filtering.
+
+## Acceptance criteria
+- [x] Real model inference and normalized-contract tests pass; invalid/off-frame/low-confidence
+  joints are excluded. Model confidence itself is not ground-truth visibility.
+
+## Completion evidence
+- Actual front-facing fixture:33 pose points,16/16 face detections, contour and world estimates.
+- Crop:24 eligible points, both ankles omitted; profile:body detected but face unavailable.
+- Same-session input translation, blank loss and reacquisition passed. See docs\05-validation.md.
+
+## Completion log
+- 2026-10-11 21:29 +05:30 - DONE; profile/distance/occlusion limits documented rather than hidden.
+- 2026-10-11 20:33 +05:30 - Planned.

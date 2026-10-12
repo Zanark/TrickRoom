@@ -1,0 +1,73 @@
+{
+  "recorded_on": "2026-10-13",
+  "scope": "Explicit offline model/reference-recording export; no GUI, live-camera recording or visual-perfection certification.",
+  "full_regression_suite": {"tests": 374, "failures": 0, "errors": 0, "skipped": 0},
+  "focused_suite": {"tests": 37, "failures": 0, "errors": 0, "skipped": 0},
+  "ruff_check_passed": true,
+  "full_recording_export": {
+    "input_kind": "User-supplied reference recording and stable local model/profile snapshot.",
+    "source_sha256": "33e2700f7a596f2bcd7a535e50fe3f493a0af98ae08b3f6ad180dfc556325246",
+    "model_sha256": "bb5797ab7e4f5cc4134585344643c2199428aa7f5f70bcd23b54eb4cb684a7a9",
+    "decoded_inferred_rendered_encoded_frames": 2209,
+    "skipped_source_frames": 0,
+    "output_size": [640, 480],
+    "source_fps": 30.078684786397613,
+    "encoded_fps": 30.079,
+    "encoded_duration_seconds": 73.43994148741646,
+    "elapsed_seconds": 208.8431382000017,
+    "worker_exit_code": 0,
+    "video_sha256": "6a9b51eedb5b1894c8cf531c29577add82d542465cb602a7a68f702841a603c4",
+    "tracking_availability": {
+      "full_body": 881,
+      "partial_body": 1256,
+      "not_found": 72,
+      "face_present": 1546
+    },
+    "source_snapshot_unchanged": true,
+    "encoded_frames_reopened_and_counted": true
+  },
+  "short_cross_directory_export": {
+    "frames": 91,
+    "encoded_duration_seconds": 3.025366534791715,
+    "requested_start_seconds": 16,
+    "requested_duration_seconds": 3,
+    "launched_from_outside_repository": true,
+    "optional_png_written_and_inspected": true
+  },
+  "powershell_launcher_export": {
+    "frames": 4,
+    "clean_output": true,
+    "mirror": false,
+    "default_companion_report_verified": true,
+    "final_settings_metadata_verified": true
+  },
+  "codec": "mp4v",
+  "audio_included": false,
+  "clock": "Offline source frame indices / reported FPS; real-time interpolation delay is zero.",
+  "safety_coverage": [
+    "Source/model/profile paths and existing outputs protected.",
+    "Staged-file publication is exclusive and rolls back its own links on collision.",
+    "Interrupted exports, changed inputs and reordered observations publish no completed outputs.",
+    "Native inference stays in an owned child with response/shutdown bounds.",
+    "Only numeric observations cross to rendering; no raw input or landmark dump."
+  ],
+  "synthetic_encoded_contact_sheet_inspected": true,
+  "handbook_pages": 83,
+  "resolved_source_citations": 181,
+  "concurrent_work_preserved": [
+    "Pre-existing concurrent retarget.py changes and test_rig_twist.py are included in the tested tree, not attributed to CLI export.",
+    "A stable local model/profile copy isolates the full render from ongoing external authoring."
+  ],
+  "qualification_notes": [
+    "The full render preceded additive settings fields in the JSON report; final settings fields were verified by the real launcher export.",
+    "One focused run hit the known pre-existing two-second early-stop test budget. Its XML is retained; serial focused and full suites passed unchanged.",
+    "Native SDK Clearcut warnings occurred. Telemetry behavior was not modified or independently audited.",
+    "Availability counts and successful structural validation do not establish perfect rigging or tracking."
+  ],
+  "private_artifacts": ".local\\cli-video-export",
+  "owner_live_camera_opened": false,
+  "source_urls_credentials_or_private_paths_in_this_receipt": false,
+  "raw_media_landmarks_or_personal_calibration_exported": false,
+  "model_visual_approval": false,
+  "previous_receipt": "before-cli-video-export-validation.json"
+}

@@ -1,0 +1,38 @@
+# Reference-driven near-final avatar appearance
+
+Status: DONE
+Milestone: M1 visual evolution
+Dependencies: 03_BODY_FACE_TRACKING.todo, 04_SYNTHETIC_STAGE.todo, 05_STUDIO_AND_LAUNCH.todo
+
+## Purpose
+Replace the bare test mannequin with the character in the two supplied asset/turnaround sheets.
+The visual direction should be close to the intended final output, not a disposable dummy.
+
+## Tasks
+- [x] Inspect both sheets and preserve reference hashes and the earlier prototype.
+- [x] Implement dark faceted hair, warm tan blocky face and beige over-ear headphones.
+- [x] Implement charcoal hoodie, drawstrings/pocket/cuffs, olive cargo pants and chunky sneakers.
+- [x] Keep tracked movement/expressions and missing-data safety; diagnostics become opt-in.
+- [x] Inspect front, three-quarter, side/back, expressions, motion and partial/lost tracking.
+- [x] Update tests, performance/native UI checks, guides, gallery, journal and context.
+
+## Acceptance criteria
+- [x] Recognizable reference silhouette, garment details and palette in the working prototype.
+- [x] Live observation contracts remain unchanged; no raw camera pixels enter the output.
+- [x] Source-grounded evidence and honest limits; no claim of a Blender rig or exact image reconstruction.
+
+## Completion evidence
+- References inspected in full. SHA256s are recorded in docs\10-reference-avatar.md.
+- Earlier source/gallery preserved under .local\revisions\m1-before-reference.
+- Earlier evidence retained in docs\evidence\m1-prototype-validation.json.
+-90tests/no skips, eleven native UI groups, actual-model cases and30Hz loopback passed.
+- Final loopback110input/108inferred,108body+face,31.35msmean inference,15.55msmean render;
+  shutdown complete. Not owner-camera or physical end-to-end latency evidence.
+- Authored body/head/expression views inspected under docs\images\avatar;5616triangles including
+  material tiles; warmed median/p95 renderer9.64/10.84ms. OpenGL3.3/AMD780M verified.
+- Current aggregate receipt: docs\evidence\prototype-validation.json. Owner approval unrecorded.
+
+## Completion log
+- 2026-10-11 22:57 +05:30 - DONE locally. Painter overlap corrected with real depth testing;
+  final Blender rig, exact art acceptance and real phone qualification remain separate.
+- 2026-10-11 22:18 +05:30 - Started. Owner requested independent work without questions.

@@ -1,0 +1,89 @@
+{
+  "recorded_on": "2026-10-13",
+  "scope": "Recorded-input transport and Studio-only timeline; not tracking-accuracy or performance qualification.",
+  "full_regression_suite": {
+    "tests": 288,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "receipt": ".local\\unit-results.xml"
+  },
+  "ruff_check_and_format_passed": true,
+  "native_check_groups": {
+    "generated_timeline": 7,
+    "supplied_timeline_including_generated_cases": 8,
+    "general_studio": 19,
+    "imported_model": 9,
+    "motion_controls": 10,
+    "private_debug": 9
+  },
+  "native_reports": [
+    ".local\\replay-timeline\\native\\timeline-report.json",
+    ".local\\replay-timeline\\supplied\\timeline-report.json",
+    ".local\\ui-check\\studio-report.json",
+    ".local\\blender-ui\\model-studio-report.json",
+    ".local\\motion-upgrade\\motion-studio.json",
+    ".local\\debug-views\\debug-ui-report.json"
+  ],
+  "supplied_recording": {
+    "duration_seconds": 73.44071111111111,
+    "inferred_frames": 41,
+    "seek_positions": [
+      {
+        "requested_seconds": 18.0,
+        "observed_seconds": 17.986158764649666
+      },
+      {
+        "requested_seconds": 30.0,
+        "observed_seconds": 29.988013319249536
+      },
+      {
+        "requested_seconds": 18.0,
+        "observed_seconds": 17.986158764649666
+      }
+    ],
+    "same_worker_during_seeks": true,
+    "imported_model_exercised": true,
+    "input_preview_remained_disabled": true,
+    "worker_exit_code": 0,
+    "forced_shutdown": false
+  },
+  "transport_checks": [
+    "indexed-generated-frames-confirm-real-decoder-position",
+    "mouse-release-coalesces-scrubbing",
+    "keyboard-second-start-end-seeks",
+    "pause-retains-original-observation-timestamps",
+    "paused-seek-infers-one-selected-frame",
+    "active-seek-retains-worker-but-resets-native-tracker",
+    "seek-generations-reject-old-inflight-results",
+    "watchdog-remains-active-during-paused-seek",
+    "eof-releases-worker-and-seek-restarts-same-source",
+    "completed-face-calibration-survives-with-temporal-reset",
+    "raw-preview-expires-and-live-staleness-is-unchanged",
+    "clean-output-pixels-exclude-timeline-widgets",
+    "disconnect-and-demo-hide-timeline",
+    "native-sdk-not-imported-by-studio"
+  ],
+  "minimum_window_tested": [1020, 720],
+  "native_screenshots_captured_and_inspected": true,
+  "handbook": {
+    "pages": 82,
+    "resolved_source_citations": 177,
+    "pdf_sha256": "31908a78c01fd4709ed1451ec60fed129e3fdb76cf5a0dbd7c98e68dc452d345",
+    "blank_pages": [],
+    "text_outside_bounds": []
+  },
+  "prior_probe_failures": [
+    "The first timeline probe did not acknowledge Pause; the harness now waits for an enabled control as well as runtime readiness.",
+    "UI-coupled authored input missed the calibration sample minimum and expired a reopened raw preview. Independent bounded input producers now mirror the application's separate input execution; no freshness or sample thresholds were relaxed."
+  ],
+  "timing_limit": "Position and seeking use frame index and reported FPS, not exact variable-frame-rate presentation timestamps.",
+  "source_files_unchanged": true,
+  "owner_camera_opened": false,
+  "personal_raw_media_or_landmark_exports": false,
+  "source_paths_or_credentials_recorded": false,
+  "ground_truth_accuracy_improvement_demonstrated": false,
+  "performance_qualified": false,
+  "user_visual_approval_obtained": false,
+  "previous_receipt": "before-replay-timeline-validation.json"
+}

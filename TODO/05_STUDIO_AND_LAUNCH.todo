@@ -1,0 +1,26 @@
+# Studio and Windows launch
+
+Status: DONE
+Milestone: M1
+Dependencies: 02_CAMERA_INPUT.todo, 03_BODY_FACE_TRACKING.todo, 04_SYNTHETIC_STAGE.todo
+
+## Purpose
+Make the prototype usable without source edits or a console-only debugging workflow.
+
+## Tasks
+- [x] Native connection panel, mirrored stage, tracking/face diagnostics and safe controls.
+- [x] Clearly labelled no-camera demonstration; never substitute it for live evidence.
+- [x] Isolated setup, verified model downloads, CLI and Windows launch scripts.
+
+## Acceptance criteria
+- [x] Documented setup and launch commands work; invalid input and missing models have actionable errors.
+
+## Completion evidence
+- Setup-TrickRoom.ps1 completed; both model checksums verified; wheel built locally.
+- Ten native groups include actual-model synthetic replay, EOF controls and complete shutdown.
+- CLI3-second demo:90 rendered frames, clean shutdown; no-source headless exits2 as expected.
+- PowerShell sharing copies match byte-for-byte. Actual camera address is entered privately by owner.
+
+## Completion log
+- 2026-10-11 21:29 +05:30 - DONE; no virtual camera producer or final avatar is implied.
+- 2026-10-11 20:33 +05:30 - Planned.

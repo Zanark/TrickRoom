@@ -1,0 +1,27 @@
+# Future PS1 avatar and Blender rig
+
+Status: NOT_STARTED
+Milestone: M2 - deferred
+Dependencies: 07_LIVE_CAMERA_QUALIFICATION.todo
+
+## Purpose
+Later create an original PS1-style whole-body avatar in Blender and animate its rig from Python.
+
+## Tasks
+- [ ] Agree art direction, silhouette, polygon/texture budget and expression vocabulary.
+- [ ] Define skeleton axes, rest pose, bone names, facial morph/shape-key mappings and export format.
+- [ ] Create/edit an original .blend, retain source/provenance and validate independent exports.
+- [ ] Retarget normalized tracking with calibration, IK, contacts and unobserved-limb policy.
+- [ ] Evaluate renderers and depth sources based on measured results, not inherited constraints.
+
+## Acceptance criteria
+- [ ] To be finalized after the tracking prototype and creative review.
+
+## Completion evidence
+- Future direction only; no final model, Blender rig, glTF pipeline or retargeter exists yet.
+- Superseded for technical support: workstreams13-15 now implement the GLB/retargeting pipeline,
+  technical Blender fixtures and authoring handbook. This workstream remains NOT_STARTED for
+  the actual final reference-art character, not for already completed import support.
+
+## Completion log
+- 2026-10-11 20:33 +05:30 - Deferred by the initial prototype scope.

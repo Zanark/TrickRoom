@@ -1,0 +1,869 @@
+{
+  "recorded_at": "2026-10-12T15:19:14.442366+05:30",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10",
+  "source": {
+    "kind": "uncommitted-working-tree",
+    "sha256": "0862c81326c22f5ac1fb1bc9df0df175d411ae534645be89451d398da46c557d",
+    "files": {
+      "docs/book/diagrams/pipeline.mmd": "8c9bf7aa1a32411320bdcc3dad1046f7f9165eaf6f1cfa2acf38eb009f3ea74a",
+      "docs/book/diagrams/validation.mmd": "e29b71dc34aaec52cc9fcdd7ad432e7957739b50bca282bb1ade6348357636e4",
+      "docs/book/package-lock.json": "b3a9a09190dd82de91dfb86e8addde2108ab9f5405ee0a90681a94b892562436",
+      "docs/book/package.json": "46adb67e4a9311e641f7b0aac0cc68b7db895950550e15590af45544e6afdf9a",
+      "docs/book/puppeteer.json": "ece5965457827b86db3c857163ed7b818474d9dabde682e62cf3e748f1ccbb8c",
+      "pyproject.toml": "70682a92b91fa148914dbc57c1130aeb6f558489dd81666a43ef7dd6f9887c62",
+      "requirements-lock.txt": "df2a08b50e6177daa27c5a7481eb43df2105198427a043473561d7d52b2a9f23",
+      "Setup-TrickRoom.ps1": "2470681db7fb6cb969dc7a9334c79cc309d45cb58c3ca710d0c97f2c2a23d9c9",
+      "src/trickroom/__init__.py": "d2788cd782bca764ac0652eb1ff2679d9a444a5c97c7fe6609a852ba21ca25c2",
+      "src/trickroom/__main__.py": "33d544730b355c915f8c6fd29140cb1642e677c76e3f58795a2b30aa1c899542",
+      "src/trickroom/assets/__init__.py": "fd70b1b9c07a1c908f1213d7e267d9b6fff69f72f79e323a15577a918dc0192e",
+      "src/trickroom/assets/animation.py": "b67035cbc926c5808156da7a4045390771ede3d8c201d28973c39b9c4070a2c2",
+      "src/trickroom/assets/gltf.py": "819d45165e7fd2c536fd36c3afe0b6aa7ac4771cf8e0b37c88a0515b5336c053",
+      "src/trickroom/assets/kinematics.py": "fa4bc2b8b8d7bd949e6f4f7a21bbefb012a11855c0b0336b99eacccd43543a28",
+      "src/trickroom/assets/math3d.py": "586fcfe5a4636a429c12b705ea06cdc2da1ab3848222615353b86992bfc2625c",
+      "src/trickroom/assets/motion.py": "861d7f3e5648b1069cd45484cb810efbfdf8f2e52ca7664e2f04d8762dd1ee7b",
+      "src/trickroom/assets/presentation.py": "6c1041f777baebd96de7d8d35fd12559ccbde3e34e9f65dc0c5c33fb62969de9",
+      "src/trickroom/assets/profile.py": "9873033afe235ea5434904e522081c2f797953e9b17a087c3c6760034de360d8",
+      "src/trickroom/assets/retarget.py": "88e1d0c3608c5be194871674222515c90c72b0efcbb0b40260b972ad337580f8",
+      "src/trickroom/assets/types.py": "9eace31105f5871d9b05c9d4078d9537aefaf30a642574967ba0fc4142cecd4c",
+      "src/trickroom/avatar.py": "6f35148a8c7bec6c51a35e4ad66213795a7ec0c558bf8bf12762ecdaf07799e4",
+      "src/trickroom/camera.py": "639459a33127d650b45b9be179969aed4114fc187539a1efea5e04bfc5e18ec2",
+      "src/trickroom/cli.py": "194ba06b252f396c4ce7fe54009551312e3e14b47509692a27cd3ae487f677bc",
+      "src/trickroom/credentials.py": "5b0d0b2c5c6e62dd88fb38a88448144ce0d586017698ae2390ba7c21e00cfc90",
+      "src/trickroom/debug_views.py": "517266652b211a99423b484dd35154e7f17d8a2c456b4ed6c649c98cb64ebd78",
+      "src/trickroom/demo.py": "08eb75ffdec283c7ae7fc8b5da07c05466f9af07b8d85fc4f4c7fd9959dc55bb",
+      "src/trickroom/face_response.py": "29f3141ffbd88337572aa095a4a3f85ef0f20a5447bb478187547a34ac402506",
+      "src/trickroom/face_topology.json": "dcc0a3c46a7e3a4f151d64fff299eb558eca0032ecdf964da0080b109755925a",
+      "src/trickroom/face_topology.LICENSE": "8707eef0533987efc5b155d64761eeb6e20793f50b9bd1a68dad1cf4719d0ed8",
+      "src/trickroom/filters.py": "75154a9c9cb2ecc41cd300cf2cb0152252fef48435e16a5296a3e829b10ba719",
+      "src/trickroom/models.py": "0a39549b1bc238bdc500e154d1a4f89d18cbceb8aaa21fe04a0ce468d0ca5ab6",
+      "src/trickroom/raster.py": "ee56756e5ca1ea224cff700977ca7918a5e1630980c3d24e91b67a23ff3a7b44",
+      "src/trickroom/render.py": "598ad7b5beb98474ae2875d1cf1ea0c1b61b1f0b26a3f76701361f59bf64bcf8",
+      "src/trickroom/room.py": "309f0237affa58eb3979882a55595bce3429b896a1b3d6d9cfab946b937e5926",
+      "src/trickroom/runtime.py": "ef092b69e572cbf427732cfdaea838ca1518a89250f0753e0ee8d8418f8ace37",
+      "src/trickroom/state.py": "284efff21909492c3a7b7aa157f5ed6dd3c57d5169103b609385426dd458d374",
+      "src/trickroom/studio.py": "c8440734e086d43c38562bcc3121f6146392f5b846cc8d9f94217a339ed9d0af",
+      "src/trickroom/tracking.py": "af49f95e91bf6314fb53ffdcd62a6606a1a0c05b5d81255a27103db2608b1645",
+      "src/trickroom/worker_lifetime.py": "f60dac392e57834546cc4fcd4c668d6ab1375ceca6b2a3781ff6d20cbace8d8d",
+      "Start-TrickRoom.ps1": "cdc80f9cb1dba1ad9fcf94ac8c1be28538769b2c39238ef4414c1d416fd8e664",
+      "tests/glb_helpers.py": "c9e131be55fdf2a60a39520a353c9814d53a2e383da68836786f15d87e0bcca4",
+      "tests/test_avatar.py": "9bbd61d7b32b8e9582e4762d30a601d703b101b6491cdd7827ed8cc23846e5d5",
+      "tests/test_camera.py": "0a007b6d92f239c9252c65508e2770aad3543aa5a71fd2306a630cbddf072390",
+      "tests/test_credentials.py": "35637975699db5617270de65b7102d4fd265a80c52eff786e59f2defd182874a",
+      "tests/test_debug_views.py": "dba36fcc1f93dead116c677e58ed7a33a79ca73750e91d41398cafb18f2998ed",
+      "tests/test_face_response.py": "b0b0e057d4872b6c076eb7711a337dc081e9df1a9ed823a12c7aa22e5a9146e0",
+      "tests/test_gltf_import.py": "57ba0129e4cbdd201431dbf24d06dd5bb65fbac68a6b2e5177fd87de6f7a7638",
+      "tests/test_imported_animation.py": "59f62f60ab8e8e790a080ad877ac3cd894eaf4e636d4f4bc548292a6cd2ba557",
+      "tests/test_imported_materials.py": "a0a8952a57bf5b9c79ae6da078ba39946f9eeee2af0ae1474b216fd7da28921e",
+      "tests/test_models_cli_runtime.py": "d86322ecf6398c9d3cb19ce92a82ee21a0ab9142883c5cd1a9e30facf71a0ebc",
+      "tests/test_render.py": "eef9a5578dfb23e884962cdf19253193ced1434020dac38feb24daa29008e1e5",
+      "tests/test_rig_motion.py": "f72c4033abef9375d1e2e78b8631319e8195f54c1573b38f7967e5a01ff8cbd0",
+      "tests/test_room.py": "05a8e7f8c05a83ed9e8cc437c704199499b8320d0030a5ff1e877962ee92857e",
+      "tests/test_runtime_process.py": "a25e5dd9ee735489fcca1c1c908240515151573f9aba0a969ccd434ad1a645bb",
+      "tests/test_state_and_filters.py": "bdaac6ef5ab5e3fc24b4deb3224996858e7ac7513d2d602d11984d8c079245f4",
+      "tests/test_tracking_contracts.py": "4fe50fb1ec60adf12133d18cbee05c78ed685136715fddc2779466349857baa5",
+      "tests/test_ui_capture.py": "a305d23e8f7a82f43553aa5306b52e2dec864329c3b9f8ca02114fe4625a72b1",
+      "tools/blender/create_conformance_rig.py": "cfaf566f8fded59fd15d68fb082022ff78713f75129338eaa879c3abfdb1fd36",
+      "tools/blender/export_character.py": "6a240d824f12feb888bcdd115d06b531eab4ea35511f7f8ce8f5681237dd26c7",
+      "tools/blender/preflight.py": "df22058d93401b2299dbb1c9ad0def3dc354e79de64bf073878cca47127b3724",
+      "tools/blender/sample_conformance.py": "bf93a33cba6b69932c9cf4c0ab44b90b957db6619e2a94359c8e6fda469ca41c",
+      "tools/build_blender_handbook.py": "95fab48f0f1b53057a04a4a0cb6a5f06f24d23ed39ad87290e33cd3c952a47e1",
+      "tools/check_debug_views.py": "0dbb927dc1f9cab90c841d546b361f41698144526b15f9db1115085e2ac687e9",
+      "tools/check_docs.py": "816774790df8e67457c2c7f4d71f2476d744e882f2f83ca631fd44a8e1b26019",
+      "tools/check_handbook_html.cjs": "675c3f06b5f588abc8315d1f5734e38e8c5a0372cb08def3fa09c5e12a6a8ffa",
+      "tools/check_model_studio.py": "3d764d331e8e1d53b791be0f1bd8baa3b278eb0b109aa1f13c4c11c24616bafe",
+      "tools/check_motion_studio.py": "5aaec3ba22b7999334567fbac6c6920ac147e09f77e7e041a92e51efcc547a5e",
+      "tools/check_studio.py": "4b0122d5616c388e9bc155c2bbca68b74e4975319dbdb6535d5a1b50a4f08363",
+      "tools/record_evidence.py": "30f40df7e1863edfd0e02d0212575efd448e9e49b364f81d7da86f994d40c69b",
+      "tools/render_avatar_gallery.py": "29f8aad00b9f0d6e88bf8e8877a42bcc410572b0d1341112a228926af54b52d8",
+      "tools/render_gallery.py": "3f83420900931b1d24735b68e72431209bdf187994c2824ccb9b716b54183933",
+      "tools/render_room_gallery.py": "c2c93e0fdbf2b675e434e3acf0a480709424ff358f426a146581c91ef0a1b1fe",
+      "tools/ui_capture.py": "529fac062a66657346e8e35864f47893c71debe5c8c0d5e8649e188a7b5b593b",
+      "tools/update_face_topology.py": "66df2a3189c31daee1b50fe6db5438707b206958fdb2cb130466034a2e44d8d4",
+      "tools/verify_blender_models.py": "06fd4338584db56522b6644a0247c7ec2b84ab53008225037f57783001aec00c",
+      "tools/verify_motion_upgrade.py": "466f9268932ee079bd19f78b5305d6c8e5870060af1870a91e3b03d1055881bd",
+      "tools/verify_stream.py": "fa7a44d11ad942ce0138e8b8d275daf56dbf04781619f2c30aff9d009e3efbb0",
+      "tools/verify_tracking.py": "c032a9220cf291940f602334ec02f1a2e7f4176da815729a3fd09e66979dd6ee"
+    }
+  },
+  "unit_tests": {
+    "tests": 199,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "docs": {
+    "markdown_files": 24,
+    "local_links": 73,
+    "workstreams": 20
+  },
+  "receipts": {
+    "actual_inference": {
+      "recorded_at": "2026-10-11T23:33:05.537127+05:30",
+      "evidence_class": "actual-model inference on a public still and deterministic crops",
+      "fixtures": [
+        {
+          "url": "https://storage.googleapis.com/mediapipe-assets/pose.jpg",
+          "sha256": "c8a830ed683c0276d713dd5aeda28f415f10cd6291972084a40d0d8b934ed62b"
+        },
+        {
+          "url": "https://cdn.pixabay.com/photo/2019/03/12/20/39/girl-4051811_960_720.jpg",
+          "sha256": "99e0649aa4f2553b0213982f544146565a1028877c4bb9fbe3884453659d8cdc"
+        }
+      ],
+      "input_media_in_report": false,
+      "owner_camera_tested": false,
+      "real_motion_or_end_to_end_latency_measured": false,
+      "cases": {
+        "full-body-profile": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            667
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 24.29,
+          "warm_p95_inference_ms": 26.16,
+          "synthetic_image": "full-body-profile-synthetic.png",
+          "passed": true
+        },
+        "body-and-expressive-face": {
+          "frames": 16,
+          "input_size": [
+            960,
+            640
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 16,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": true,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 29.97,
+          "warm_p95_inference_ms": 35.99,
+          "synthetic_image": "body-and-expressive-face-synthetic.png",
+          "passed": true
+        },
+        "cropped-lower-legs": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            527
+          ],
+          "visible_landmarks": 24,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "PARTIAL BODY",
+          "warm_mean_inference_ms": 25.39,
+          "warm_p95_inference_ms": 29.15,
+          "synthetic_image": "cropped-lower-legs-synthetic.png",
+          "passed": true
+        },
+        "portrait-frame": {
+          "frames": 16,
+          "input_size": [
+            460,
+            667
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 24.55,
+          "warm_p95_inference_ms": 26.66,
+          "synthetic_image": "portrait-frame-synthetic.png",
+          "passed": true
+        },
+        "blank": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            667
+          ],
+          "visible_landmarks": 0,
+          "face_frames": 0,
+          "body_frames": 0,
+          "contours": 0,
+          "face_crop_used": false,
+          "status": "NOT FOUND",
+          "warm_mean_inference_ms": 17.96,
+          "warm_p95_inference_ms": 19.35,
+          "synthetic_image": "blank-synthetic.png",
+          "passed": true
+        }
+      },
+      "same_session_motion_and_reacquisition": {
+        "kind": "deterministic image translation, not a real motion recording",
+        "translated_input_px": 35,
+        "observed_body_shift_px": 32.01,
+        "observed_face_shift_px": 34.59,
+        "blank_clears_tracking": true,
+        "body_and_face_reacquired": true,
+        "passed": true
+      }
+    },
+    "stream": {
+      "recorded_at": "2026-10-11T23:33:17.888265+05:30",
+      "evidence_class": "30 Hz loopback MJPEG, transformed public still, real inference",
+      "owner_camera_opened": false,
+      "real_motion_recording": false,
+      "camera_to_display_latency_measured": false,
+      "input_frames": 117,
+      "inferred_frames": 116,
+      "body_frames": 116,
+      "face_frames": 116,
+      "dropped_frames": 1,
+      "reported_inference_hz": 32.01,
+      "mean_inference_ms": 30.17,
+      "mean_renderer_ms": 15.46,
+      "mean_postdecode_observation_age_ms": 55.82,
+      "p95_postdecode_observation_age_ms": 87.22,
+      "passed": true,
+      "graphics": {
+        "GL_VENDOR": "ATI Technologies Inc.",
+        "GL_RENDERER": "AMD Radeon(TM) 780M",
+        "GL_VERSION": "3.3.0 Core Profile Context 25.20.24.13.251216"
+      },
+      "shutdown_complete": true
+    },
+    "native_ui": {
+      "checks": [
+        "native-window-render",
+        "demo-labelled-no-camera",
+        "cropped-body-status",
+        "presentation-controls",
+        "reference-avatar-defaults-and-optional-diagnostics",
+        "perspective-room-toggle",
+        "clean-output-window",
+        "invalid-source-no-camera",
+        "disconnect",
+        "restart-demo",
+        "actual-model-synthetic-replay-and-eof-controls",
+        "close"
+      ],
+      "callback_errors": [],
+      "passed": true,
+      "owner_camera_opened": false,
+      "screenshot_captured": true,
+      "user_approval_claimed": false
+    },
+    "reference_avatar": {
+      "kind": "authored-poses-not-live-camera-validation",
+      "geometry": {
+        "vertices": 16848,
+        "triangles": 5616,
+        "note": "Includes coplanar material tiles; not the sheet's illustrative counts."
+      },
+      "warm_renderer_median_ms": 9.73,
+      "warm_renderer_p95_ms": 11.34,
+      "palette_bgr": {
+        "skin": [
+          95,
+          149,
+          206
+        ],
+        "skin_shadow": [
+          68,
+          108,
+          165
+        ],
+        "stubble": [
+          57,
+          80,
+          113
+        ],
+        "eye": [
+          25,
+          28,
+          35
+        ],
+        "hair": [
+          36,
+          35,
+          44
+        ],
+        "hair_light": [
+          50,
+          51,
+          69
+        ],
+        "hoodie": [
+          47,
+          44,
+          46
+        ],
+        "hoodie_dark": [
+          38,
+          34,
+          35
+        ],
+        "hoodie_seam": [
+          59,
+          56,
+          60
+        ],
+        "drawstring": [
+          128,
+          146,
+          158
+        ],
+        "cargo": [
+          61,
+          96,
+          91
+        ],
+        "cargo_dark": [
+          47,
+          73,
+          66
+        ],
+        "cargo_flap": [
+          70,
+          109,
+          108
+        ],
+        "headphones": [
+          147,
+          170,
+          185
+        ],
+        "headphone_rim": [
+          160,
+          190,
+          212
+        ],
+        "padding": [
+          44,
+          46,
+          48
+        ],
+        "shoe": [
+          130,
+          152,
+          169
+        ],
+        "shoe_panel": [
+          95,
+          105,
+          113
+        ],
+        "sole": [
+          157,
+          184,
+          205
+        ]
+      },
+      "files": {
+        "body-back-three-quarter.png": "f162dab29c515e14ae15e7d032753b54887ff97f42eb3497f0ecd06da5f87fb3",
+        "body-back.png": "e37cbfbb0d2d95ccce490debcb18be1b401c234f667d5f80827240c23ee87df7",
+        "body-front-three-quarter.png": "51b473572e826da8c759a04e85ef7a33d5c3d9850738c909865d7f8d910005fa",
+        "body-front.png": "1e5cc208c0ebf49226711b544f655da1aca811bad5711a8ec3b9501c2a74e2a5",
+        "body-left-side.png": "f4f306e46e1745bcad23990d5f83bd37274eb7b6c34bfece42c28274b5edc41a",
+        "body-right-side.png": "e379e5dd2344a7198f00a4ac923ad21236209721d7655ef0219755eae4d32bb9",
+        "head-turnaround.png": "ea996b169d27d6e8e04af8d6b02f796dc298ca52f622a587def127eadcf9b759",
+        "reference-expressions.png": "447fe65d3baf693012f0ac15f9d12273f9dcb1ab71fcf112ace674e3add5b7e7",
+        "reference-turnaround.png": "3ff457f05c778f4b19a710f0e9e73029c9978769ee28d5aeab46c36cb4e2cb2b"
+      },
+      "owner_visual_approval": false,
+      "renderer": {
+        "GL_VENDOR": "ATI Technologies Inc.",
+        "GL_RENDERER": "AMD Radeon(TM) 780M",
+        "GL_VERSION": "3.3.0 Core Profile Context 25.20.24.13.251216"
+      }
+    },
+    "perspective_room": {
+      "kind": "synthetic perspective-room gallery; no camera or physical floor calibration",
+      "projection": {
+        "width": 960,
+        "height": 720,
+        "top": 0,
+        "bottom": 720,
+        "focal": 864.0,
+        "center": [
+          479.5,
+          309.6
+        ],
+        "half_width": 3.0,
+        "ceiling": 3.6,
+        "eye_height": 1.65,
+        "near": 0.6,
+        "back": 8.4,
+        "tile": 0.6
+      },
+      "surface_count": 5,
+      "theme": "dark-green-wireframe",
+      "calibration_crosses": false,
+      "shared_vanishing_point": [
+        479.5,
+        309.6
+      ],
+      "reference_images": [
+        {
+          "file": "copilot-image-f214d3.png",
+          "sha256": "654a45bf28717481b0271fe8c3b25e1d76c1b51cbdd4ac12fc9bdd5c7f90ac57"
+        },
+        {
+          "file": "copilot-image-4f6137.png",
+          "sha256": "650a061152786a5838e5cefa6ccf4584c3dfa15ce9f57ca5c9a09ff44f86fb36"
+        },
+        {
+          "file": "copilot-image-034535.png",
+          "sha256": "203349f64668558009b631545c8286764956db532c1c9320b38fbaedd0cfb734"
+        }
+      ],
+      "warm_full_renderer_median_ms": 10.11,
+      "warm_full_renderer_p95_ms": 10.95,
+      "physical_contact_or_collision": false,
+      "owner_visual_approval": false,
+      "files": {
+        "lab-character.png": "85c000c2fd47e8158ed5b9d161161c2a036a095a1d34a24593311300f0516f55",
+        "lab-clean.png": "9702d2ac1ab27e4b0795cf225e1eed0060c8a2e315d9c463cd1363198b2c71b8",
+        "lab-cropped.png": "72f3b4d103ad41715d4c73476d94b619c39dcd6b27747dcd7f7ce9406fabb138",
+        "lab-empty.png": "7664a2264a53c3bdd1069d636b13e34f54690596d797d7553e3cc3b7f6b69ac3",
+        "lab-portrait.png": "49a3bb2318275a49f68565a826f4acd87531e07999c1c688026f3724282c9a28",
+        "lab-stale.png": "ca6609cef0f08b4bd86125e8989dabc07d087ef1243a6eb962bca8b67b79530e",
+        "lab-wide.png": "0c3d270ce43d7a0df91d81239cbe1226f4ea9befb61178bfeac112279b6ae186",
+        "room-off.png": "487c561f6344eb1b6db28eceaf89be50fc06502ace3a63f3b6839455921cfb5c"
+      }
+    },
+    "blender_runtime": {
+      "recorded_at": "2026-10-12T15:16:18.180325+05:30",
+      "asset": {
+        "name": "TrickRoom-Conformance.glb",
+        "sha256": "419656b629d3356cdb8685ff55d1519d5a8681d24d3bf475945a3510e1de721d",
+        "profile_version": 1,
+        "nodes": 25,
+        "skins": 1,
+        "vertices": 964,
+        "triangles": 606,
+        "primitives": 5,
+        "textures": 1,
+        "bones": {
+          "hips": 22,
+          "spine": 13,
+          "chest": 12,
+          "neck": 3,
+          "head": 2,
+          "upper_arm_left": 6,
+          "lower_arm_left": 5,
+          "hand_left": 4,
+          "upper_arm_right": 10,
+          "lower_arm_right": 9,
+          "hand_right": 8,
+          "upper_leg_left": 17,
+          "lower_leg_left": 16,
+          "foot_left": 15,
+          "upper_leg_right": 21,
+          "lower_leg_right": 20,
+          "foot_right": 19,
+          "shoulder_left": 7,
+          "shoulder_right": 11,
+          "toes_left": 14,
+          "toes_right": 18,
+          "eye_left": 0,
+          "eye_right": 1
+        },
+        "shapes": [
+          "TR_Blink_L",
+          "TR_Blink_R",
+          "TR_Brow_Down_L",
+          "TR_Brow_Down_R",
+          "TR_Brow_Up_L",
+          "TR_Brow_Up_R",
+          "TR_Jaw_Open",
+          "TR_Look_Down",
+          "TR_Look_Left",
+          "TR_Look_Right",
+          "TR_Look_Up",
+          "TR_Smile"
+        ],
+        "clips": [
+          {
+            "name": "ConformanceWave",
+            "duration": 1.0
+          },
+          {
+            "name": "ConformanceFace",
+            "duration": 1.0
+          }
+        ],
+        "bounds": [
+          [
+            -1.0100000473856854,
+            0.009999992687859147,
+            -0.12999999523162842
+          ],
+          [
+            1.0100000473856854,
+            2.0399999618530273,
+            0.29000000016919497
+          ]
+        ],
+        "warnings": [],
+        "ready_for_live": true
+      },
+      "owner_camera_opened": false,
+      "actual_exporter": "Blender4.5.14",
+      "checks": {
+        "blender_vertex_max_error": {
+          "ConformanceWave": 2.2468905009225401e-07,
+          "ConformanceFace": 5.8990480056309025e-08
+        },
+        "live_full_render_median_ms": 9.358249997603707,
+        "live_full_render_p95_ms": 10.323719997541048,
+        "bone_gaze_vertex_motion": 0.010513596909960751
+      },
+      "images": {
+        "bind": "1703fedb93ef275d5aa84bcc1bd1d1c468f2f0e78658fde8608f57a048819322",
+        "live-wave": "2c38337f1d4fb2b4ea41063884e582cd05f434aed0f1c68b04aa51162da857a6",
+        "live-cropped": "2e294bcf4a4029554628ca6b5feaf977f45f29e8e15f37135cba5c0986e0aab1",
+        "face-unavailable": "cd67ce89c45a2b35d488f6b3bfe8f514583f77fb65c31603eb49ac7f756c16bb",
+        "stale": "e7ee6a9133f9f48dcfebfce19aa1d5d3d395c867526ca211cd5557ca2eabada3",
+        "clip-wave": "2e3ffb36b178a00a56d211c3ffe1ea75d119aa63d4182c29726707647b89c9ac",
+        "clip-face": "c5e93026698c65f489f6bba427d2516cd767fac817231ca656978137fc0d8f43",
+        "blink-left": "866a69fc5a24aba9aa1e29fb6e7b897eaed372db39d746ede7ab17614e552a98",
+        "blink-right": "316fb67f316d8de491ee896513847147e04e8c755c6984e7811dee6bcebb3bf3",
+        "mouth": "defb9f605dfe4f53aab98fdf2ef2cf24625453e738d945db2eeb04a4db93e123",
+        "brows-gaze": "f71493dcc2cedc21ac0b1e9f3734356c4bd54df61010eaf936d57ca7aa07e4ba"
+      },
+      "graphics": {
+        "GL_VENDOR": "ATI Technologies Inc.",
+        "GL_RENDERER": "AMD Radeon(TM) 780M",
+        "GL_VERSION": "3.3.0 Core Profile Context 25.20.24.13.251216"
+      },
+      "passed": true
+    },
+    "blender_ui": {
+      "passed": true,
+      "checks": [
+        "asynchronous-import",
+        "rig-report",
+        "clip-preview",
+        "live-return",
+        "recalibration",
+        "rejected-import-retains-model",
+        "clean-output",
+        "built-in-return",
+        "close-during-import"
+      ],
+      "callback_errors": [],
+      "owner_camera_opened": false,
+      "screenshot_captured": true
+    },
+    "blender_stream": {
+      "recorded_at": "2026-10-12T01:36:52.959312+05:30",
+      "evidence_class": "30 Hz loopback MJPEG, transformed public still, real inference",
+      "owner_camera_opened": false,
+      "real_motion_recording": false,
+      "camera_to_display_latency_measured": false,
+      "input_frames": 57,
+      "inferred_frames": 48,
+      "body_frames": 48,
+      "face_frames": 48,
+      "dropped_frames": 7,
+      "reported_inference_hz": 30.62,
+      "mean_inference_ms": 36.55,
+      "mean_renderer_ms": 9.05,
+      "mean_postdecode_observation_age_ms": 63.06,
+      "p95_postdecode_observation_age_ms": 66.44,
+      "passed": true,
+      "avatar": {
+        "name": "TrickRoom-Conformance.glb",
+        "sha256": "419656b629d3356cdb8685ff55d1519d5a8681d24d3bf475945a3510e1de721d",
+        "profile_version": 1,
+        "nodes": 25,
+        "skins": 1,
+        "vertices": 964,
+        "triangles": 606,
+        "primitives": 5,
+        "textures": 1,
+        "bones": {
+          "hips": 22,
+          "spine": 13,
+          "chest": 12,
+          "neck": 3,
+          "head": 2,
+          "upper_arm_left": 6,
+          "lower_arm_left": 5,
+          "hand_left": 4,
+          "upper_arm_right": 10,
+          "lower_arm_right": 9,
+          "hand_right": 8,
+          "upper_leg_left": 17,
+          "lower_leg_left": 16,
+          "foot_left": 15,
+          "upper_leg_right": 21,
+          "lower_leg_right": 20,
+          "foot_right": 19,
+          "shoulder_left": 7,
+          "shoulder_right": 11,
+          "toes_left": 14,
+          "toes_right": 18,
+          "eye_left": 0,
+          "eye_right": 1
+        },
+        "shapes": [
+          "TR_Blink_L",
+          "TR_Blink_R",
+          "TR_Brow_Down_L",
+          "TR_Brow_Down_R",
+          "TR_Brow_Up_L",
+          "TR_Brow_Up_R",
+          "TR_Jaw_Open",
+          "TR_Look_Down",
+          "TR_Look_Left",
+          "TR_Look_Right",
+          "TR_Look_Up",
+          "TR_Smile"
+        ],
+        "clips": [
+          {
+            "name": "ConformanceWave",
+            "duration": 1.0
+          },
+          {
+            "name": "ConformanceFace",
+            "duration": 1.0
+          }
+        ],
+        "bounds": [
+          [
+            -1.0100000473856854,
+            0.009999992687859147,
+            -0.12999999523162842
+          ],
+          [
+            1.0100000473856854,
+            2.0399999618530273,
+            0.29000000016919497
+          ]
+        ],
+        "warnings": [],
+        "ready_for_live": true
+      },
+      "graphics": {
+        "GL_VENDOR": "ATI Technologies Inc.",
+        "GL_RENDERER": "AMD Radeon(TM) 780M",
+        "GL_VERSION": "3.3.0 Core Profile Context 25.20.24.13.251216"
+      },
+      "shutdown_complete": true
+    },
+    "authoring_handbook": {
+      "pages": 82,
+      "words": 13636,
+      "chapter_pages": {
+        "01. The deliverable you are building": 6,
+        "02. Understand the complete pipeline": 8,
+        "03. Coordinates, units and orientation": 11,
+        "04. Plan the character before adding detail": 13,
+        "05. Mesh topology, normals and exported vertex counts": 15,
+        "06. The canonical humanoid hierarchy": 17,
+        "07. Build the deform armature deliberately": 19,
+        "08. Rest pose, bind pose and safe transforms": 21,
+        "09. Weight painting and the four-influence rule": 23,
+        "10. Shoulder and elbow deformation": 25,
+        "11. Pelvis, knees, feet and optional toes": 28,
+        "12. Clothing, hair and rigid accessories": 30,
+        "13. UV layout and texture atlases": 32,
+        "14. Material recipes that actually survive export": 34,
+        "15. The facial-control inventory": 36,
+        "16. Blinks, winks and eyelid coverage": 38,
+        "17. Jaw opening, smile and mouth construction": 41,
+        "18. Brows and the two gaze modes": 44,
+        "19. Author and export useful animation clips": 46,
+        "20. Control rigs, modifiers and unsupported mechanisms": 48,
+        "21. Export from Blender with a repeatable recipe": 50,
+        "22. Mapping an existing rig": 52,
+        "23. Import validation and resource budgets": 54,
+        "24. Load and inspect the model in TrickRoom": 56,
+        "25. Live retargeting and calibration": 59,
+        "26. Missing tracking and partial-body visibility": 61,
+        "27. A validation ladder that isolates failures": 64,
+        "28. Troubleshoot by symptom and evidence": 66,
+        "29. Performance and production-readiness review": 69,
+        "30. Reproduce the conformance workflow and deliver your model": 71,
+        "31. Workshop: construct the export skeleton": 73,
+        "32. Workshop: bind and clean the weights": 75,
+        "33. Workshop: author the facial shape keys": 77,
+        "34. Workshop: prepare a material and UV test": 79,
+        "35. Workshop: final handoff checklist and exact commands": 81
+      },
+      "blank_pages": [],
+      "text_outside_bounds": [],
+      "pdf_sha256": "637c807542232e461d60ce0b514ed25edd7cc3fb5adbb5035d192c03ae621c57",
+      "html_sha256": "f168076fdebf041491c2da84c81ade91af14ac889970894db7ca2fed150c01bb",
+      "manuscript_sha256": "e11f882aa9ba00b58ffbc405ef0c36e4cf187e0b85530c61b80b83cdb22aff6a",
+      "source_citations_resolved": 175,
+      "format": "A5, original implementation-specific reference handbook"
+    },
+    "handbook_browser": {
+      "headingCount": 35,
+      "images": 8,
+      "decodedImages": true,
+      "externalImages": 0,
+      "contents": "Chapter navigation",
+      "horizontalOverflow": false,
+      "errors": [],
+      "passed": true
+    },
+    "blender_exports": {
+      "blender": "4.5.14 LTS",
+      "purpose": "Original technical interoperability fixture, not final avatar artwork.",
+      "generator_sha256": "cfaf566f8fded59fd15d68fb082022ff78713f75129338eaa879c3abfdb1fd36",
+      "bone_count": 23,
+      "required_shape_keys": [
+        "TR_Blink_L",
+        "TR_Blink_R",
+        "TR_Jaw_Open",
+        "TR_Smile",
+        "TR_Brow_Up_L",
+        "TR_Brow_Up_R",
+        "TR_Brow_Down_L",
+        "TR_Brow_Down_R",
+        "TR_Look_Left",
+        "TR_Look_Right",
+        "TR_Look_Up",
+        "TR_Look_Down"
+      ],
+      "files": {
+        "TrickRoom-Conformance.blend": "3ff82b9f11b0a0c2d1f4c5234d0ed6b04402705370735c832323434e03f31fc4",
+        "TrickRoom-Conformance.glb": "419656b629d3356cdb8685ff55d1519d5a8681d24d3bf475945a3510e1de721d",
+        "TrickRoom-Conformance.trickroom.json": "67056a249ac00c6180ecdcd12d55f2fa401105a0a5c6d17ab5004cbcae2d66c8",
+        "TrickRoom-EyeBones.blend": "edc7e28048057fc689802d522c31f44a3568132962daeb4f49b9ac78537c3b21",
+        "TrickRoom-EyeBones.glb": "ca0970634aa680f28f0d9f3829d520ee9fa4ef00a6bf01a8c4ec0e044a1d00ec",
+        "TrickRoom-EyeBones.trickroom.json": "993860d2cda1abed33a18dab82c0d7c1bdc40786c840bfbe4929e1dfba96f679"
+      }
+    },
+    "private_debug_ui": {
+      "passed": true,
+      "evidence_class": "native UI driven by authored synthetic input and landmarks",
+      "owner_camera_opened": false,
+      "checks": [
+        "defaults-off",
+        "three-separate-windows",
+        "opt-in-raw-retention",
+        "black-skeleton-and-face",
+        "close-disables-raw",
+        "reopen",
+        "clean-output-coexists",
+        "disconnect-clears",
+        "all-windows-close"
+      ],
+      "callback_errors": []
+    },
+    "detected_debug_points": {
+      "evidence": "actual MediaPipe on cached public fixture; not owner camera",
+      "pose_points": 33,
+      "face_points": 478,
+      "mesh_edges": 1322,
+      "raw_frame_saved": false,
+      "passed": true
+    },
+    "auth_defaults_ui": {
+      "prefill_matches_resolved_defaults": true,
+      "password_masked": true,
+      "camera_opened": false
+    },
+    "motion_upgrade": {
+      "recorded_at": "2026-10-12T15:08:06.847007+05:30",
+      "scope": "core process and GLB motion upgrade; same detector, no live camera",
+      "integrated_replay": {
+        "decoded_frames": 2209,
+        "inferred_frames": 1851,
+        "skipped_frames": 358,
+        "mean_inference_ms": 35.9132820637669,
+        "reached_eof": true,
+        "worker_exit_code": 0,
+        "forced_shutdown": false,
+        "shutdown_complete": true
+      },
+      "every_frame_comparison": {
+        "decoded_frames": 2209,
+        "raw_detection_counts": {
+          "NOT FOUND": 72,
+          "face_present": 1546,
+          "PARTIAL BODY": 1256,
+          "FULL BODY": 881
+        },
+        "presentation_bone_state_samples": {
+          "UNAVAILABLE": 1371,
+          "TRACKED": 37034,
+          "HELD": 555,
+          "REACQUIRING": 858,
+          "RETURNING": 658,
+          "REST": 6743
+        },
+        "max_authored_bone_length_error": 1.9669535444855057e-08,
+        "changed_pose_between_detection_frames": 2047,
+        "render_timings": {
+          "legacy": {
+            "mean_ms": 12.160907514492038,
+            "p95_ms": 16.156959999352694
+          },
+          "enhanced": {
+            "mean_ms": 16.1264260749658,
+            "p95_ms": 21.556619994225912
+          }
+        }
+      },
+      "native_motion_controls": {
+        "passed": true,
+        "evidence_class": "native controls driven by authored observations; no camera",
+        "checks": [
+          "demo-calibration-rejected",
+          "world-image-and-legacy-controls",
+          "opt-in-rest-distinct-from-measured-partial-status",
+          "stale-clears-history",
+          "neutral-and-range-controls",
+          "raw-expression-unchanged",
+          "calibration-clear",
+          "clean-output-and-debug-coexist",
+          "no-owner-side-native-sdk-import",
+          "close"
+        ],
+        "callback_errors": [],
+        "owner_camera_opened": false,
+        "personal_calibration_saved": false
+      },
+      "no_raw_or_landmark_exports": true,
+      "personal_calibration_saved": false,
+      "sensing_accuracy_improvement_claimed": false,
+      "remaining_limits": [
+        "Held scale may need explicit reset after initial close-up framing.",
+        "Relaxed loss uses the authored rest pose, which is a T-pose in the technical fixture.",
+        "Inference process containment is not a native DLL root-cause fix.",
+        "SDK usage telemetry is unchanged.",
+        "No final reference-art Blender character or optional OpenSeeFace/VMC/spring integration."
+      ]
+    }
+  },
+  "carried_forward_receipts": [
+    "actual_inference",
+    "stream",
+    "reference_avatar",
+    "perspective_room",
+    "blender_stream",
+    "blender_exports",
+    "detected_debug_points",
+    "auth_defaults_ui"
+  ],
+  "boundaries": {
+    "owner_camera_tested": false,
+    "real_motion_recording_tested": true,
+    "ground_truth_accuracy_improvement_demonstrated": false,
+    "user_visual_approval_obtained": false,
+    "physical_camera_to_display_latency_measured": false,
+    "final_reference_art_rig_built": false,
+    "technical_blender_conformance_rigs_built": true,
+    "raw_camera_media_committed": false
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "recorded_at": "2026-10-12T22:53:35.694213+00:00",
+  "evidence_class": "Unit and synthetic rest-rig plus same-detection local-recording comparison",
+  "tests": {
+    "tests": 338,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "rest_and_turn_cases_per_mode": 12,
+  "authored_rest_thigh_error_degrees_before": 180,
+  "authored_rigid_pose_hip_minimum_singular_before": 0.0412709950793188,
+  "authored_rigid_pose_hip_minimum_singular_after": 0.9999994991954063,
+  "recording_decoded_frames": 2209,
+  "recording_hip_near_collapse_frames_before": 1422,
+  "recording_hip_near_collapse_frames_after": 0,
+  "native_studio_passed": true,
+  "avatar_bytes_changed": false,
+  "runtime_file_sha256": "5b307a50de35cbff09f9454caabcaf4b5144dc32d3171a396025a961b221d06e",
+  "owner_camera_opened": false,
+  "source_frames_or_landmarks_saved": false,
+  "restart_required": true,
+  "artistic_approval": false
+}

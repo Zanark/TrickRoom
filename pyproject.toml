@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "trickroom"
+version = "0.1.0"
+description = "Local full-body and expressive-face tracking on an entirely synthetic stage."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "mediapipe==0.10.35",
+    "moderngl>=5.12,<6",
+    "numpy>=2,<3",
+    "opencv-contrib-python>=5.0,<6",
+    "Pillow>=11.2.1,<13",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<9", "ruff>=0.9,<1"]
+book = ["reportlab>=4.4,<5", "pypdf>=6,<7", "PyMuPDF>=1.26,<2", "Markdown>=3.8,<4"]
+
+[project.scripts]
+trickroom = "trickroom.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/trickroom"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+markers = ["integration: actual MediaPipe inference (requires downloaded models)"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

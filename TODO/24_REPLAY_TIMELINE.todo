@@ -1,0 +1,44 @@
+# Recorded-video playback timeline
+
+Status: DONE
+Milestone: Studio recorded-input transport
+Dependencies: 21_RECORDED_VIDEO_TEST_VIEW.todo, 23_COLLAPSIBLE_STUDIO_SECTIONS.todo
+
+## Purpose
+Seek and pause the recorded-video test from a bottom Studio bar without putting controls or
+camera pixels into the synthetic output.
+
+## Tasks
+- [x] Add file position/duration, capture-thread-owned seeking and pause/resume.
+- [x] Add coalesced worker commands and reject pre-seek observations/private previews.
+- [x] Reset native tracking and presentation history after discontinuities.
+- [x] Add Studio-only elapsed/duration, play/pause, mouse scrubbing and keyboard seeking.
+- [x] Verify forward/backward/end seeks, EOF restart, paused shutdown and stale-data boundaries.
+- [x] Verify native Studio layout and supplied-recording operation without changing the source.
+- [x] Update maintained guides, handbook, evidence and current-base context.
+
+## Acceptance criteria
+- [x] Distinguishable generated frames confirm the actual selected recording position.
+- [x] Pause does not fabricate observations or change their capture timestamps.
+- [x] Only explicitly paused replay can present labelled frozen numeric samples.
+- [x] Raw preview remains opt-in and expires; errors and live-source staleness still clear.
+- [x] A seek clears temporal history but preserves completed session facial calibration.
+- [x] The bottom bar never appears in the clean output, demo or live-camera view.
+- [x] Focused/full contract tests, Ruff and native checks have recorded outcomes.
+
+## Completion evidence
+-288full-suite cases pass without skips; Ruff check/format pass.
+- Native generated/supplied timeline checks:7/8groups, including same-worker seeks and new-worker EOF
+  restart, minimum1020x720layout, labelled pause and pixel-exact clean-output isolation.
+- Existing native Studio/model/motion/debug groups pass:19/9/10/9. UI test input producers are
+  independent of Tk pumping; no freshness/calibration/watchdog thresholds were weakened.
+- Supplied recording/model/profile unchanged. Requested18/30/18seconds yield17.9861588/29.9880133/
+  17.9861588seconds;41inferred frames, exit0, no forced shutdown, raw preview disabled.
+- Handbook82pages/177resolved citations; changed pages inspected and offline HTML verified.
+  Rebuilt wheel matches all31runtime/resource files.
+- Sanitized receipt:docs\evidence\replay-timeline-validation.json. Prior aggregate archived as
+  docs\evidence\before-replay-timeline-validation.json. No live-camera or accuracy/performance claim.
+
+## Completion log
+- 2026-10-13 - Owner requested VLC-like seeking beneath the Studio test view.
+- 2026-10-13 - Completed transport, native recording/GLB checks, documentation and current-base offload.

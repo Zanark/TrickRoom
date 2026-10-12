@@ -1,0 +1,52 @@
+# Imported-avatar framing and scale recovery
+
+Status: DONE
+Milestone: Correct same-source GLB/built-in size mismatch
+Dependencies: 13_BLENDER_MODEL_RUNTIME.todo, 21_RECORDED_VIDEO_TEST_VIEW.todo
+
+## Purpose
+Remove the imported model's first-frame scale latch and prevent inferred depth from
+inflating screen size. Preserve authored proportions, visibility rules and the original files.
+
+## Tasks
+- [x] Inspect the supplied model and reproduce the mismatch using the supplied recording.
+- [x] Verify that export dimensions are reasonable and locate the application-side scale latch.
+- [x] Replace 3D/rest-length ratios with robust visible/projected rig-span ratios.
+- [x] Update one smoothed uniform scale per detection rather than freezing the first estimate.
+- [x] Reset scale history on source-size/timing changes, manual reset or loss of reliable evidence.
+- [x] Add focused regressions for startup scale, depth noise, units, duplicate draws and bone lengths.
+- [x] Finish complete-recording comparison and native checks.
+- [x] Finish documentation, handbook, packaging and evidence readback.
+
+## Acceptance criteria
+- [x] A recording starting with a partial/close-up pose recovers later framing without a reset.
+- [x] Model scale at later full-body frames is comparable whether playback began there or earlier.
+- [x] Display windows/mirroring do not update the scale twice for one observation.
+- [x] Model-relative bone lengths, shape data and image-based visibility are preserved.
+- [x] Inferred depth cannot inflate the measured screen-space span.
+- [x] Supplied GLB/profile/video remain unchanged, with no raw/landmark exports or live camera.
+
+## Completion evidence
+- Reproduction latched scale1.460235 at2.128s with14eligible joints/partial body.
+- Later old full-body estimates were2-4times smaller, but the saved value never changed.
+- The old estimator also included inferred depth in display-size ratios. Projected estimates
+  around15-19s are approximately0.29-0.31rather than0.39-0.65from the old formula.
+-59focused regression cases passed again after restart;9model and10motion native groups passed.
+- Complete2209-frame comparison passed. At18s, ongoing/fresh-start scale0.305634/0.303491;
+  sampled full-body fits differ by at most3.8%. Full-body median size is22.6%of the old locked scale.
+- Post-restart runtime check passed:28seconds,201inferred frames, fresh state and clean child exit.
+  High frame skipping/render cost remains unqualified; this does not establish performance gains.
+- Two pre-restart runtime checks failed to acquire frames. One measured89smodel loading;
+  the slowdown's cause is not established, and both failed receipts are retained.
+- Private baseline, comparisons and original-source archive: .local\scale-fix.
+- Supplied model/profile/video are read-only; no Blender-side re-export or rescale is needed.
+- Sanitized receipt:docs\evidence\imported-scale-validation.json. The earlier implementation
+  receipt is preserved as before-scale-fix-validation.json.
+- The82-page/175-citation handbook was rebuilt and its changed pages inspected. The wheel
+  matches all runtime files; baseline comparison confirms only the intended existing code changed.
+
+## Completion log
+- 2026-10-12 - Scale fix completed after restart, with runtime, book and package verified.
+- 2026-10-12 23:44 +05:30 - Resumed after reported PC shutdown; saved fix and runtime verified.
+- 2026-10-12 21:02 +05:30 - Same-video imported scale mismatch reported and reproduced.
+- 2026-10-12 - Application-side fix implemented; complete comparison underway.

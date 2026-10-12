@@ -1,0 +1,28 @@
+{
+  "blender": "4.5.14 LTS",
+  "purpose": "Original technical interoperability fixture, not final avatar artwork.",
+  "generator_sha256": "cfaf566f8fded59fd15d68fb082022ff78713f75129338eaa879c3abfdb1fd36",
+  "bone_count": 23,
+  "required_shape_keys": [
+    "TR_Blink_L",
+    "TR_Blink_R",
+    "TR_Jaw_Open",
+    "TR_Smile",
+    "TR_Brow_Up_L",
+    "TR_Brow_Up_R",
+    "TR_Brow_Down_L",
+    "TR_Brow_Down_R",
+    "TR_Look_Left",
+    "TR_Look_Right",
+    "TR_Look_Up",
+    "TR_Look_Down"
+  ],
+  "files": {
+    "TrickRoom-Conformance.blend": "3ff82b9f11b0a0c2d1f4c5234d0ed6b04402705370735c832323434e03f31fc4",
+    "TrickRoom-Conformance.glb": "419656b629d3356cdb8685ff55d1519d5a8681d24d3bf475945a3510e1de721d",
+    "TrickRoom-Conformance.trickroom.json": "67056a249ac00c6180ecdcd12d55f2fa401105a0a5c6d17ab5004cbcae2d66c8",
+    "TrickRoom-EyeBones.blend": "edc7e28048057fc689802d522c31f44a3568132962daeb4f49b9ac78537c3b21",
+    "TrickRoom-EyeBones.glb": "ca0970634aa680f28f0d9f3829d520ee9fa4ef00a6bf01a8c4ec0e044a1d00ec",
+    "TrickRoom-EyeBones.trickroom.json": "993860d2cda1abed33a18dab82c0d7c1bdc40786c840bfbe4929e1dfba96f679"
+  }
+}

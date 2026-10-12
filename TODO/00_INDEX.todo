@@ -1,0 +1,101 @@
+# TrickRoom workstreams
+
+Status: IN_PROGRESS
+Milestone: M1 prototype and M2 model support complete locally; final art and interactions pending
+Dependencies: None
+
+## Current state
+- Workstream27 is DONE: face-loss head handover discards obsolete face-specific rotation.
+  The reported35sframe now shows the pose-derived rear head.374tests and native checks pass;
+  all2209frames compared, body matrices unchanged, independent valid head turns preserved.
+- Workstream26 is DONE: --render-video exports a model/reference recording to synthetic MP4,
+  aggregate JSON and optional PNG.374tests;2209-frame full export and cross-directory/launcher checks.
+  No dropped source frames, raw media/audio or automatic live capture. Handbook83pages/181citations.
+- Workstream26 is DONE: corrected reversed rest/solved limb-plane normals and body-relative
+  aiming/history.338tests and native checks pass; the same2209-frame recording/model comparison
+  removes the measured near-collapse cases (1422before,0after). Restart the app; no re-export.
+- Workstream25 is DONE: graphics/numeric debug draw off Tk, with independent stale-display
+  revocation and cached static masks. Queued drag p95 falls from~132ms to~21ms; repeat~18ms.
+  312tests and native lifecycle/replay checks pass;82page/179citation handbook. Not an FPS guarantee.
+- Workstream24 is DONE: recorded-video pause/seek and a bottom Studio-only timeline.288tests,
+  generated/supplied native transport and prior UI groups pass;82page/177citation handbook.
+  Seek epochs reset history, completed calibration survives, and paused numeric views are labelled.
+  Raw preview still expires; live testing remains paused. Source video/model/profile unchanged.
+- Workstream23 is DONE: all seven studio sections fold independently, with Input initially
+  open and always-visible Expand all/Collapse all controls.39focused/19native UI/9model groups passed;
+  settings, active replay and separate debug windows survive folding.
+- Workstream22 is DONE: imported scale follows current projected framing instead of locking
+  an initial partial/close-up estimate.59focused cases,2209-frame comparison, native controls and
+  post-restart runtime pass. Original model/profile/video unchanged; no re-export is needed.
+- Workstream21 is DONE: Test from video and Replay last video controls with explicit replay
+  labelling.53focused cases/14native studio groups; bounded supplied-recording check passed.
+  Selection is session-only; raw preview remains opt-in and active sources are not interrupted.
+- Workstream20 is DONE locally: owned inference, world-space constrained GLB motion, temporal
+  loss-state presentation and session-only face response.199tests; original native groups plus
+  ten new motion groups; full recording comparison and82page/175citation handbook.
+  GLB motion is not retrofitted into the procedural built-in. Optional tracker/protocol/springs
+  and final-art Blender authoring remain separate; no sensing-accuracy improvement is claimed.
+- Workstream19 is DONE: deep VSeeFace/OpenSeeFace/SDK research and local-code comparison.
+  See docs\14-vseeface-research.md. Recommendations are not implementation or proven accuracy gains.
+- Workstream07 first recorded-video test is COMPLETE; broader qualification remains IN_PROGRESS.
+  Normal playback reached EOF; exhaustive analysis processed all2209frames without render errors.
+  Pose/face availability was96.74%/69.99%, with full required skeleton39.88%; accuracy remains
+  unapproved. Await further direction; live-camera testing remains paused.
+- Workstream18 is NOT_STARTED: resolve/document the native SDK's usage-telemetry policy.
+  No code, SDK or system-network changes were made for the first video test.
+- Workstream17 is DONE locally: near-black green room, vivid green wireframe, no cross markers.
+  169tests, twelve native studio/nine model groups, refreshed previews and82page handbook.
+- Workstream16 is DONE locally: isolated opt-in raw/skeleton/face debug views and encrypted
+  local auth defaults.159tests, native lifecycle, real detected-point and masked-prefill checks passed.
+- Workstreams13-15 are DONE locally: Blender GLB runtime, actual Blender conformance and82page
+  authoring handbook.148tests, native model lifecycle, numerical deformation/eye-gaze and
+  imported-model stream checks passed. Final-art character and owner-camera qualification remain separate.
+- Workstream12 is DONE locally: perspective calibration room following the supplied examples.
+- Original room revision:107tests, twelve native groups, full model/stream checks and refreshed
+  visual manifests. Reference character is preserved; physical interactions are still future work.
+- Workstream11 is DONE locally: reference-driven avatar appearance, requested2026-10-11 22:17.
+- Supplied sheets define near-final art direction: hair/headphones/hoodie/cargo pants/sneakers.
+- Prior character-only revision:90tests, eleven native groups, full model/stream checks; depth-tested
+  OpenGL3.3 rendering with cached colored geometry. Live phone and owner art approval remain open.
+- M1 engineering prototype is complete locally, 2026-10-11 21:29 +05:30.
+- 70 unit cases, five real-model fixture cases, same-session translation/loss/reacquisition,
+  real loopback MJPEG/inference/rendering and ten native UI groups passed.
+- Setup, model checksums, wheel build, synthetic gallery and documentation checks succeeded.
+- Full camera/motion qualification remains incomplete; final reference-art Blender asset is not approved.
+- Evidence: docs\evidence\prototype-validation.json; detail/history: JOURNAL.md.
+
+## Catalogue
+01_FOUNDATION.todo             DONE          M0 Requirements, boundaries, project structure
+02_CAMERA_INPUT.todo           DONE          M1 Latest-frame MJPEG/device/replay input
+03_BODY_FACE_TRACKING.todo     DONE          M1 Body, silhouette, head and expressions
+04_SYNTHETIC_STAGE.todo        DONE          M1 Complete synthetic visualization
+05_STUDIO_AND_LAUNCH.todo      DONE          M1 Connection panel and reproducible setup
+06_ENGINEERING_VALIDATION.todo DONE          M1 Automated and actual-model evidence
+07_LIVE_CAMERA_QUALIFICATION.todo IN_PROGRESS M1 Recorded-video first pass; live follow-up paused
+08_DOCUMENTATION.todo          DONE          M1 Guides, architecture, journal and TODO upkeep
+09_BLENDER_AVATAR.todo          NOT_STARTED   M2 Final reference-art Blender character
+10_INTERACTIVE_ROOM.todo        NOT_STARTED   M3 Future objects and room interactions
+11_REFERENCE_AVATAR.todo       DONE          M1 Reference-driven near-final visual direction
+12_PERSPECTIVE_LAB.todo        DONE          M1 Perspective lab shell and visual grounding
+13_BLENDER_MODEL_RUNTIME.todo DONE          M2 GLB import, skinning, retargeting and presentation
+14_BLENDER_CONFORMANCE.todo   DONE          M2 Actual Blender export and authoring utilities
+15_BLENDER_AUTHORING_HANDBOOK.todo DONE      M2 Detailed83page model-authoring handbook
+16_PRIVATE_DEBUG_VIEWS.todo    DONE          M2 Private raw input and black tracking views
+17_GREEN_WIREFRAME_THEME.todo  DONE          Room palette and clean green wireframe
+18_SDK_TELEMETRY_POLICY.todo   NOT_STARTED   Explicit native SDK network/privacy policy
+19_VSEEFACE_RESEARCH.todo     DONE          Source-grounded tracking/rigging improvement research
+20_CORE_MOTION_UPGRADE.todo   DONE          Isolated inference and calibrated temporal rig motion
+21_RECORDED_VIDEO_TEST_VIEW.todo DONE        Studio recording picker, replay and truthful source labels
+22_IMPORTED_SCALE_FRAMING.todo DONE         Adaptive imported-avatar framing instead of first-frame zoom
+23_COLLAPSIBLE_STUDIO_SECTIONS.todo DONE        Compact state-preserving control-panel sections
+24_REPLAY_TIMELINE.todo         DONE        Recorded-video timeline, seeking and pause/resume
+25_STUDIO_RESPONSIVENESS.todo   DONE        Responsive view scheduling and timeline interaction
+26_CLI_VIDEO_EXPORT.todo       DONE        Offline model/reference-video render and review evidence
+26_LIMB_FRAME_TWIST.todo        DONE        Correct rest/body-relative limb frames and hip collapse
+
+27_HEAD_TRACKING_HANDOVER.todo DONE        Face-to-pose head orientation without stale rotation
+
+## Rules
+Stable IDs; do not renumber. Dependencies are relative filenames and hard prerequisites.
+DONE requires scoped acceptance and recorded evidence, not a claim about the whole product.
+Maintain docs\06-development-workflow.md and JOURNAL.md with significant changes.

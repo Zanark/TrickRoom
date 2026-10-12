@@ -1,0 +1,18 @@
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#2d333b","primaryTextColor":"#e6edf3","primaryBorderColor":"#6d5dfc","lineColor":"#8b949e","secondaryColor":"#161b22","tertiaryColor":"#161b22","background":"#161b22"}}}%%
+sequenceDiagram
+  autonumber
+  participant Artist
+  participant Blender
+  participant Importer
+  participant Studio
+  Artist->>Blender: Model, weight, add shape keys
+  Blender->>Blender: Preflight export copy
+  Blender-->>Artist: GLB + profile + export receipt
+  Artist->>Importer: Validate exported bytes
+  Importer->>Importer: Bounds, hierarchy, rig, bind checks
+  alt Rejected
+    Importer-->>Studio: Explicit diagnostic and retain old avatar
+  else Validated
+    Importer-->>Studio: Commit complete asset
+    Studio->>Studio: Bind, clip, demo, then actual camera
+  end

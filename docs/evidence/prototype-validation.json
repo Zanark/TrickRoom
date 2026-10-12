@@ -1,0 +1,1383 @@
+{
+  "recorded_at": "2026-10-13T03:57:56.662505+05:30",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10",
+  "source": {
+    "kind": "uncommitted-working-tree",
+    "sha256": "be1e51cd49ab55701886bbe5cdc80625f5e1ec9369e832152e469afbbbf8d6c1",
+    "files": {
+      "docs/book/diagrams/pipeline.mmd": "8c9bf7aa1a32411320bdcc3dad1046f7f9165eaf6f1cfa2acf38eb009f3ea74a",
+      "docs/book/diagrams/validation.mmd": "e29b71dc34aaec52cc9fcdd7ad432e7957739b50bca282bb1ade6348357636e4",
+      "docs/book/package-lock.json": "b3a9a09190dd82de91dfb86e8addde2108ab9f5405ee0a90681a94b892562436",
+      "docs/book/package.json": "46adb67e4a9311e641f7b0aac0cc68b7db895950550e15590af45544e6afdf9a",
+      "docs/book/puppeteer.json": "ece5965457827b86db3c857163ed7b818474d9dabde682e62cf3e748f1ccbb8c",
+      "pyproject.toml": "70682a92b91fa148914dbc57c1130aeb6f558489dd81666a43ef7dd6f9887c62",
+      "requirements-lock.txt": "df2a08b50e6177daa27c5a7481eb43df2105198427a043473561d7d52b2a9f23",
+      "Setup-TrickRoom.ps1": "2470681db7fb6cb969dc7a9334c79cc309d45cb58c3ca710d0c97f2c2a23d9c9",
+      "src/trickroom/__init__.py": "d2788cd782bca764ac0652eb1ff2679d9a444a5c97c7fe6609a852ba21ca25c2",
+      "src/trickroom/__main__.py": "33d544730b355c915f8c6fd29140cb1642e677c76e3f58795a2b30aa1c899542",
+      "src/trickroom/assets/__init__.py": "fd70b1b9c07a1c908f1213d7e267d9b6fff69f72f79e323a15577a918dc0192e",
+      "src/trickroom/assets/animation.py": "b67035cbc926c5808156da7a4045390771ede3d8c201d28973c39b9c4070a2c2",
+      "src/trickroom/assets/gltf.py": "819d45165e7fd2c536fd36c3afe0b6aa7ac4771cf8e0b37c88a0515b5336c053",
+      "src/trickroom/assets/kinematics.py": "fa4bc2b8b8d7bd949e6f4f7a21bbefb012a11855c0b0336b99eacccd43543a28",
+      "src/trickroom/assets/math3d.py": "586fcfe5a4636a429c12b705ea06cdc2da1ab3848222615353b86992bfc2625c",
+      "src/trickroom/assets/motion.py": "5f89550bb9737e739186bdee16d2bd6536ae95dacd73be3b02b7290e96b4b409",
+      "src/trickroom/assets/presentation.py": "f3dd50cefc66ee85a688f12da196dc7bea89b556fba9bf3d205d60eaf0f9bff0",
+      "src/trickroom/assets/profile.py": "9873033afe235ea5434904e522081c2f797953e9b17a087c3c6760034de360d8",
+      "src/trickroom/assets/retarget.py": "5e8e3fc08085db6a3a4c6ab5620c30a79f6ed1fd2347f7fe0c22d7ca2af7d5d8",
+      "src/trickroom/assets/types.py": "9eace31105f5871d9b05c9d4078d9537aefaf30a642574967ba0fc4142cecd4c",
+      "src/trickroom/avatar.py": "6f35148a8c7bec6c51a35e4ad66213795a7ec0c558bf8bf12762ecdaf07799e4",
+      "src/trickroom/camera.py": "5465846f42df0b138b90d4e4d347019f2105c02c531cc153486ebb79cfd6380b",
+      "src/trickroom/cli.py": "18bebad4d8746c62aac7a990d2ecc5da148bdfa1ee16f21f8582a367941fa2a0",
+      "src/trickroom/credentials.py": "5b0d0b2c5c6e62dd88fb38a88448144ce0d586017698ae2390ba7c21e00cfc90",
+      "src/trickroom/debug_views.py": "c92ae073eaa06f21e6138ca73a8a9e068ad3d2092015a3b9944224c90e1e3f4e",
+      "src/trickroom/demo.py": "08eb75ffdec283c7ae7fc8b5da07c05466f9af07b8d85fc4f4c7fd9959dc55bb",
+      "src/trickroom/face_response.py": "29f3141ffbd88337572aa095a4a3f85ef0f20a5447bb478187547a34ac402506",
+      "src/trickroom/face_topology.json": "dcc0a3c46a7e3a4f151d64fff299eb558eca0032ecdf964da0080b109755925a",
+      "src/trickroom/face_topology.LICENSE": "8707eef0533987efc5b155d64761eeb6e20793f50b9bd1a68dad1cf4719d0ed8",
+      "src/trickroom/filters.py": "75154a9c9cb2ecc41cd300cf2cb0152252fef48435e16a5296a3e829b10ba719",
+      "src/trickroom/graphics_worker.py": "690f82d2add2531ab030ea7266ee19850347c7f180e80b3bc3af79211114dd4b",
+      "src/trickroom/models.py": "0a39549b1bc238bdc500e154d1a4f89d18cbceb8aaa21fe04a0ce468d0ca5ab6",
+      "src/trickroom/raster.py": "ee56756e5ca1ea224cff700977ca7918a5e1630980c3d24e91b67a23ff3a7b44",
+      "src/trickroom/render.py": "9a7de15eabf2c717db893dfa3c90c042938f4d13f7e146682531d1c1c9ea563a",
+      "src/trickroom/room.py": "309f0237affa58eb3979882a55595bce3429b896a1b3d6d9cfab946b937e5926",
+      "src/trickroom/runtime.py": "5865a59c3c4675f2b4dfa550a139e3aa80b7481e67532c795c7dae58d4bd51d9",
+      "src/trickroom/state.py": "4f7eb84ed3016dd024582b50a2f4225a485a991c74178477776b32c2c1382d67",
+      "src/trickroom/studio.py": "2a78958d72c58828e501df39f5c32da7666cd0e2a25c3c17da30f9bfa1a1c529",
+      "src/trickroom/tracking.py": "a0651654e4ce08cd6ee01f1f483453088b3f69c8fd561665dfeb38e2b5d4cc06",
+      "src/trickroom/worker_lifetime.py": "f60dac392e57834546cc4fcd4c668d6ab1375ceca6b2a3781ff6d20cbace8d8d",
+      "Start-TrickRoom.ps1": "cdc80f9cb1dba1ad9fcf94ac8c1be28538769b2c39238ef4414c1d416fd8e664",
+      "tests/glb_helpers.py": "c9e131be55fdf2a60a39520a353c9814d53a2e383da68836786f15d87e0bcca4",
+      "tests/test_avatar.py": "9bbd61d7b32b8e9582e4762d30a601d703b101b6491cdd7827ed8cc23846e5d5",
+      "tests/test_camera.py": "0a007b6d92f239c9252c65508e2770aad3543aa5a71fd2306a630cbddf072390",
+      "tests/test_collapsible_sections.py": "2a93362ed960e5e0b06bef7e8c8053f19fd6e690615d7fdb2b6238e558995cd0",
+      "tests/test_credentials.py": "35637975699db5617270de65b7102d4fd265a80c52eff786e59f2defd182874a",
+      "tests/test_debug_views.py": "dba36fcc1f93dead116c677e58ed7a33a79ca73750e91d41398cafb18f2998ed",
+      "tests/test_face_response.py": "b0b0e057d4872b6c076eb7711a337dc081e9df1a9ed823a12c7aa22e5a9146e0",
+      "tests/test_gltf_import.py": "57ba0129e4cbdd201431dbf24d06dd5bb65fbac68a6b2e5177fd87de6f7a7638",
+      "tests/test_graphics_worker.py": "91e819bcf7e1166008ce5ac240f84eaaed1f7f2ece6834a41f1cc9e273aa41f9",
+      "tests/test_imported_animation.py": "59f62f60ab8e8e790a080ad877ac3cd894eaf4e636d4f4bc548292a6cd2ba557",
+      "tests/test_imported_materials.py": "a0a8952a57bf5b9c79ae6da078ba39946f9eeee2af0ae1474b216fd7da28921e",
+      "tests/test_models_cli_runtime.py": "d86322ecf6398c9d3cb19ce92a82ee21a0ab9142883c5cd1a9e30facf71a0ebc",
+      "tests/test_playback_timeline.py": "c8891ddc9e6388a54d8cca73ce384f42f1cc8fc2bf41350bf7847eff188dc892",
+      "tests/test_presentation_scale.py": "fd13625769b22b9681c78907f9d4bb16e5c8f4e8689a3de908d8dad522fbc9b2",
+      "tests/test_render.py": "eef9a5578dfb23e884962cdf19253193ced1434020dac38feb24daa29008e1e5",
+      "tests/test_replay_transport.py": "ed7dab8f6be09aa5b29efffdaabc289839e7b47a51a1f65bdccd9951977f8afe",
+      "tests/test_rig_motion.py": "1067f077d6933820b4170664cc3c972a47898638163c3c2fdd49f00895ea43b7",
+      "tests/test_room.py": "05a8e7f8c05a83ed9e8cc437c704199499b8320d0030a5ff1e877962ee92857e",
+      "tests/test_runtime_process.py": "a25e5dd9ee735489fcca1c1c908240515151573f9aba0a969ccd434ad1a645bb",
+      "tests/test_state_and_filters.py": "bdaac6ef5ab5e3fc24b4deb3224996858e7ac7513d2d602d11984d8c079245f4",
+      "tests/test_studio_responsiveness.py": "9c3e865b0a370bd345c002d5942e9f963fae173e4fe5a4f37e583757a3a8ace0",
+      "tests/test_tracking_contracts.py": "4fe50fb1ec60adf12133d18cbee05c78ed685136715fddc2779466349857baa5",
+      "tests/test_ui_capture.py": "a305d23e8f7a82f43553aa5306b52e2dec864329c3b9f8ca02114fe4625a72b1",
+      "tests/test_video_test_controls.py": "456b0922b566816a2918126b33b28860ed3b72542f92cbce4341e1a69f3d1171",
+      "tools/blender/create_conformance_rig.py": "cfaf566f8fded59fd15d68fb082022ff78713f75129338eaa879c3abfdb1fd36",
+      "tools/blender/export_character.py": "6a240d824f12feb888bcdd115d06b531eab4ea35511f7f8ce8f5681237dd26c7",
+      "tools/blender/preflight.py": "df22058d93401b2299dbb1c9ad0def3dc354e79de64bf073878cca47127b3724",
+      "tools/blender/sample_conformance.py": "bf93a33cba6b69932c9cf4c0ab44b90b957db6619e2a94359c8e6fda469ca41c",
+      "tools/build_blender_handbook.py": "95fab48f0f1b53057a04a4a0cb6a5f06f24d23ed39ad87290e33cd3c952a47e1",
+      "tools/check_debug_views.py": "0e088db5764836f613b9cf42e0a03700caed480d8f3645ddb36b7455ab728797",
+      "tools/check_docs.py": "816774790df8e67457c2c7f4d71f2476d744e882f2f83ca631fd44a8e1b26019",
+      "tools/check_handbook_html.cjs": "675c3f06b5f588abc8315d1f5734e38e8c5a0372cb08def3fa09c5e12a6a8ffa",
+      "tools/check_model_studio.py": "bb81dc83cd8a061dd8fc280f2cdb639adb97f7bcdac518cf72990aa7e3b5092a",
+      "tools/check_motion_studio.py": "bfbb08524169b64bd5c6db39994cf63fd089c691291354995e17f3690708adce",
+      "tools/check_replay_timeline.py": "35b553e730d1acec1295dd235b7e866766fe8dab6cce8583971a0ec6211cec2e",
+      "tools/check_studio.py": "6f19cb3f030aaefbd4fa2cd9b54c4110373ceda87979992009b21c0d0ec1498c",
+      "tools/check_ui_responsiveness.py": "bf9cc99753e5d0adccf3a24910cdf706cf45076b97fa47573f70c14ae6b7e093",
+      "tools/record_evidence.py": "77d66ca1caaab3234666bfdf8f2d8ecca449e9412a97162440b2fe687687325d",
+      "tools/render_avatar_gallery.py": "29f8aad00b9f0d6e88bf8e8877a42bcc410572b0d1341112a228926af54b52d8",
+      "tools/render_gallery.py": "3f83420900931b1d24735b68e72431209bdf187994c2824ccb9b716b54183933",
+      "tools/render_room_gallery.py": "c2c93e0fdbf2b675e434e3acf0a480709424ff358f426a146581c91ef0a1b1fe",
+      "tools/ui_capture.py": "529fac062a66657346e8e35864f47893c71debe5c8c0d5e8649e188a7b5b593b",
+      "tools/update_face_topology.py": "66df2a3189c31daee1b50fe6db5438707b206958fdb2cb130466034a2e44d8d4",
+      "tools/verify_blender_models.py": "06fd4338584db56522b6644a0247c7ec2b84ab53008225037f57783001aec00c",
+      "tools/verify_motion_upgrade.py": "466f9268932ee079bd19f78b5305d6c8e5870060af1870a91e3b03d1055881bd",
+      "tools/verify_stream.py": "fa7a44d11ad942ce0138e8b8d275daf56dbf04781619f2c30aff9d009e3efbb0",
+      "tools/verify_tracking.py": "c032a9220cf291940f602334ec02f1a2e7f4176da815729a3fd09e66979dd6ee"
+    }
+  },
+  "unit_tests": {
+    "tests": 312,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unit_test_modules": [
+    "tests.test_avatar",
+    "tests.test_camera",
+    "tests.test_collapsible_sections",
+    "tests.test_credentials",
+    "tests.test_debug_views",
+    "tests.test_face_response",
+    "tests.test_gltf_import",
+    "tests.test_graphics_worker",
+    "tests.test_imported_animation",
+    "tests.test_imported_materials",
+    "tests.test_models_cli_runtime",
+    "tests.test_playback_timeline",
+    "tests.test_presentation_scale",
+    "tests.test_render",
+    "tests.test_replay_transport",
+    "tests.test_rig_motion",
+    "tests.test_room",
+    "tests.test_runtime_process",
+    "tests.test_state_and_filters",
+    "tests.test_studio_responsiveness",
+    "tests.test_tracking_contracts",
+    "tests.test_ui_capture",
+    "tests.test_video_test_controls"
+  ],
+  "docs": {
+    "markdown_files": 24,
+    "local_links": 76,
+    "workstreams": 25
+  },
+  "receipts": {
+    "actual_inference": {
+      "recorded_at": "2026-10-11T23:33:05.537127+05:30",
+      "evidence_class": "actual-model inference on a public still and deterministic crops",
+      "fixtures": [
+        {
+          "url": "https://storage.googleapis.com/mediapipe-assets/pose.jpg",
+          "sha256": "c8a830ed683c0276d713dd5aeda28f415f10cd6291972084a40d0d8b934ed62b"
+        },
+        {
+          "url": "https://cdn.pixabay.com/photo/2019/03/12/20/39/girl-4051811_960_720.jpg",
+          "sha256": "99e0649aa4f2553b0213982f544146565a1028877c4bb9fbe3884453659d8cdc"
+        }
+      ],
+      "input_media_in_report": false,
+      "owner_camera_tested": false,
+      "real_motion_or_end_to_end_latency_measured": false,
+      "cases": {
+        "full-body-profile": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            667
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 24.29,
+          "warm_p95_inference_ms": 26.16,
+          "synthetic_image": "full-body-profile-synthetic.png",
+          "passed": true
+        },
+        "body-and-expressive-face": {
+          "frames": 16,
+          "input_size": [
+            960,
+            640
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 16,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": true,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 29.97,
+          "warm_p95_inference_ms": 35.99,
+          "synthetic_image": "body-and-expressive-face-synthetic.png",
+          "passed": true
+        },
+        "cropped-lower-legs": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            527
+          ],
+          "visible_landmarks": 24,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "PARTIAL BODY",
+          "warm_mean_inference_ms": 25.39,
+          "warm_p95_inference_ms": 29.15,
+          "synthetic_image": "cropped-lower-legs-synthetic.png",
+          "passed": true
+        },
+        "portrait-frame": {
+          "frames": 16,
+          "input_size": [
+            460,
+            667
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 24.55,
+          "warm_p95_inference_ms": 26.66,
+          "synthetic_image": "portrait-frame-synthetic.png",
+          "passed": true
+        },
+        "blank": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            667
+          ],
+          "visible_landmarks": 0,
+          "face_frames": 0,
+          "body_frames": 0,
+          "contours": 0,
+          "face_crop_used": false,
+          "status": "NOT FOUND",
+          "warm_mean_inference_ms": 17.96,
+          "warm_p95_inference_ms": 19.35,
+          "synthetic_image": "blank-synthetic.png",
+          "passed": true
+        }
+      },
+      "same_session_motion_and_reacquisition": {
+        "kind": "deterministic image translation, not a real motion recording",
+        "translated_input_px": 35,
+        "observed_body_shift_px": 32.01,
+        "observed_face_shift_px": 34.59,
+        "blank_clears_tracking": true,
+        "body_and_face_reacquired": true,
+        "passed": true
+      }
+    },
+    "stream": {
+      "recorded_at": "2026-10-11T23:33:17.888265+05:30",
+      "evidence_class": "30 Hz loopback MJPEG, transformed public still, real inference",
+      "owner_camera_opened": false,
+      "real_motion_recording": false,
+      "camera_to_display_latency_measured": false,
+      "input_frames": 117,
+      "inferred_frames": 116,
+      "body_frames": 116,
+      "face_frames": 116,
+      "dropped_frames": 1,
+      "reported_inference_hz": 32.01,
+      "mean_inference_ms": 30.17,
+      "mean_renderer_ms": 15.46,
+      "mean_postdecode_observation_age_ms": 55.82,
+      "p95_postdecode_observation_age_ms": 87.22,
+      "passed": true,
+      "graphics": {
+        "GL_VENDOR": "ATI Technologies Inc.",
+        "GL_RENDERER": "AMD Radeon(TM) 780M",
+        "GL_VERSION": "3.3.0 Core Profile Context 25.20.24.13.251216"
+      },
+      "shutdown_complete": true
+    },
+    "native_ui": {
+      "checks": [
+        "native-window-render",
+        "demo-labelled-no-camera",
+        "cropped-body-status",
+        "presentation-controls",
+        "reference-avatar-defaults-and-optional-diagnostics",
+        "perspective-room-toggle",
+        "clean-output-window",
+        "invalid-source-no-camera",
+        "disconnect",
+        "restart-demo",
+        "actual-model-synthetic-replay-and-eof-controls",
+        "recorded-video-picker-and-labelled-test-view",
+        "replay-last-video-with-new-worker",
+        "all-seven-sections-collapse-independently",
+        "bulk-collapse-and-minimum-window-scroll-bounds",
+        "section-keyboard-and-focus-behavior",
+        "collapsed-controls-preserve-values-and-active-replay",
+        "folding-debug-controls-keeps-open-windows",
+        "close"
+      ],
+      "callback_errors": [],
+      "passed": true,
+      "owner_camera_opened": false,
+      "screenshot_captured": true,
+      "collapsed_screenshot_captured": true,
+      "panel_heights": {
+        "initial": 780,
+        "all_expanded": 2088,
+        "all_collapsed": 273
+      },
+      "user_approval_claimed": false
+    },
+    "reference_avatar": {
+      "kind": "authored-poses-not-live-camera-validation",
+      "geometry": {
+        "vertices": 16848,
+        "triangles": 5616,
+        "note": "Includes coplanar material tiles; not the sheet's illustrative counts."
+      },
+      "warm_renderer_median_ms": 9.73,
+      "warm_renderer_p95_ms": 11.34,
+      "palette_bgr": {
+        "skin": [
+          95,
+          149,
+          206
+        ],
+        "skin_shadow": [
+          68,
+          108,
+          165
+        ],
+        "stubble": [
+          57,
+          80,
+          113
+        ],
+        "eye": [
+          25,
+          28,
+          35
+        ],
+        "hair": [
+          36,
+          35,
+          44
+        ],
+        "hair_light": [
+          50,
+          51,
+          69
+        ],
+        "hoodie": [
+          47,
+          44,
+          46
+        ],
+        "hoodie_dark": [
+          38,
+          34,
+          35
+        ],
+        "hoodie_seam": [
+          59,
+          56,
+          60
+        ],
+        "drawstring": [
+          128,
+          146,
+          158
+        ],
+        "cargo": [
+          61,
+          96,
+          91
+        ],
+        "cargo_dark": [
+          47,
+          73,
+          66
+        ],
+        "cargo_flap": [
+          70,
+          109,
+          108
+        ],
+        "headphones": [
+          147,
+          170,
+          185
+        ],
+        "headphone_rim": [
+          160,
+          190,
+          212
+        ],
+        "padding": [
+          44,
+          46,
+          48
+        ],
+        "shoe": [
+          130,
+          152,
+          169
+        ],
+        "shoe_panel": [
+          95,
+          105,
+          113
+        ],
+        "sole": [
+          157,
+          184,
+          205
+        ]
+      },
+      "files": {
+        "body-back-three-quarter.png": "f162dab29c515e14ae15e7d032753b54887ff97f42eb3497f0ecd06da5f87fb3",
+        "body-back.png": "e37cbfbb0d2d95ccce490debcb18be1b401c234f667d5f80827240c23ee87df7",
+        "body-front-three-quarter.png": "51b473572e826da8c759a04e85ef7a33d5c3d9850738c909865d7f8d910005fa",
+        "body-front.png": "1e5cc208c0ebf49226711b544f655da1aca811bad5711a8ec3b9501c2a74e2a5",
+        "body-left-side.png": "f4f306e46e1745bcad23990d5f83bd37274eb7b6c34bfece42c28274b5edc41a",
+        "body-right-side.png": "e379e5dd2344a7198f00a4ac923ad21236209721d7655ef0219755eae4d32bb9",
+        "head-turnaround.png": "ea996b169d27d6e8e04af8d6b02f796dc298ca52f622a587def127eadcf9b759",
+        "reference-expressions.png": "447fe65d3baf693012f0ac15f9d12273f9dcb1ab71fcf112ace674e3add5b7e7",
+        "reference-turnaround.png": "3ff457f05c778f4b19a710f0e9e73029c9978769ee28d5aeab46c36cb4e2cb2b"
+      },
+      "owner_visual_approval": false,
+      "renderer": {
+        "GL_VENDOR": "ATI Technologies Inc.",
+        "GL_RENDERER": "AMD Radeon(TM) 780M",
+        "GL_VERSION": "3.3.0 Core Profile Context 25.20.24.13.251216"
+      }
+    },
+    "perspective_room": {
+      "kind": "synthetic perspective-room gallery; no camera or physical floor calibration",
+      "projection": {
+        "width": 960,
+        "height": 720,
+        "top": 0,
+        "bottom": 720,
+        "focal": 864.0,
+        "center": [
+          479.5,
+          309.6
+        ],
+        "half_width": 3.0,
+        "ceiling": 3.6,
+        "eye_height": 1.65,
+        "near": 0.6,
+        "back": 8.4,
+        "tile": 0.6
+      },
+      "surface_count": 5,
+      "theme": "dark-green-wireframe",
+      "calibration_crosses": false,
+      "shared_vanishing_point": [
+        479.5,
+        309.6
+      ],
+      "reference_images": [
+        {
+          "file": "copilot-image-f214d3.png",
+          "sha256": "654a45bf28717481b0271fe8c3b25e1d76c1b51cbdd4ac12fc9bdd5c7f90ac57"
+        },
+        {
+          "file": "copilot-image-4f6137.png",
+          "sha256": "650a061152786a5838e5cefa6ccf4584c3dfa15ce9f57ca5c9a09ff44f86fb36"
+        },
+        {
+          "file": "copilot-image-034535.png",
+          "sha256": "203349f64668558009b631545c8286764956db532c1c9320b38fbaedd0cfb734"
+        }
+      ],
+      "warm_full_renderer_median_ms": 10.11,
+      "warm_full_renderer_p95_ms": 10.95,
+      "physical_contact_or_collision": false,
+      "owner_visual_approval": false,
+      "files": {
+        "lab-character.png": "85c000c2fd47e8158ed5b9d161161c2a036a095a1d34a24593311300f0516f55",
+        "lab-clean.png": "9702d2ac1ab27e4b0795cf225e1eed0060c8a2e315d9c463cd1363198b2c71b8",
+        "lab-cropped.png": "72f3b4d103ad41715d4c73476d94b619c39dcd6b27747dcd7f7ce9406fabb138",
+        "lab-empty.png": "7664a2264a53c3bdd1069d636b13e34f54690596d797d7553e3cc3b7f6b69ac3",
+        "lab-portrait.png": "49a3bb2318275a49f68565a826f4acd87531e07999c1c688026f3724282c9a28",
+        "lab-stale.png": "ca6609cef0f08b4bd86125e8989dabc07d087ef1243a6eb962bca8b67b79530e",
+        "lab-wide.png": "0c3d270ce43d7a0df91d81239cbe1226f4ea9befb61178bfeac112279b6ae186",
+        "room-off.png": "487c561f6344eb1b6db28eceaf89be50fc06502ace3a63f3b6839455921cfb5c"
+      }
+    },
+    "blender_runtime": {
+      "recorded_at": "2026-10-12T23:46:55.133926+05:30",
+      "asset": {
+        "name": "TrickRoom-Conformance.glb",
+        "sha256": "419656b629d3356cdb8685ff55d1519d5a8681d24d3bf475945a3510e1de721d",
+        "profile_version": 1,
+        "nodes": 25,
+        "skins": 1,
+        "vertices": 964,
+        "triangles": 606,
+        "primitives": 5,
+        "textures": 1,
+        "bones": {
+          "hips": 22,
+          "spine": 13,
+          "chest": 12,
+          "neck": 3,
+          "head": 2,
+          "upper_arm_left": 6,
+          "lower_arm_left": 5,
+          "hand_left": 4,
+          "upper_arm_right": 10,
+          "lower_arm_right": 9,
+          "hand_right": 8,
+          "upper_leg_left": 17,
+          "lower_leg_left": 16,
+          "foot_left": 15,
+          "upper_leg_right": 21,
+          "lower_leg_right": 20,
+          "foot_right": 19,
+          "shoulder_left": 7,
+          "shoulder_right": 11,
+          "toes_left": 14,
+          "toes_right": 18,
+          "eye_left": 0,
+          "eye_right": 1
+        },
+        "shapes": [
+          "TR_Blink_L",
+          "TR_Blink_R",
+          "TR_Brow_Down_L",
+          "TR_Brow_Down_R",
+          "TR_Brow_Up_L",
+          "TR_Brow_Up_R",
+          "TR_Jaw_Open",
+          "TR_Look_Down",
+          "TR_Look_Left",
+          "TR_Look_Right",
+          "TR_Look_Up",
+          "TR_Smile"
+        ],
+        "clips": [
+          {
+            "name": "ConformanceWave",
+            "duration": 1.0
+          },
+          {
+            "name": "ConformanceFace",
+            "duration": 1.0
+          }
+        ],
+        "bounds": [
+          [
+            -1.0100000473856854,
+            0.009999992687859147,
+            -0.12999999523162842
+          ],
+          [
+            1.0100000473856854,
+            2.0399999618530273,
+            0.29000000016919497
+          ]
+        ],
+        "warnings": [],
+        "ready_for_live": true
+      },
+      "owner_camera_opened": false,
+      "actual_exporter": "Blender4.5.14",
+      "checks": {
+        "blender_vertex_max_error": {
+          "ConformanceWave": 2.2468905009225401e-07,
+          "ConformanceFace": 5.8990480056309025e-08
+        },
+        "live_full_render_median_ms": 9.082100000114224,
+        "live_full_render_p95_ms": 10.383004999926014,
+        "bone_gaze_vertex_motion": 0.010513596909960751
+      },
+      "images": {
+        "bind": "1703fedb93ef275d5aa84bcc1bd1d1c468f2f0e78658fde8608f57a048819322",
+        "live-wave": "2c38337f1d4fb2b4ea41063884e582cd05f434aed0f1c68b04aa51162da857a6",
+        "live-cropped": "2e294bcf4a4029554628ca6b5feaf977f45f29e8e15f37135cba5c0986e0aab1",
+        "face-unavailable": "cd67ce89c45a2b35d488f6b3bfe8f514583f77fb65c31603eb49ac7f756c16bb",
+        "stale": "e7ee6a9133f9f48dcfebfce19aa1d5d3d395c867526ca211cd5557ca2eabada3",
+        "clip-wave": "2e3ffb36b178a00a56d211c3ffe1ea75d119aa63d4182c29726707647b89c9ac",
+        "clip-face": "c5e93026698c65f489f6bba427d2516cd767fac817231ca656978137fc0d8f43",
+        "blink-left": "66aa4601f6806e8d407931b9f1ee049c7280adca1c6043f4d7f8e722eda74e6a",
+        "blink-right": "868b6e3d5517b40997193381b35cd1702cdbf0f2177db6a16c3bc2c6673470c8",
+        "mouth": "f07eeeed79cff2ce7a5fde7344882bd33326cec8a261962f017069b6ee3d3e8f",
+        "brows-gaze": "6069045339e22f751737f3c00bd3c15772a513bd152edad6d3064242cc3d84ff"
+      },
+      "graphics": {
+        "GL_VENDOR": "ATI Technologies Inc.",
+        "GL_RENDERER": "AMD Radeon(TM) 780M",
+        "GL_VERSION": "3.3.0 Core Profile Context 25.20.24.13.251216"
+      },
+      "passed": true
+    },
+    "blender_ui": {
+      "passed": true,
+      "checks": [
+        "asynchronous-import",
+        "rig-report",
+        "clip-preview",
+        "live-return",
+        "recalibration",
+        "rejected-import-retains-model",
+        "clean-output",
+        "built-in-return",
+        "close-during-import"
+      ],
+      "callback_errors": [],
+      "owner_camera_opened": false,
+      "screenshot_captured": true
+    },
+    "blender_stream": {
+      "recorded_at": "2026-10-12T01:36:52.959312+05:30",
+      "evidence_class": "30 Hz loopback MJPEG, transformed public still, real inference",
+      "owner_camera_opened": false,
+      "real_motion_recording": false,
+      "camera_to_display_latency_measured": false,
+      "input_frames": 57,
+      "inferred_frames": 48,
+      "body_frames": 48,
+      "face_frames": 48,
+      "dropped_frames": 7,
+      "reported_inference_hz": 30.62,
+      "mean_inference_ms": 36.55,
+      "mean_renderer_ms": 9.05,
+      "mean_postdecode_observation_age_ms": 63.06,
+      "p95_postdecode_observation_age_ms": 66.44,
+      "passed": true,
+      "avatar": {
+        "name": "TrickRoom-Conformance.glb",
+        "sha256": "419656b629d3356cdb8685ff55d1519d5a8681d24d3bf475945a3510e1de721d",
+        "profile_version": 1,
+        "nodes": 25,
+        "skins": 1,
+        "vertices": 964,
+        "triangles": 606,
+        "primitives": 5,
+        "textures": 1,
+        "bones": {
+          "hips": 22,
+          "spine": 13,
+          "chest": 12,
+          "neck": 3,
+          "head": 2,
+          "upper_arm_left": 6,
+          "lower_arm_left": 5,
+          "hand_left": 4,
+          "upper_arm_right": 10,
+          "lower_arm_right": 9,
+          "hand_right": 8,
+          "upper_leg_left": 17,
+          "lower_leg_left": 16,
+          "foot_left": 15,
+          "upper_leg_right": 21,
+          "lower_leg_right": 20,
+          "foot_right": 19,
+          "shoulder_left": 7,
+          "shoulder_right": 11,
+          "toes_left": 14,
+          "toes_right": 18,
+          "eye_left": 0,
+          "eye_right": 1
+        },
+        "shapes": [
+          "TR_Blink_L",
+          "TR_Blink_R",
+          "TR_Brow_Down_L",
+          "TR_Brow_Down_R",
+          "TR_Brow_Up_L",
+          "TR_Brow_Up_R",
+          "TR_Jaw_Open",
+          "TR_Look_Down",
+          "TR_Look_Left",
+          "TR_Look_Right",
+          "TR_Look_Up",
+          "TR_Smile"
+        ],
+        "clips": [
+          {
+            "name": "ConformanceWave",
+            "duration": 1.0
+          },
+          {
+            "name": "ConformanceFace",
+            "duration": 1.0
+          }
+        ],
+        "bounds": [
+          [
+            -1.0100000473856854,
+            0.009999992687859147,
+            -0.12999999523162842
+          ],
+          [
+            1.0100000473856854,
+            2.0399999618530273,
+            0.29000000016919497
+          ]
+        ],
+        "warnings": [],
+        "ready_for_live": true
+      },
+      "graphics": {
+        "GL_VENDOR": "ATI Technologies Inc.",
+        "GL_RENDERER": "AMD Radeon(TM) 780M",
+        "GL_VERSION": "3.3.0 Core Profile Context 25.20.24.13.251216"
+      },
+      "shutdown_complete": true
+    },
+    "authoring_handbook": {
+      "pages": 82,
+      "words": 13948,
+      "chapter_pages": {
+        "01. The deliverable you are building": 6,
+        "02. Understand the complete pipeline": 8,
+        "03. Coordinates, units and orientation": 11,
+        "04. Plan the character before adding detail": 13,
+        "05. Mesh topology, normals and exported vertex counts": 15,
+        "06. The canonical humanoid hierarchy": 17,
+        "07. Build the deform armature deliberately": 19,
+        "08. Rest pose, bind pose and safe transforms": 21,
+        "09. Weight painting and the four-influence rule": 23,
+        "10. Shoulder and elbow deformation": 25,
+        "11. Pelvis, knees, feet and optional toes": 28,
+        "12. Clothing, hair and rigid accessories": 30,
+        "13. UV layout and texture atlases": 32,
+        "14. Material recipes that actually survive export": 34,
+        "15. The facial-control inventory": 36,
+        "16. Blinks, winks and eyelid coverage": 38,
+        "17. Jaw opening, smile and mouth construction": 41,
+        "18. Brows and the two gaze modes": 44,
+        "19. Author and export useful animation clips": 46,
+        "20. Control rigs, modifiers and unsupported mechanisms": 48,
+        "21. Export from Blender with a repeatable recipe": 50,
+        "22. Mapping an existing rig": 52,
+        "23. Import validation and resource budgets": 54,
+        "24. Load and inspect the model in TrickRoom": 56,
+        "25. Live retargeting and calibration": 59,
+        "26. Missing tracking and partial-body visibility": 61,
+        "27. A validation ladder that isolates failures": 64,
+        "28. Troubleshoot by symptom and evidence": 66,
+        "29. Performance and production-readiness review": 69,
+        "30. Reproduce the conformance workflow and deliver your model": 71,
+        "31. Workshop: construct the export skeleton": 73,
+        "32. Workshop: bind and clean the weights": 75,
+        "33. Workshop: author the facial shape keys": 77,
+        "34. Workshop: prepare a material and UV test": 79,
+        "35. Workshop: final handoff checklist and exact commands": 81
+      },
+      "blank_pages": [],
+      "text_outside_bounds": [],
+      "pdf_sha256": "998297a877d782c31715909cf9fd764b6e61bfc34772269122ea51fc3b89a824",
+      "html_sha256": "cf19b5ccf5bc9e315ee4f53ab75706bbe47e75f8b0bcaff8e6187e3ef79face5",
+      "manuscript_sha256": "5a4cd043005d60e4bdb86b9d79e56d79bb8533169a910456e5248651af4e0c39",
+      "source_citations_resolved": 179,
+      "format": "A5, original implementation-specific reference handbook"
+    },
+    "handbook_browser": {
+      "headingCount": 35,
+      "images": 8,
+      "decodedImages": true,
+      "externalImages": 0,
+      "contents": "Chapter navigation",
+      "horizontalOverflow": false,
+      "errors": [],
+      "passed": true
+    },
+    "blender_exports": {
+      "blender": "4.5.14 LTS",
+      "purpose": "Original technical interoperability fixture, not final avatar artwork.",
+      "generator_sha256": "cfaf566f8fded59fd15d68fb082022ff78713f75129338eaa879c3abfdb1fd36",
+      "bone_count": 23,
+      "required_shape_keys": [
+        "TR_Blink_L",
+        "TR_Blink_R",
+        "TR_Jaw_Open",
+        "TR_Smile",
+        "TR_Brow_Up_L",
+        "TR_Brow_Up_R",
+        "TR_Brow_Down_L",
+        "TR_Brow_Down_R",
+        "TR_Look_Left",
+        "TR_Look_Right",
+        "TR_Look_Up",
+        "TR_Look_Down"
+      ],
+      "files": {
+        "TrickRoom-Conformance.blend": "3ff82b9f11b0a0c2d1f4c5234d0ed6b04402705370735c832323434e03f31fc4",
+        "TrickRoom-Conformance.glb": "419656b629d3356cdb8685ff55d1519d5a8681d24d3bf475945a3510e1de721d",
+        "TrickRoom-Conformance.trickroom.json": "67056a249ac00c6180ecdcd12d55f2fa401105a0a5c6d17ab5004cbcae2d66c8",
+        "TrickRoom-EyeBones.blend": "edc7e28048057fc689802d522c31f44a3568132962daeb4f49b9ac78537c3b21",
+        "TrickRoom-EyeBones.glb": "ca0970634aa680f28f0d9f3829d520ee9fa4ef00a6bf01a8c4ec0e044a1d00ec",
+        "TrickRoom-EyeBones.trickroom.json": "993860d2cda1abed33a18dab82c0d7c1bdc40786c840bfbe4929e1dfba96f679"
+      }
+    },
+    "private_debug_ui": {
+      "passed": true,
+      "evidence_class": "native UI driven by authored synthetic input and landmarks",
+      "owner_camera_opened": false,
+      "checks": [
+        "defaults-off",
+        "three-separate-windows",
+        "opt-in-raw-retention",
+        "black-skeleton-and-face",
+        "close-disables-raw",
+        "reopen",
+        "clean-output-coexists",
+        "disconnect-clears",
+        "all-windows-close"
+      ],
+      "callback_errors": []
+    },
+    "detected_debug_points": {
+      "evidence": "actual MediaPipe on cached public fixture; not owner camera",
+      "pose_points": 33,
+      "face_points": 478,
+      "mesh_edges": 1322,
+      "raw_frame_saved": false,
+      "passed": true
+    },
+    "auth_defaults_ui": {
+      "prefill_matches_resolved_defaults": true,
+      "password_masked": true,
+      "camera_opened": false
+    },
+    "motion_upgrade": {
+      "recorded_at": "2026-10-12T15:08:06.847007+05:30",
+      "scope": "core process and GLB motion upgrade; same detector, no live camera",
+      "integrated_replay": {
+        "decoded_frames": 2209,
+        "inferred_frames": 1851,
+        "skipped_frames": 358,
+        "mean_inference_ms": 35.9132820637669,
+        "reached_eof": true,
+        "worker_exit_code": 0,
+        "forced_shutdown": false,
+        "shutdown_complete": true
+      },
+      "every_frame_comparison": {
+        "decoded_frames": 2209,
+        "raw_detection_counts": {
+          "NOT FOUND": 72,
+          "face_present": 1546,
+          "PARTIAL BODY": 1256,
+          "FULL BODY": 881
+        },
+        "presentation_bone_state_samples": {
+          "UNAVAILABLE": 1371,
+          "TRACKED": 37034,
+          "HELD": 555,
+          "REACQUIRING": 858,
+          "RETURNING": 658,
+          "REST": 6743
+        },
+        "max_authored_bone_length_error": 1.9669535444855057e-08,
+        "changed_pose_between_detection_frames": 2047,
+        "render_timings": {
+          "legacy": {
+            "mean_ms": 12.160907514492038,
+            "p95_ms": 16.156959999352694
+          },
+          "enhanced": {
+            "mean_ms": 16.1264260749658,
+            "p95_ms": 21.556619994225912
+          }
+        }
+      },
+      "native_motion_controls": {
+        "passed": true,
+        "evidence_class": "native controls driven by authored observations; no camera",
+        "checks": [
+          "demo-calibration-rejected",
+          "world-image-and-legacy-controls",
+          "opt-in-rest-distinct-from-measured-partial-status",
+          "stale-clears-history",
+          "neutral-and-range-controls",
+          "raw-expression-unchanged",
+          "calibration-clear",
+          "clean-output-and-debug-coexist",
+          "no-owner-side-native-sdk-import",
+          "close"
+        ],
+        "callback_errors": [],
+        "owner_camera_opened": false,
+        "personal_calibration_saved": false
+      },
+      "no_raw_or_landmark_exports": true,
+      "personal_calibration_saved": false,
+      "sensing_accuracy_improvement_claimed": false,
+      "remaining_limits": [
+        "Held scale may need explicit reset after initial close-up framing.",
+        "Relaxed loss uses the authored rest pose, which is a T-pose in the technical fixture.",
+        "Inference process containment is not a native DLL root-cause fix.",
+        "SDK usage telemetry is unchanged.",
+        "No final reference-art Blender character or optional OpenSeeFace/VMC/spring integration."
+      ]
+    },
+    "recorded_video_view": {
+      "recorded_at": "2026-10-12T20:38:00.584322+05:30",
+      "scope": "Recorded-video test UI, replay routing and honest source labels; no detector changes.",
+      "unit_test_scope": "Focused modules, not a full-suite rerun.",
+      "unit_test_modules": [
+        "tests.test_imported_animation",
+        "tests.test_models_cli_runtime",
+        "tests.test_render",
+        "tests.test_video_test_controls"
+      ],
+      "focused_tests": {
+        "tests": 53,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "native_studio_checks": [
+        "native-window-render",
+        "demo-labelled-no-camera",
+        "cropped-body-status",
+        "presentation-controls",
+        "reference-avatar-defaults-and-optional-diagnostics",
+        "perspective-room-toggle",
+        "clean-output-window",
+        "invalid-source-no-camera",
+        "disconnect",
+        "restart-demo",
+        "actual-model-synthetic-replay-and-eof-controls",
+        "recorded-video-picker-and-labelled-test-view",
+        "replay-last-video-with-new-worker",
+        "close"
+      ],
+      "selected_recording": {
+        "passed": true,
+        "source_kind": "file",
+        "input_size": [
+          478,
+          850
+        ],
+        "inferred_frames": 125,
+        "pose_present_frames": 69,
+        "face_present_frames": 61,
+        "checks": [
+          "actual-button-file-selection",
+          "recording-labelled-not-live-or-demo",
+          "built-in-synthetic-stage",
+          "imported-glb-stage",
+          "clean-output-and-black-debug-views",
+          "raw-preview-remains-off",
+          "bounded-disconnect-and-cleanup"
+        ],
+        "raw_frames_saved": false,
+        "landmarks_saved": false,
+        "source_path_saved": false,
+        "live_camera_opened": false,
+        "callback_errors": [],
+        "shutdown_complete": true,
+        "source_unchanged": true
+      },
+      "prior_implementation_receipt": "core-motion-validation.json",
+      "sensing_accuracy_improvement_claimed": false,
+      "private_source_path_or_credentials_recorded": false
+    },
+    "imported_scale": {
+      "recorded_at": "2026-10-12T23:46:54.657002+05:30",
+      "scope": "Imported-avatar placement scale; camera/tracker and original assets unchanged.",
+      "focused_tests": {
+        "tests": 59,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "unit_test_modules": [
+        "tests.test_imported_animation",
+        "tests.test_presentation_scale",
+        "tests.test_render",
+        "tests.test_rig_motion"
+      ],
+      "native_model_checks": [
+        "asynchronous-import",
+        "rig-report",
+        "clip-preview",
+        "live-return",
+        "recalibration",
+        "rejected-import-retains-model",
+        "clean-output",
+        "built-in-return",
+        "close-during-import"
+      ],
+      "native_motion_checks": [
+        "demo-calibration-rejected",
+        "world-image-and-legacy-controls",
+        "opt-in-rest-distinct-from-measured-partial-status",
+        "stale-clears-history",
+        "neutral-and-range-controls",
+        "raw-expression-unchanged",
+        "calibration-clear",
+        "clean-output-and-debug-coexist",
+        "no-owner-side-native-sdk-import",
+        "close"
+      ],
+      "recording_comparison": {
+        "frames_compared": 2209,
+        "baseline_first_scale": {
+          "seconds": 2.1277526080177056,
+          "value": 1.4602350418211845
+        },
+        "full_body_scale_after_over_before": {
+          "median": 0.22582882547987937,
+          "p95": 0.25031222796735975
+        },
+        "full_body_checkpoints": [
+          {
+            "seconds": 14.994,
+            "body_status": "FULL BODY",
+            "before_scale": 1.4602350418211845,
+            "after_scale": 0.28906716369303126,
+            "fresh_start_scale": 0.28558137536201844
+          },
+          {
+            "seconds": 17.986,
+            "body_status": "FULL BODY",
+            "before_scale": 1.4602350418211845,
+            "after_scale": 0.30563431505343286,
+            "fresh_start_scale": 0.3034911512927901
+          },
+          {
+            "seconds": 36.006,
+            "body_status": "FULL BODY",
+            "before_scale": 1.4602350418211845,
+            "after_scale": 0.34085923232930415,
+            "fresh_start_scale": 0.3390264191595568
+          },
+          {
+            "seconds": 54.989,
+            "body_status": "FULL BODY",
+            "before_scale": 1.4602350418211845,
+            "after_scale": 0.34762849413356944,
+            "fresh_start_scale": 0.3351613338572801
+          }
+        ],
+        "max_continuous_vs_fresh_start_relative_error": 0.037197489736683576,
+        "original_files_unchanged": true
+      },
+      "post_restart_runtime": {
+        "elapsed_seconds": 28.067,
+        "rendered_frames": 229,
+        "inferred_frames": 201,
+        "skipped_frames": 508,
+        "mean_inference_ms": 100.73159850745952,
+        "fresh_at_completion": true,
+        "exit_code": 0,
+        "worker_exit_code": 0,
+        "forced": false,
+        "shutdown_complete": true
+      },
+      "earlier_attempts": [
+        {
+          "outcome": "No frames; forced shutdown",
+          "measured_model_load_seconds": null
+        },
+        {
+          "outcome": "No frames; playback budget exhausted before loop; forced shutdown",
+          "measured_model_load_seconds": 89.095
+        }
+      ],
+      "limits": [
+        "Original startup slowdown cause unconfirmed.",
+        "This is framing and cleanup evidence, not a performance or detector-accuracy pass.",
+        "Stylized proportions and partial-body visibility can differ from the procedural built-in."
+      ],
+      "private_source_paths_or_hashes_recorded": false,
+      "raw_frames_saved": false,
+      "landmarks_saved": false,
+      "live_camera_opened": false,
+      "sensing_accuracy_improvement_claimed": false
+    },
+    "collapsible_sections": {
+      "recorded_at": "2026-10-13T00:44:41.740351+05:30",
+      "scope": "Control-panel folding only; no tracking, renderer or source configuration changes.",
+      "sections": 7,
+      "default_expanded": [
+        "01 / INPUT"
+      ],
+      "focused_tests": {
+        "tests": 39,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "unit_test_modules": [
+        "tests.test_collapsible_sections",
+        "tests.test_models_cli_runtime",
+        "tests.test_video_test_controls"
+      ],
+      "native_studio_checks": [
+        "native-window-render",
+        "demo-labelled-no-camera",
+        "cropped-body-status",
+        "presentation-controls",
+        "reference-avatar-defaults-and-optional-diagnostics",
+        "perspective-room-toggle",
+        "clean-output-window",
+        "invalid-source-no-camera",
+        "disconnect",
+        "restart-demo",
+        "actual-model-synthetic-replay-and-eof-controls",
+        "recorded-video-picker-and-labelled-test-view",
+        "replay-last-video-with-new-worker",
+        "all-seven-sections-collapse-independently",
+        "bulk-collapse-and-minimum-window-scroll-bounds",
+        "section-keyboard-and-focus-behavior",
+        "collapsed-controls-preserve-values-and-active-replay",
+        "folding-debug-controls-keeps-open-windows",
+        "close"
+      ],
+      "native_model_checks": [
+        "asynchronous-import",
+        "rig-report",
+        "clip-preview",
+        "live-return",
+        "recalibration",
+        "rejected-import-retains-model",
+        "clean-output",
+        "built-in-return",
+        "close-during-import"
+      ],
+      "measured_panel_heights_px": {
+        "initial": 780,
+        "all_expanded": 2088,
+        "all_collapsed": 273
+      },
+      "minimum_window_tested": [
+        1020,
+        720
+      ],
+      "preserves_control_values_and_widget_identity": true,
+      "preserves_active_replay_and_debug_windows": true,
+      "native_screenshots_captured": true,
+      "real_camera_opened": false,
+      "private_recording_opened": false,
+      "source_paths_or_credentials_recorded": false,
+      "previous_receipt": "before-collapsible-ui-validation.json"
+    },
+    "replay_timeline": {
+      "recorded_on": "2026-10-13",
+      "scope": "Recorded-input transport and Studio-only timeline; not tracking-accuracy or performance qualification.",
+      "full_regression_suite": {
+        "tests": 288,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "receipt": ".local\\unit-results.xml"
+      },
+      "ruff_check_and_format_passed": true,
+      "native_check_groups": {
+        "generated_timeline": 7,
+        "supplied_timeline_including_generated_cases": 8,
+        "general_studio": 19,
+        "imported_model": 9,
+        "motion_controls": 10,
+        "private_debug": 9
+      },
+      "native_reports": [
+        ".local\\replay-timeline\\native\\timeline-report.json",
+        ".local\\replay-timeline\\supplied\\timeline-report.json",
+        ".local\\ui-check\\studio-report.json",
+        ".local\\blender-ui\\model-studio-report.json",
+        ".local\\motion-upgrade\\motion-studio.json",
+        ".local\\debug-views\\debug-ui-report.json"
+      ],
+      "supplied_recording": {
+        "duration_seconds": 73.44071111111111,
+        "inferred_frames": 41,
+        "seek_positions": [
+          {
+            "requested_seconds": 18.0,
+            "observed_seconds": 17.986158764649666
+          },
+          {
+            "requested_seconds": 30.0,
+            "observed_seconds": 29.988013319249536
+          },
+          {
+            "requested_seconds": 18.0,
+            "observed_seconds": 17.986158764649666
+          }
+        ],
+        "same_worker_during_seeks": true,
+        "imported_model_exercised": true,
+        "input_preview_remained_disabled": true,
+        "worker_exit_code": 0,
+        "forced_shutdown": false
+      },
+      "transport_checks": [
+        "indexed-generated-frames-confirm-real-decoder-position",
+        "mouse-release-coalesces-scrubbing",
+        "keyboard-second-start-end-seeks",
+        "pause-retains-original-observation-timestamps",
+        "paused-seek-infers-one-selected-frame",
+        "active-seek-retains-worker-but-resets-native-tracker",
+        "seek-generations-reject-old-inflight-results",
+        "watchdog-remains-active-during-paused-seek",
+        "eof-releases-worker-and-seek-restarts-same-source",
+        "completed-face-calibration-survives-with-temporal-reset",
+        "raw-preview-expires-and-live-staleness-is-unchanged",
+        "clean-output-pixels-exclude-timeline-widgets",
+        "disconnect-and-demo-hide-timeline",
+        "native-sdk-not-imported-by-studio"
+      ],
+      "minimum_window_tested": [
+        1020,
+        720
+      ],
+      "native_screenshots_captured_and_inspected": true,
+      "handbook": {
+        "pages": 82,
+        "resolved_source_citations": 177,
+        "pdf_sha256": "31908a78c01fd4709ed1451ec60fed129e3fdb76cf5a0dbd7c98e68dc452d345",
+        "blank_pages": [],
+        "text_outside_bounds": []
+      },
+      "prior_probe_failures": [
+        "The first timeline probe did not acknowledge Pause; the harness now waits for an enabled control as well as runtime readiness.",
+        "UI-coupled authored input missed the calibration sample minimum and expired a reopened raw preview. Independent bounded input producers now mirror the application's separate input execution; no freshness or sample thresholds were relaxed."
+      ],
+      "timing_limit": "Position and seeking use frame index and reported FPS, not exact variable-frame-rate presentation timestamps.",
+      "source_files_unchanged": true,
+      "owner_camera_opened": false,
+      "personal_raw_media_or_landmark_exports": false,
+      "source_paths_or_credentials_recorded": false,
+      "ground_truth_accuracy_improvement_demonstrated": false,
+      "performance_qualified": false,
+      "user_visual_approval_obtained": false,
+      "previous_receipt": "before-replay-timeline-validation.json"
+    },
+    "motion_ui": {
+      "passed": true,
+      "evidence_class": "native controls driven by authored observations; no camera",
+      "window_size": [
+        1020,
+        720
+      ],
+      "checks": [
+        "demo-calibration-rejected",
+        "world-image-and-legacy-controls",
+        "opt-in-rest-distinct-from-measured-partial-status",
+        "stale-clears-history",
+        "neutral-and-range-controls",
+        "raw-expression-unchanged",
+        "calibration-clear",
+        "clean-output-and-debug-coexist",
+        "no-owner-side-native-sdk-import",
+        "close"
+      ],
+      "callback_errors": [],
+      "owner_camera_opened": false,
+      "personal_calibration_saved": false
+    },
+    "studio_responsiveness": {
+      "recorded_on": "2026-10-13",
+      "scope": "Native Studio responsiveness with a selected recording, imported GLB, clean output and two numeric debug windows.",
+      "input_method": "80 background-timestamped synthetic Tk drag positions per phase, dispatched on the actual UI thread; not physical pointer or sensor latency.",
+      "input_delivery_p95_ms": {
+        "before": {
+          "paused": 127.22810000059326,
+          "playing": 131.8491850002829
+        },
+        "completed": {
+          "paused": 18.247534997135514,
+          "playing": 20.741435000672933
+        },
+        "repeat": {
+          "paused": 14.88904500256467,
+          "playing": 18.478954996680837
+        }
+      },
+      "heartbeat_lateness_p95_ms": {
+        "before": {
+          "paused": 137.46442500132616,
+          "playing": 172.07370499982062
+        },
+        "completed": {
+          "paused": 13.583870001093581,
+          "playing": 18.722845001138914
+        },
+        "repeat": {
+          "paused": 8.65218500075571,
+          "playing": 10.881829999379981
+        }
+      },
+      "acceptance_budgets_ms": {
+        "input_p95": 50,
+        "input_max": 150,
+        "heartbeat_p95": 50
+      },
+      "completed_and_repeat_budgets_passed": true,
+      "one_seek_per_drag_in_all_phases": true,
+      "full_regression_suite": {
+        "tests": 312,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "ruff_check_and_format_passed": true,
+      "native_group_counts": {
+        "studio": 19,
+        "model": 9,
+        "motion": 10,
+        "debug": 9,
+        "generated_timeline": 7,
+        "supplied_timeline_including_generated_cases": 8
+      },
+      "pixel_equivalence": {
+        "exact_matches": 8,
+        "cases": [
+          "full",
+          "cropped",
+          "face-unavailable",
+          "stale"
+        ],
+        "views": [
+          "studio",
+          "clean"
+        ],
+        "input_class": "Authored observations and the supplied GLB; no source pixels."
+      },
+      "implementation": [
+        "One bounded graphics owner serializes renderer mutations, avatar drawing and numeric diagnostics.",
+        "Tk installs completed images and services controls independently.",
+        "Seek/source epochs reject late results; displayed-frame expiry remains independent of graphics completion.",
+        "Raw input stays on its separate opt-in path, outside the avatar renderer.",
+        "Numeric dominant-role lookup and read-only per-asset masks replace repeated string membership searches."
+      ],
+      "retained_failed_attempts": [
+        "Cooperative view scheduling alone exceeded the declared latency budget.",
+        "Avatar-only background drawing still exceeded the budget with numeric debug views open.",
+        "A native import helper originally waited for model commit rather than the first rendered frame; it now awaits that specific result.",
+        "One concurrent book/full-suite run exceeded the existing two-second early-stop test budget. The isolated case and serial full suite passed unchanged; production deadlines were not weakened."
+      ],
+      "private_reports": [
+        ".local\\ui-responsiveness\\before\\native-input.json",
+        ".local\\ui-responsiveness\\after\\native-input.json",
+        ".local\\ui-responsiveness\\worker\\native-input.json",
+        ".local\\ui-responsiveness\\final\\native-input.json",
+        ".local\\ui-responsiveness\\repeat\\native-input.json",
+        ".local\\ui-responsiveness\\replay\\timeline-report.json",
+        ".local\\ui-responsiveness\\parallel-book-test-failure.xml"
+      ],
+      "source_recording_model_profile_unchanged": true,
+      "real_camera_opened": false,
+      "source_paths_or_credentials_recorded": false,
+      "personal_raw_media_or_landmark_exports": false,
+      "physical_input_latency_measured": false,
+      "tracking_accuracy_improvement_demonstrated": false,
+      "universal_frame_rate_or_smoothness_guaranteed": false,
+      "handbook_pages": 82,
+      "handbook_source_citations": 179,
+      "previous_receipt": "before-ui-responsiveness-validation.json"
+    }
+  },
+  "carried_forward_receipts": [
+    "actual_inference",
+    "stream",
+    "reference_avatar",
+    "perspective_room",
+    "blender_runtime",
+    "blender_stream",
+    "blender_exports",
+    "detected_debug_points",
+    "auth_defaults_ui",
+    "motion_upgrade",
+    "recorded_video_view",
+    "imported_scale",
+    "collapsible_sections",
+    "replay_timeline"
+  ],
+  "boundaries": {
+    "owner_camera_tested": false,
+    "real_motion_recording_tested": true,
+    "ground_truth_accuracy_improvement_demonstrated": false,
+    "user_visual_approval_obtained": false,
+    "physical_camera_to_display_latency_measured": false,
+    "final_reference_art_rig_built": false,
+    "technical_blender_conformance_rigs_built": true,
+    "raw_camera_media_committed": false
+  }
+}

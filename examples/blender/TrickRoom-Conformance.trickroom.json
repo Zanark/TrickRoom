@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "bones": {
+    "hips": "Hips",
+    "spine": "Spine",
+    "chest": "Chest",
+    "neck": "Neck",
+    "head": "Head",
+    "upper_arm_left": "UpperArm.L",
+    "lower_arm_left": "LowerArm.L",
+    "hand_left": "Hand.L",
+    "upper_arm_right": "UpperArm.R",
+    "lower_arm_right": "LowerArm.R",
+    "hand_right": "Hand.R",
+    "upper_leg_left": "UpperLeg.L",
+    "lower_leg_left": "LowerLeg.L",
+    "foot_left": "Foot.L",
+    "upper_leg_right": "UpperLeg.R",
+    "lower_leg_right": "LowerLeg.R",
+    "foot_right": "Foot.R",
+    "shoulder_left": "Shoulder.L",
+    "shoulder_right": "Shoulder.R",
+    "toes_left": "Toes.L",
+    "toes_right": "Toes.R",
+    "eye_left": "Eye.L",
+    "eye_right": "Eye.R"
+  },
+  "shapes": {
+    "blink_left": "TR_Blink_L",
+    "blink_right": "TR_Blink_R",
+    "jaw_open": "TR_Jaw_Open",
+    "smile": "TR_Smile",
+    "brow_up_left": "TR_Brow_Up_L",
+    "brow_up_right": "TR_Brow_Up_R",
+    "brow_down_left": "TR_Brow_Down_L",
+    "brow_down_right": "TR_Brow_Down_R",
+    "look_left": "TR_Look_Left",
+    "look_right": "TR_Look_Right",
+    "look_up": "TR_Look_Up",
+    "look_down": "TR_Look_Down"
+  },
+  "gaze_mode": "morph"
+}

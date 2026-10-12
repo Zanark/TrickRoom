@@ -1,0 +1,27 @@
+# Engineering documentation and process journal
+
+Status: DONE
+Milestone: M1
+Dependencies: 01_FOUNDATION.todo
+
+## Purpose
+Keep the prototype understandable and resumable, with honest evidence and a durable task catalogue.
+
+## Tasks
+- [x] Quick start, camera guide, architecture, algorithms, limitations and validation.
+- [x] Numbered TODOs with dependencies/evidence and chronological development journal.
+- [x] Future Blender/rig roadmap without premature implementation.
+- [x] Maintain context and mesh at milestones.
+
+## Acceptance criteria
+- [x] Documentation matches the delivered prototype and distinguishes open live qualification.
+
+## Completion evidence
+- Numbered catalogue and root journal established.
+- Fifteen Markdown documents, ten numbered workstreams and23 local links checked.
+- Original synthetic visuals, source map and aggregate evidence accompany the guides.
+- Context Mesh resolves the new TrickRoom base; sibling stores remain unchanged.
+
+## Completion log
+- 2026-10-11 21:29 +05:30 - DONE for M1 documentation; ongoing maintenance remains a convention.
+- 2026-10-11 20:33 +05:30 - Started alongside implementation.

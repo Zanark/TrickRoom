@@ -1,0 +1,7 @@
+{
+  "name": "trickroom-authoring-handbook",
+  "private": true,
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.12.0"
+  }
+}

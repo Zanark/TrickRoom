@@ -1,0 +1,26 @@
+# Camera input
+
+Status: DONE
+Milestone: M1
+Dependencies: 01_FOUNDATION.todo
+
+## Purpose
+Support the same IP Webcam MJPEG input method without carrying over an address or credentials.
+
+## Tasks
+- [x] HTTP/HTTPS MJPEG, explicit local device and local replay sources.
+- [x] Latest-frame slot, bounded network reads, reconnects, rotation and clean shutdown.
+- [x] Ephemeral authentication, safe errors and no raw-media persistence.
+
+## Acceptance criteria
+- [x] Test capture timing, failures, JPEG bounds, source validation and credential-safe errors.
+
+## Completion evidence
+- tests\test_camera.py covers real loopback/auth, transient503 reconnect, replay pacing/EOF,
+  parsing/rotation, bounded buffers, redacted errors and old-frame invalidation.
+- Actual loopback:112 decoded frames,111 inferred frames, both body/face detected111 times;
+  clean shutdown. Actual phone/physical-device qualification remains workstream07.
+
+## Completion log
+- 2026-10-11 21:29 +05:30 - DONE; evidence scoped to code/loopback/replay, not owner camera.
+- 2026-10-11 20:33 +05:30 - Planned.

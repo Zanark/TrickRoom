@@ -1,0 +1,32 @@
+# Blender model import and animation runtime
+
+Status: DONE
+Milestone: M2 interoperability
+Dependencies: 03_BODY_FACE_TRACKING.todo, 11_REFERENCE_AVATAR.todo, 12_PERSPECTIVE_LAB.todo
+
+## Purpose
+Prepare TrickRoom to import prepared Blender-exported characters and drive their skinning,
+facial morphs, bone motion, materials and supported animation clips.
+
+## Tasks
+- [x] Define versioned GLB/humanoid/profile contract and verify upstream export/skinning specs.
+- [x] Implement bounded import, diagnostics, node/skin/morph/material/texture/clip support.
+- [x] Implement hierarchy-preserving retargeting, visibility, calibration and pose/clip previews.
+- [x] Integrate transactional model selection and rendering in UI/CLI without removing built-in avatar.
+- [x] Prove behavior and rejection paths with tests and actual exported content.
+
+## Acceptance criteria
+- [x] Actual Blender export animates correctly in TrickRoom, including expressions and textures.
+- [x] Unsupported features and malformed imports fail explicitly; no raw camera output.
+- [x] Existing camera, avatar, room and lifecycle behavior is preserved.
+
+## Completion evidence
+-148tests/no skips; original12native groups plus9model UI groups; actual Blender numerical,
+  eye-bone/morph/texture/clip, standalone CLI and imported-model stream checks passed.
+- API contract and limits are in docs\12-blender-models.md and the82page handbook.
+- One clean-output redraw starvation was diagnosed and corrected with a minimum Tk yield;
+  the bounded native model check then completed. No owner-camera or universal Blender claim.
+
+## Completion log
+- 2026-10-12 - DONE locally; final reference-art rig remains separate workstream09.
+- 2026-10-11 23:49 +05:30 - Started following explicit end-to-end Blender support request.

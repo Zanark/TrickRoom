@@ -1,0 +1,55 @@
+{
+  "kind": "synthetic perspective-room gallery; no camera or physical floor calibration",
+  "projection": {
+    "width": 960,
+    "height": 720,
+    "top": 0,
+    "bottom": 720,
+    "focal": 864.0,
+    "center": [
+      479.5,
+      309.6
+    ],
+    "half_width": 3.0,
+    "ceiling": 3.6,
+    "eye_height": 1.65,
+    "near": 0.6,
+    "back": 8.4,
+    "tile": 0.6
+  },
+  "surface_count": 5,
+  "theme": "dark-green-wireframe",
+  "calibration_crosses": false,
+  "shared_vanishing_point": [
+    479.5,
+    309.6
+  ],
+  "reference_images": [
+    {
+      "file": "copilot-image-f214d3.png",
+      "sha256": "654a45bf28717481b0271fe8c3b25e1d76c1b51cbdd4ac12fc9bdd5c7f90ac57"
+    },
+    {
+      "file": "copilot-image-4f6137.png",
+      "sha256": "650a061152786a5838e5cefa6ccf4584c3dfa15ce9f57ca5c9a09ff44f86fb36"
+    },
+    {
+      "file": "copilot-image-034535.png",
+      "sha256": "203349f64668558009b631545c8286764956db532c1c9320b38fbaedd0cfb734"
+    }
+  ],
+  "warm_full_renderer_median_ms": 10.11,
+  "warm_full_renderer_p95_ms": 10.95,
+  "physical_contact_or_collision": false,
+  "owner_visual_approval": false,
+  "files": {
+    "lab-character.png": "85c000c2fd47e8158ed5b9d161161c2a036a095a1d34a24593311300f0516f55",
+    "lab-clean.png": "9702d2ac1ab27e4b0795cf225e1eed0060c8a2e315d9c463cd1363198b2c71b8",
+    "lab-cropped.png": "72f3b4d103ad41715d4c73476d94b619c39dcd6b27747dcd7f7ce9406fabb138",
+    "lab-empty.png": "7664a2264a53c3bdd1069d636b13e34f54690596d797d7553e3cc3b7f6b69ac3",
+    "lab-portrait.png": "49a3bb2318275a49f68565a826f4acd87531e07999c1c688026f3724282c9a28",
+    "lab-stale.png": "ca6609cef0f08b4bd86125e8989dabc07d087ef1243a6eb962bca8b67b79530e",
+    "lab-wide.png": "0c3d270ce43d7a0df91d81239cbe1226f4ea9befb61178bfeac112279b6ae186",
+    "room-off.png": "487c561f6344eb1b6db28eceaf89be50fc06502ace3a63f3b6839455921cfb5c"
+  }
+}

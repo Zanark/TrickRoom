@@ -1,0 +1,40 @@
+# VSeeFace tracking and rigging research
+
+Status: DONE
+Milestone: Evidence-based motion-system research, not implementation
+Dependencies: None
+
+## Purpose
+Understand VSeeFace's tracking/rigging stack and identify concrete improvements for the
+existing Python/GLB tool without pivoting technologies or claiming perfect tracking.
+
+## Tasks
+- [x] Read official site/manual, relevant release history and English interface strings.
+- [x] Trace public OpenSeeFace capture, face inference, normalization, UDP and expression paths.
+- [x] Trace IK targets, interpolation, hand-loss blending, facial composition and process lifetime.
+- [x] Review SDK rig/animation configuration, VMC transport, spring bones and source-license limits.
+- [x] Compare actual TrickRoom tracking, procedural avatar, GLB retargeting and rendering code.
+- [x] Deliver source-linked findings and prioritized, explicitly unimplemented experiments.
+
+## Acceptance criteria
+- [x] Separate native face tracking, Leap hands, external full-body sources and inferred IK motion.
+- [x] Distinguish inspected public code from closed application internals and author performance claims.
+- [x] Preserve Python, current camera setup and GLB contract; no automatic code or dependency changes.
+- [x] Ground recommendations in local code and retain detector-versus-presentation truthfulness.
+
+## Completion evidence
+- Research: docs\14-vseeface-research.md, including two diagrams and pinned source references.
+- OpenSeeFace revision:50c09741897010faad721a218b2bbe14ecad6251.
+- SDK revision:463333ef9f1c2eb303e402353d6fadc14262cc4f.
+- Release notes clarify that full52-control facial fidelity is not the same as basic
+  iFacialMocap compatibility; later releases accept subsets/translate shapes.
+- Key local finding: world_joints are captured but current GLB aiming uses normalized
+  image-space landmarks. Imported rigs already preserve authored bone lengths.
+- Priorities: native-worker isolation; evaluated world-space rig targets; timestamped pose
+  interpolation and explicit loss states; facial calibration; bounded IK; optional backend/VMC work.
+- No new tracking benchmark, private-video processing, VSeeFace execution, source upload,
+  camera connection, model conversion, package install or application change was performed.
+- Recommendations remain proposals. Their effectiveness requires separately authorized tests.
+
+## Completion log
+- 2026-10-12 - Research complete and source-grounded comparison delivered locally.

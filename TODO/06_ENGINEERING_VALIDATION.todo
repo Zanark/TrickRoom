@@ -1,0 +1,29 @@
+# Engineering validation
+
+Status: DONE
+Milestone: M1
+Dependencies: 02_CAMERA_INPUT.todo, 03_BODY_FACE_TRACKING.todo, 04_SYNTHETIC_STAGE.todo, 05_STUDIO_AND_LAUNCH.todo
+
+## Purpose
+Prove the implementation paths without conflating synthetic/public-fixture evidence with live use.
+
+## Tasks
+- [x] Unit and integration checks, lint, build/install and missing-input failure paths.
+- [x] Actual model inference on provenance-recorded public fixtures.
+- [x] Synthetic full-body/expression/crop/loss gallery and native UI inspection.
+- [x] Bounded runtime timing and shutdown evidence; documentation links/TODO consistency.
+
+## Acceptance criteria
+- [x] Record exact commands/results, artifacts, environment and remaining evidence limits.
+
+## Completion evidence
+- 70 pytest cases passed, no skips; Ruff check/format and pip check passed.
+- Five actual-model fixture cases plus same-session translation/loss/reacquisition passed.
+- Native UI ten groups; loopback112/111 input/inferred,111 body+face, no skipped frames,
+  27.34ms mean inference,45.62ms mean postdecode observation age; shutdown complete.
+- Source-tree hashes and aggregate receipts: docs\evidence\prototype-validation.json.
+- Not owner-camera validation, actual human-motion capture, or end-to-end physical latency.
+
+## Completion log
+- 2026-10-11 21:29 +05:30 - DONE; failed attempts and corrections retained in JOURNAL.md.
+- 2026-10-11 20:33 +05:30 - Planned.

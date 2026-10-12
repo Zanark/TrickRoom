@@ -1,0 +1,45 @@
+# Preserve limb bend-plane orientation and body-relative twist
+
+Status: DONE
+Milestone: Correct imported-avatar hip collapse in default constrained live mode
+Dependencies: 13_BLENDER_MODEL_RUNTIME.todo, 20_CORE_MOTION_UPGRADE.todo
+
+## Purpose
+Repair the runtime limb-frame mismatch behind the reported hourglass hip and broken rear turns.
+Do not compensate by widening geometry, changing GLB weights or bypassing missing-data visibility.
+
+## Tasks
+- [x] Reproduce with the reported current GLB and actual enhanced/world/constrained options.
+- [x] Confirm a 180-degree thigh-frame error on observations made from the asset's own rest joints.
+- [x] Align reference and solved cross-product conventions.
+- [x] Preserve ancestor-relative rotation for unconstrained limb/hand/foot aiming.
+- [x] Transport near-straight bend-plane history in the body frame.
+- [x] Add failing-before rest, full-turn, leaning and temporal regression tests.
+- [x] Run focused tests, the full current suite and targeted Ruff checks.
+- [x] Complete same-detection recording comparison and native Studio checks.
+- [x] Record source hashes, aggregate evidence and application-restart guidance.
+
+## Acceptance criteria
+- [x] Bent and straight fixture rigs recover their authored frames in neutral pose.
+- [x] Rigid body turns/leans preserve bone lengths and do not cancel pelvis/thigh skin matrices.
+- [x] Turning while nearly straight does not leave the remembered bend plane camera-fixed.
+- [x] Existing loss, interpolation, face controls and import behavior remain covered.
+- [x] The same provided GLB is checked in the native application with no model replacement.
+
+## Completion evidence
+- tests\test_rig_twist.py; focused tests include tests\test_rig_motion.py.
+- Private diagnostic work in the Blender3DModels production workspace; no user media or
+  landmark arrays are copied into this repository's tracked evidence.
+- docs\evidence\limb-frame-twist-validation.json records 338 tests/no skips, 24 synthetic
+  constrained/unconstrained turn/lean cases, all2209recorded frames and the fresh native run.
+- Near-collapsing hip blend matrices appeared in1422of2047rendered baseline frames, versus
+  zero after the fix using identical detections/model bytes. This is not sensing-accuracy evidence.
+- Native front/quarter/rear/lean and clean output preserve authored limb frames; bind, all
+  three exported diagnostic clips and live return pass. The owned window/worker close cleanly.
+
+## Completion log
+- 2026-10-13 - The model-workspace session isolated a runtime defect. Earlier unconstrained
+  render tests did not exercise Studio's default constrained mode; Renderer.render applies
+  its own motion_options to the imported instance.
+- 2026-10-13 - Completed runtime repair and recorded/native regressions. No GLB or working
+  model changed. Restart an older application; reloading its GLB alone does not reload Python.

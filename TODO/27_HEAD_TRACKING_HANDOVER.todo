@@ -1,0 +1,42 @@
+# Drop obsolete face rotation when the head becomes pose-derived
+
+Status: DONE
+Milestone: Correct rear-facing body with a camera-facing head after face loss
+Dependencies: 20_CORE_MOTION_UPGRADE.todo, 26_LIMB_FRAME_TWIST.todo
+
+## Purpose
+Use the current pose-derived head when facial tracking is unavailable, without
+locking valid independent head turns to the torso.
+
+## Tasks
+- [x] Reproduce the exact reported35second frame with continuous tracking/history.
+- [x] Distinguish a source detection from a delayed presentation state.
+- [x] Add failing-before face-loss, one-frame reacquisition and independent-turn tests.
+- [x] Remove obsolete face-specific head/eye local rotation from face-loss interpolation.
+- [x] Complete identical-detection recorded-input and native Studio comparison.
+- [x] Publish exact evidence and restart guidance; preserve character source and GLBs.
+
+## Acceptance criteria
+- [x] With eligible pose head anchors and no face, current local head offsets follow
+  the interpolated neck/body rather than a previous face orientation.
+- [x] Valid head turns remain independent of shoulders.
+- [x] Missing head landmarks do not become tracked or visible merely because of this fix.
+- [x] The reported recording frame shows the expected pose-derived head direction.
+
+## Evidence
+- tests\test_head_tracking_handover.py plus existing rig motion/twist regressions.
+- Private comparison work in the Blender3DModels production workspace.
+- At34.9706s a brief face estimate reports near-front orientation while the body is rear-facing.
+  At35.0038s the face is already unavailable, but delayed local head rotation still faces front.
+  Isolated-frame evaluation does not reproduce this; continuous history does.
+- docs\evidence\head-handover-validation.json: 374tests/no failures/errors/skips;56focused rig
+  regressions; all2209recording frames compared. In502face-loss frames with head geometry,
+  obsolete face offsets above one degree fall42to0. Non-head joint matrices remain identical.
+- Fresh native rear/front face-loss and independent head-turn cases pass. The first native
+  fixture expected torso-only rotation, omitting authored neck tilt; the corrected expectation
+  uses the same rest-aware pose derivation without weakening the numeric threshold.
+- Model/GLB/video bytes are unchanged. Restart an older running app; no re-export is needed.
+
+## Limits
+This does not certify face detections or resolve all monocular front/back pose ambiguity.
+No physical camera, user running application, GLB, rig weights or model geometry is changed.

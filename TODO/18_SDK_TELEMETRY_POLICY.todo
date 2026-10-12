@@ -1,0 +1,36 @@
+# Native SDK telemetry policy
+
+Status: NOT_STARTED
+Milestone: Explicit local-first network/privacy boundary
+Dependencies: 03_BODY_FACE_TRACKING.todo
+
+## Purpose
+Resolve the prebuilt MediaPipe SDK's usage telemetry without confusing local inference with
+network silence or suppressing warning text as if that disabled uploads.
+
+## Tasks
+- [x] Record native Clearcut upload warnings observed during the first recorded-video test.
+- [x] Verify the upstream maintainer's explanation and absence of an official opt-out.
+- [ ] Obtain direction on the acceptable SDK/network policy before making changes.
+- [ ] Evaluate a source-built no-telemetry SDK or an explicitly authorized scoped network policy.
+- [ ] Verify the chosen approach using synthetic/public inputs, not private user media.
+- [ ] Requalify tracking/rendering and update documentation after any actual dependency change.
+
+## Acceptance criteria
+- [ ] The chosen network behavior is explicit, verified and accurately documented.
+- [ ] No broad machine firewall/proxy changes, log-only suppression or input-data upload.
+
+## Completion evidence
+- Runtime emitted portable_clearcut_uploader.cc failures in normal playback and the
+  exhaustive diagnostic pass. Those messages do not establish what packets were transmitted.
+- Upstream issue: https://github.com/google-ai-edge/mediapipe/issues/6291
+- Maintainer statement:
+  https://github.com/google-ai-edge/mediapipe/issues/6291#issuecomment-4896121772
+- The maintainer states telemetry is intentional, has no official opt-out, and never sends
+  input data. They identify source builds or blocking the host as alternatives.
+- Input exclusion is an upstream assertion, not independently verified packet contents.
+- No SDK, firewall, proxy or application change was made during the first test.
+- The earlier WINHTTP.dll startup failure is not proven to be caused by telemetry.
+
+## Completion log
+- 2026-10-12 - Discovered and documented; remediation awaits direction.

@@ -1,0 +1,25 @@
+# Synthetic body stage
+
+Status: DONE
+Milestone: M1
+Dependencies: 01_FOUNDATION.todo
+
+## Purpose
+Show all available tracking as a coherent body outline with a connected expressive head.
+
+## Tasks
+- [x] Segmentation outline, faceted torso/limbs, skeleton joints and attached low-poly head.
+- [x] Facial features react independently; no copied cardboard design.
+- [x] Correct aspect ratio, presentation-only mirror, stale/partial-body indicators.
+- [x] Render without accepting any camera image as input.
+
+## Acceptance criteria
+- [x] Synthetic image inspection and tests cover full body, cropped legs, loss, face loss and expressions.
+
+## Completion evidence
+- tests\test_render.py; six-state docs\images\tracking-contact-sheet.png; GIF and image hashes.
+- Actual-fixture and native studio synthetic outputs inspected. No final artistic approval claimed.
+
+## Completion log
+- 2026-10-11 21:29 +05:30 - DONE; image-space body/projected3D head, not a finished rig.
+- 2026-10-11 20:33 +05:30 - Planned.

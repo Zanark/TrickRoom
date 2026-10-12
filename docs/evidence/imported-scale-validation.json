@@ -1,0 +1,114 @@
+{
+  "recorded_at": "2026-10-12T23:46:54.657002+05:30",
+  "scope": "Imported-avatar placement scale; camera/tracker and original assets unchanged.",
+  "focused_tests": {
+    "tests": 59,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unit_test_modules": [
+    "tests.test_imported_animation",
+    "tests.test_presentation_scale",
+    "tests.test_render",
+    "tests.test_rig_motion"
+  ],
+  "native_model_checks": [
+    "asynchronous-import",
+    "rig-report",
+    "clip-preview",
+    "live-return",
+    "recalibration",
+    "rejected-import-retains-model",
+    "clean-output",
+    "built-in-return",
+    "close-during-import"
+  ],
+  "native_motion_checks": [
+    "demo-calibration-rejected",
+    "world-image-and-legacy-controls",
+    "opt-in-rest-distinct-from-measured-partial-status",
+    "stale-clears-history",
+    "neutral-and-range-controls",
+    "raw-expression-unchanged",
+    "calibration-clear",
+    "clean-output-and-debug-coexist",
+    "no-owner-side-native-sdk-import",
+    "close"
+  ],
+  "recording_comparison": {
+    "frames_compared": 2209,
+    "baseline_first_scale": {
+      "seconds": 2.1277526080177056,
+      "value": 1.4602350418211845
+    },
+    "full_body_scale_after_over_before": {
+      "median": 0.22582882547987937,
+      "p95": 0.25031222796735975
+    },
+    "full_body_checkpoints": [
+      {
+        "seconds": 14.994,
+        "body_status": "FULL BODY",
+        "before_scale": 1.4602350418211845,
+        "after_scale": 0.28906716369303126,
+        "fresh_start_scale": 0.28558137536201844
+      },
+      {
+        "seconds": 17.986,
+        "body_status": "FULL BODY",
+        "before_scale": 1.4602350418211845,
+        "after_scale": 0.30563431505343286,
+        "fresh_start_scale": 0.3034911512927901
+      },
+      {
+        "seconds": 36.006,
+        "body_status": "FULL BODY",
+        "before_scale": 1.4602350418211845,
+        "after_scale": 0.34085923232930415,
+        "fresh_start_scale": 0.3390264191595568
+      },
+      {
+        "seconds": 54.989,
+        "body_status": "FULL BODY",
+        "before_scale": 1.4602350418211845,
+        "after_scale": 0.34762849413356944,
+        "fresh_start_scale": 0.3351613338572801
+      }
+    ],
+    "max_continuous_vs_fresh_start_relative_error": 0.037197489736683576,
+    "original_files_unchanged": true
+  },
+  "post_restart_runtime": {
+    "elapsed_seconds": 28.067,
+    "rendered_frames": 229,
+    "inferred_frames": 201,
+    "skipped_frames": 508,
+    "mean_inference_ms": 100.73159850745952,
+    "fresh_at_completion": true,
+    "exit_code": 0,
+    "worker_exit_code": 0,
+    "forced": false,
+    "shutdown_complete": true
+  },
+  "earlier_attempts": [
+    {
+      "outcome": "No frames; forced shutdown",
+      "measured_model_load_seconds": null
+    },
+    {
+      "outcome": "No frames; playback budget exhausted before loop; forced shutdown",
+      "measured_model_load_seconds": 89.095
+    }
+  ],
+  "limits": [
+    "Original startup slowdown cause unconfirmed.",
+    "This is framing and cleanup evidence, not a performance or detector-accuracy pass.",
+    "Stylized proportions and partial-body visibility can differ from the procedural built-in."
+  ],
+  "private_source_paths_or_hashes_recorded": false,
+  "raw_frames_saved": false,
+  "landmarks_saved": false,
+  "live_camera_opened": false,
+  "sensing_accuracy_improvement_claimed": false
+}

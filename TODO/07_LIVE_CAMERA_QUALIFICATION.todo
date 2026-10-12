@@ -1,0 +1,56 @@
+# Actual camera qualification
+
+Status: IN_PROGRESS
+Milestone: M1 environment qualification
+Dependencies: 06_ENGINEERING_VALIDATION.todo
+
+## Purpose
+Qualify the owner's actual IP Webcam framing and motion, not an assumed camera configuration.
+
+## Tasks
+- [x] Establish authenticated capture from the explicitly supplied actual feed.
+- [ ] Resolve the native crash in combined headless tracking/render startup.
+- [x] Run the first offline playback and exhaustive-frame test on the supplied recording.
+- [ ] Compare flagged detection gaps against actual recorded gestures/framing before calling them bugs.
+- [ ] Verify rotation, mirror, sustained throughput and reconnect.
+- [ ] Full-body motion and knees/feet cropped in turn.
+- [ ] Blink, both winks, smile, mouth, brow raise and head-turn response at actual distance.
+- [ ] Occlusion, leaving/reentering frame, disconnection and no-camera-pixel output.
+- [ ] Record source-to-display latency with an appropriate external timing method.
+- [ ] Obtain visual/comfort feedback.
+
+## Acceptance criteria
+- [ ] Actual live-camera evidence and feedback; demo/fixture tests cannot satisfy these.
+
+## Completion evidence
+- Initial implementation had no configured camera; the owner supplied one on2026-10-12.
+  Its address and authentication values are intentionally absent from this record.
+- Capture-only check received30frames at1920x1080 with no reconnects and clean shutdown.
+- A12second tracking-only check processed285frames:277had at least four eligible pose points,
+  9had a detected face. This does not prove full-body coverage or expression accuracy.
+- Renderer-only demo passed. Combined headless startup crashed twice in native code; one
+  application fault identified WINHTTP.dll/c0000409, and the diagnostic repeat reported
+  c000070a while rendering/resizing and loading MediaPipe. Root cause is not established.
+- A sequential-startup diagnostic was interrupted at the owner's request; no result is accepted.
+- Only aggregate diagnostics were saved, with no video, camera images, landmarks or source details.
+- Owner subsequently supplied a recording and explicitly authorized a first offline test only.
+- Normal unmodified playback reached EOF:2209decoded/2191inferred/18skipped, exit0 and clean shutdown.
+- Diagnostic every-frame pass processed2209/2209frames and rendered the avatar, black skeleton
+  and black face view for every frame, without exceptions. The source file remained unchanged.
+- Pose-present2137frames(96.74%); full required skeleton881(39.88%); partial1256(56.86%);
+  face1546(69.99%). These measure detector availability, not physical accuracy or approval.
+- Notable face gaps:23.439-25.467s and41.092-43.153s. Partial-body spans include7.613-13.465s
+  and56.951-69.351s. Intentional cropping/occlusion has not been manually separated from failures.
+- No inter-frame joint jump exceeded the diagnostic12%-of-frame-diagonal threshold; this is
+  not proof of jitter-free tracking. Both blink channels, jaw, smile and head angles activated.
+- First-test receipts and synthetic-only contact sheet are private under
+  .local\video-checks\20261012-first. No camera images or landmark arrays were saved.
+- Native startup crashes were not reproduced on this recording, but no fix was made.
+  MediaPipe usage-telemetry warnings were observed; tracked separately in workstream18.
+- First test is complete. Await the owner's next direction before changes or more tests.
+  Live-camera testing remains paused; do not reconnect to the previous endpoint.
+
+## Completion log
+- 2026-10-12 03:44 +05:30 - First recorded-video test complete; no application changes.
+- 2026-10-12 - Live capture/tracking smoke checks attempted; paused for a future supplied recording.
+- 2026-10-11 20:33 +05:30 - Blocked on actual configured feed/framing; code work can proceed.

@@ -1,0 +1,49 @@
+# Core motion and reliability upgrade
+
+Status: DONE
+Milestone: VSeeFace-informed Python/GLB implementation
+Dependencies: 13_BLENDER_MODEL_RUNTIME.todo, 19_VSEEFACE_RESEARCH.todo
+
+## Purpose
+Implement the first integrated motion-system upgrade while preserving truthful diagnostics,
+synthetic output, the reference art, the GLB contract and the existing live-camera pause.
+
+## Tasks
+- [x] Preserve the previous verified source/receipt in a private archive.
+- [x] Implement owned spawned inference, bounded request/response IPC and Windows job cleanup.
+- [x] Add separately filtered world coordinates with image-based visibility gating.
+- [x] Add rest-aware two-bone posing and bounded bend-plane handling.
+- [x] Add display-clock rig interpolation and explicit opt-in held/returning/rest states.
+- [x] Add session-only neutral/range facial calibration and per-channel response controls.
+- [x] Finish UI/CLI integration and isolated debug-topology handling.
+- [x] Exercise native controls, failure/cleanup behavior and the supplied recording.
+- [x] Update documentation, handbook, visual evidence and current-base context.
+
+## Acceptance criteria
+- [x] Native tracker failures do not kill the studio; owned processes and raw previews clean up.
+- [x] Rig lengths remain fixed; world coordinates are not constrained by image-coordinate bounds.
+- [x] Measured diagnostics are unchanged by interpolation or inferred/rest presentation.
+- [x] Whole-source staleness and total detection loss remain fail-closed.
+- [x] Short blinks and independent winks survive; calibration is explicit and never written to disk.
+- [x] Legacy comparison mode remains available; no claim of perfect tracking or a repaired native DLL.
+
+## Completion evidence
+- Full regression:199tests/no skips; existing12studio/9model/9debug groups plus10new motion groups.
+- Final integrated recording:2209decoded/1851inferred/358skipped, EOF/exit0 and unforced child cleanup.
+- Every-frame comparison:2209/2209, unchanged detection counts, authored-length error below2e-8,
+  and2047intervals with actual intermediate rig poses. No detector-accuracy improvement claim.
+- Recorded render mean/p95:legacy12.16/16.16ms, enhanced16.13/21.56ms; not camera latency.
+- Initial close-up scale and T-pose rest remain documented visual limits requiring proper calibration/art.
+- Guide:docs\15-core-motion-upgrade.md; handbook refreshed to82pages/175source citations,
+  with35chapters and no blank/out-of-bounds-text pages. Both implementation diagrams rendered.
+- Current implementation receipt:docs\evidence\motion-upgrade-validation.json plus aggregate
+  prototype-validation.json. Older measurements are explicitly labelled carried-forward.
+- Before snapshot:.local\motion-upgrade\before-source.zip, containing66 verified source/tool files
+  and the previous aggregate receipt; no input video, raw media or credentials.
+- Optional OpenSeeFace backend, VMC and secondary simulation remain later integration work,
+  not claims about this initial core upgrade. No final reference-art Blender model is being authored.
+
+## Completion log
+- 2026-10-12 15:11 +05:30 - First core upgrade completed locally; optional integrations remain later.
+- 2026-10-12 14:06 +05:30 - Owner authorized implementation.
+- 2026-10-12 14:28 +05:30 - Core modules implemented; integration and validation in progress.

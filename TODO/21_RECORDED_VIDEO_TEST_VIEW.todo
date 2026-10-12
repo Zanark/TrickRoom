@@ -1,0 +1,41 @@
+# Recorded-video test view
+
+Status: DONE
+Milestone: Explicit recording-driven synthetic test controls
+Dependencies: 05_STUDIO_AND_LAUNCH.todo, 20_CORE_MOTION_UPGRADE.todo
+
+## Purpose
+Let the supplied recording drive the synthetic test view through an obvious studio action,
+without confusing recorded input with scripted demo motion or reopening a live camera.
+
+## Tasks
+- [x] Add Test from video and Replay last video controls using existing file playback.
+- [x] Keep the selected file only in session memory; do not hard-code private paths.
+- [x] Preserve the selected avatar; switch imported bind/clip previews to tracking mode.
+- [x] Label the studio, synthetic stage, head detail and clean output as video replay.
+- [x] Keep raw preview opt-in and protect active source/worker shutdown.
+- [x] Exercise the new action with the supplied recording and both avatar paths.
+- [x] Finish focused regressions, documentation, evidence and context handoff.
+
+## Acceptance criteria
+- [x] Recording input produces actual detections; it does not drive the scripted demo.
+- [x] Cancelling selection or choosing a missing/non-file source is safe and explicit.
+- [x] EOF or Disconnect enables replay with a new worker; active sources are not interrupted.
+- [x] Raw camera/video pixels never enter synthetic or clean-output frames.
+- [x] The input file is unchanged; no live camera, raw-frame or landmark export is performed.
+
+## Completion evidence
+- Final focused pass:53tests across video controls, rendering, imported animation and CLI/runtime.
+  This is not a full-suite rerun; the preceding199-case core-motion receipt is archived separately.
+- Fourteen native studio groups cover selection, labelled replay, EOF and replay-worker replacement.
+- Supplied recording:478x850,125inferred frames in a bounded native check; both built-in and
+  technical GLB views, clean output and black diagnostics executed, with raw preview off.
+- Source unchanged and worker shutdown complete. This is a UI/source-route check, not another
+  full-motion accuracy qualification or owner visual approval.
+- Private report: .local\video-test-view\selected-recording-report.json.
+- Guides, native previews and handbook source updated. Source-private aggregate receipt:
+  docs\evidence\recorded-video-view-validation.json.
+
+## Completion log
+- 2026-10-12 20:38 +05:30 - Option implemented and verified with the supplied recording.
+- 2026-10-12 20:25 +05:30 - Recorded-source test-view option requested.

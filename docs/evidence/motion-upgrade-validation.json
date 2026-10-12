@@ -1,0 +1,72 @@
+{
+  "recorded_at": "2026-10-12T15:08:06.847007+05:30",
+  "scope": "core process and GLB motion upgrade; same detector, no live camera",
+  "integrated_replay": {
+    "decoded_frames": 2209,
+    "inferred_frames": 1851,
+    "skipped_frames": 358,
+    "mean_inference_ms": 35.9132820637669,
+    "reached_eof": true,
+    "worker_exit_code": 0,
+    "forced_shutdown": false,
+    "shutdown_complete": true
+  },
+  "every_frame_comparison": {
+    "decoded_frames": 2209,
+    "raw_detection_counts": {
+      "NOT FOUND": 72,
+      "face_present": 1546,
+      "PARTIAL BODY": 1256,
+      "FULL BODY": 881
+    },
+    "presentation_bone_state_samples": {
+      "UNAVAILABLE": 1371,
+      "TRACKED": 37034,
+      "HELD": 555,
+      "REACQUIRING": 858,
+      "RETURNING": 658,
+      "REST": 6743
+    },
+    "max_authored_bone_length_error": 1.9669535444855057e-08,
+    "changed_pose_between_detection_frames": 2047,
+    "render_timings": {
+      "legacy": {
+        "mean_ms": 12.160907514492038,
+        "p95_ms": 16.156959999352694
+      },
+      "enhanced": {
+        "mean_ms": 16.1264260749658,
+        "p95_ms": 21.556619994225912
+      }
+    }
+  },
+  "native_motion_controls": {
+    "passed": true,
+    "evidence_class": "native controls driven by authored observations; no camera",
+    "checks": [
+      "demo-calibration-rejected",
+      "world-image-and-legacy-controls",
+      "opt-in-rest-distinct-from-measured-partial-status",
+      "stale-clears-history",
+      "neutral-and-range-controls",
+      "raw-expression-unchanged",
+      "calibration-clear",
+      "clean-output-and-debug-coexist",
+      "no-owner-side-native-sdk-import",
+      "close"
+    ],
+    "callback_errors": [],
+    "owner_camera_opened": false,
+    "personal_calibration_saved": false
+  },
+  "no_raw_or_landmark_exports": true,
+  "personal_calibration_saved": false,
+  "sensing_accuracy_improvement_claimed": false,
+  "remaining_limits": [
+    "Held scale may need explicit reset after initial close-up framing.",
+    "Relaxed loss uses the authored rest pose, which is a T-pose in the technical fixture.",
+    "Inference process containment is not a native DLL root-cause fix.",
+    "SDK usage telemetry is unchanged.",
+    "No final reference-art Blender character or optional OpenSeeFace/VMC/spring integration."
+  ]
+}

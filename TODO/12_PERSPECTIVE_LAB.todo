@@ -1,0 +1,35 @@
+# Perspective calibration room
+
+Status: DONE
+Milestone: M1 visual environment
+Dependencies: 04_SYNTHETIC_STAGE.todo, 11_REFERENCE_AVATAR.todo
+
+## Purpose
+Make the existing reference character feel situated in a test lab with proper room perspective,
+following the two supplied room examples rather than replacing it with the example mannequin.
+
+## Tasks
+- [x] Inspect both supplied room references and retain original hashes/private copies.
+- [x] Implement projected floor, ceiling, side walls and back wall with coherent grid/markers.
+- [x] Add conservative visual shoe shadows; preserve tracking, avatar, crop/loss and mirror behavior.
+- [x] Keep the room toggle and clean-output behavior usable across aspect ratios.
+- [x] Inspect/test projection, shadows, actual runtime, docs and evidence.
+
+## Acceptance criteria
+- [x] Visible room enclosure and shared perspective vanishing point, not a flat grid.
+- [x] Existing character/motion/expressions and synthetic-only boundary remain intact.
+- [x] No collision, real-room calibration, missing-foot reconstruction or interaction claims.
+
+## Completion evidence
+- References inspected2026-10-11; source hashes and behavior are documented in docs\11-perspective-lab.md.
+- Prior avatar-only validation retained in docs\evidence\reference-avatar-validation.json.
+- 107 tests/no skips; twelve native UI groups; five actual-model fixtures and translation/loss/
+  reacquisition passed. Final loopback117received/116inferred,116body+face,30.17msmean inference,
+  15.46msmean renderer,55.82/87.22msmean/p95postdecodeage; all helpers shut down.
+- Eight room views inspected under docs\images\room. Warm median/p95 full render11.03/12.25ms.
+- Source/visual hashes and aggregate receipt: docs\evidence\prototype-validation.json.
+- Actual phone setup, physical floor contact/latency and owner visual approval remain unverified.
+
+## Completion log
+- 2026-10-11 23:33 +05:30 - DONE locally; static visual lab, not future interaction/physics.
+- 2026-10-11 23:13 +05:30 - Started; interactive objects remain separate workstream10.

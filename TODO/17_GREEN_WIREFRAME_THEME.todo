@@ -1,0 +1,35 @@
+# Dark green wireframe room theme
+
+Status: DONE
+Milestone: Room presentation
+Dependencies: 12_PERSPECTIVE_LAB.todo
+
+## Purpose
+Apply the supplied near-black/green grid theme without changing the character, room projection
+or camera/debug/privacy behavior.
+
+## Tasks
+- [x] Inspect the supplied image and preserve its source hash.
+- [x] Replace slate panels and pale lines with dark green surfaces and vivid thin green lines.
+- [x] Remove cross markers to match the cleaner wireframe reference.
+- [x] Inspect output, run palette/perspective regressions and update affected docs/visuals/context.
+
+## Acceptance criteria
+- [x] New visual theme follows the requested direction; existing geometry/controls remain intact.
+- [x] No character replacement, camera access or new physical-room claim.
+
+## Completion evidence
+- Source image SHA256:654a45bf28717481b0271fe8c3b25e1d76c1b51cbdd4ac12fc9bdd5c7f90ac57.
+- Reference preserved privately in .local\references\room\green-wireframe-theme.png.
+- 169 tests/no skips; twelve native studio groups and nine imported-model groups passed.
+- Landscape, portrait, empty, clean output and both native avatar paths inspected.
+- Room/main previews, GIF and verified native screenshots refreshed; handbook remains82pages.
+- Warm full-render median/p95:10.11/10.95ms, not physical camera-to-display latency.
+- UI evidence now captures the application HWND rather than a desktop rectangle; an initial
+  unrelated lock-screen capture was discarded. Eight regression cases cover the capture guard.
+- Camera capture, tracking, avatar geometry, room projection and decorative shadows unchanged.
+- Source/evidence: docs\evidence\prototype-validation.json and docs\images\room\room-manifest.json.
+
+## Completion log
+- 2026-10-12 03:02 +05:30 - Theme and affected evidence/documentation completed locally.
+- 2026-10-12 02:41 +05:30 - Theme update started.

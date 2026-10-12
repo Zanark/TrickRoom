@@ -1,0 +1,67 @@
+{
+  "recorded_at": "2026-10-13T00:44:41.740351+05:30",
+  "scope": "Control-panel folding only; no tracking, renderer or source configuration changes.",
+  "sections": 7,
+  "default_expanded": [
+    "01 / INPUT"
+  ],
+  "focused_tests": {
+    "tests": 39,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unit_test_modules": [
+    "tests.test_collapsible_sections",
+    "tests.test_models_cli_runtime",
+    "tests.test_video_test_controls"
+  ],
+  "native_studio_checks": [
+    "native-window-render",
+    "demo-labelled-no-camera",
+    "cropped-body-status",
+    "presentation-controls",
+    "reference-avatar-defaults-and-optional-diagnostics",
+    "perspective-room-toggle",
+    "clean-output-window",
+    "invalid-source-no-camera",
+    "disconnect",
+    "restart-demo",
+    "actual-model-synthetic-replay-and-eof-controls",
+    "recorded-video-picker-and-labelled-test-view",
+    "replay-last-video-with-new-worker",
+    "all-seven-sections-collapse-independently",
+    "bulk-collapse-and-minimum-window-scroll-bounds",
+    "section-keyboard-and-focus-behavior",
+    "collapsed-controls-preserve-values-and-active-replay",
+    "folding-debug-controls-keeps-open-windows",
+    "close"
+  ],
+  "native_model_checks": [
+    "asynchronous-import",
+    "rig-report",
+    "clip-preview",
+    "live-return",
+    "recalibration",
+    "rejected-import-retains-model",
+    "clean-output",
+    "built-in-return",
+    "close-during-import"
+  ],
+  "measured_panel_heights_px": {
+    "initial": 780,
+    "all_expanded": 2088,
+    "all_collapsed": 273
+  },
+  "minimum_window_tested": [
+    1020,
+    720
+  ],
+  "preserves_control_values_and_widget_identity": true,
+  "preserves_active_replay_and_debug_windows": true,
+  "native_screenshots_captured": true,
+  "real_camera_opened": false,
+  "private_recording_opened": false,
+  "source_paths_or_credentials_recorded": false,
+  "previous_receipt": "before-collapsible-ui-validation.json"
+}

@@ -1,0 +1,70 @@
+{
+  "recorded_on": "2026-10-13",
+  "scope": "Native Studio responsiveness with a selected recording, imported GLB, clean output and two numeric debug windows.",
+  "input_method": "80 background-timestamped synthetic Tk drag positions per phase, dispatched on the actual UI thread; not physical pointer or sensor latency.",
+  "input_delivery_p95_ms": {
+    "before": {"paused": 127.22810000059326, "playing": 131.8491850002829},
+    "completed": {"paused": 18.247534997135514, "playing": 20.741435000672933},
+    "repeat": {"paused": 14.88904500256467, "playing": 18.478954996680837}
+  },
+  "heartbeat_lateness_p95_ms": {
+    "before": {"paused": 137.46442500132616, "playing": 172.07370499982062},
+    "completed": {"paused": 13.583870001093581, "playing": 18.722845001138914},
+    "repeat": {"paused": 8.65218500075571, "playing": 10.881829999379981}
+  },
+  "acceptance_budgets_ms": {
+    "input_p95": 50,
+    "input_max": 150,
+    "heartbeat_p95": 50
+  },
+  "completed_and_repeat_budgets_passed": true,
+  "one_seek_per_drag_in_all_phases": true,
+  "full_regression_suite": {"tests": 312, "failures": 0, "errors": 0, "skipped": 0},
+  "ruff_check_and_format_passed": true,
+  "native_group_counts": {
+    "studio": 19,
+    "model": 9,
+    "motion": 10,
+    "debug": 9,
+    "generated_timeline": 7,
+    "supplied_timeline_including_generated_cases": 8
+  },
+  "pixel_equivalence": {
+    "exact_matches": 8,
+    "cases": ["full", "cropped", "face-unavailable", "stale"],
+    "views": ["studio", "clean"],
+    "input_class": "Authored observations and the supplied GLB; no source pixels."
+  },
+  "implementation": [
+    "One bounded graphics owner serializes renderer mutations, avatar drawing and numeric diagnostics.",
+    "Tk installs completed images and services controls independently.",
+    "Seek/source epochs reject late results; displayed-frame expiry remains independent of graphics completion.",
+    "Raw input stays on its separate opt-in path, outside the avatar renderer.",
+    "Numeric dominant-role lookup and read-only per-asset masks replace repeated string membership searches."
+  ],
+  "retained_failed_attempts": [
+    "Cooperative view scheduling alone exceeded the declared latency budget.",
+    "Avatar-only background drawing still exceeded the budget with numeric debug views open.",
+    "A native import helper originally waited for model commit rather than the first rendered frame; it now awaits that specific result.",
+    "One concurrent book/full-suite run exceeded the existing two-second early-stop test budget. The isolated case and serial full suite passed unchanged; production deadlines were not weakened."
+  ],
+  "private_reports": [
+    ".local\\ui-responsiveness\\before\\native-input.json",
+    ".local\\ui-responsiveness\\after\\native-input.json",
+    ".local\\ui-responsiveness\\worker\\native-input.json",
+    ".local\\ui-responsiveness\\final\\native-input.json",
+    ".local\\ui-responsiveness\\repeat\\native-input.json",
+    ".local\\ui-responsiveness\\replay\\timeline-report.json",
+    ".local\\ui-responsiveness\\parallel-book-test-failure.xml"
+  ],
+  "source_recording_model_profile_unchanged": true,
+  "real_camera_opened": false,
+  "source_paths_or_credentials_recorded": false,
+  "personal_raw_media_or_landmark_exports": false,
+  "physical_input_latency_measured": false,
+  "tracking_accuracy_improvement_demonstrated": false,
+  "universal_frame_rate_or_smoothness_guaranteed": false,
+  "handbook_pages": 82,
+  "handbook_source_citations": 179,
+  "previous_receipt": "before-ui-responsiveness-validation.json"
+}

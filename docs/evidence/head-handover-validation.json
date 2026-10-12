@@ -1,0 +1,21 @@
+{
+  "recorded_at": "2026-10-12T23:33:21.782311+00:00",
+  "tests": {
+    "tests": 374,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "runtime_sha256": "f84ca1d3e79524629050d673c8b656518512c86c892e9c408412511c7fdd6365",
+  "recorded_frames_compared": 2209,
+  "face_loss_head_frames": 502,
+  "stale_head_offsets_over_one_degree_before": 42,
+  "stale_head_offsets_over_one_degree_after": 0,
+  "maximum_body_joint_difference": 0,
+  "native_checks_passed": true,
+  "restart_required": true,
+  "glb_bytes_changed": false,
+  "physical_camera_opened": false,
+  "raw_images_or_landmark_arrays_saved": false,
+  "limits": "Monocular front/back ambiguity and transient detector errors remain possible. No generic torso lock or face-detection suppression was added."
+}

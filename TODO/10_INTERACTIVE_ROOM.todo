@@ -1,0 +1,23 @@
+# Future interactive room
+
+Status: NOT_STARTED
+Milestone: M3 - deferred
+Dependencies: 09_BLENDER_AVATAR.todo
+
+## Purpose
+Preserve the repository's original room-with-interactable-objects direction without expanding M1.
+
+## Tasks
+- [ ] Define room, object, hand/contact and interaction requirements after avatar work.
+- [ ] Establish safe tracking uncertainty and object-depth/contact policies.
+
+## Acceptance criteria
+- [ ] Not defined for the current prototype.
+
+## Completion evidence
+- Original README records the direction; nothing implemented or promised for M1.
+- The static visual room requested later is workstream12, not completion of interactive objects,
+  collision, floor calibration or the future room/hand-contact system tracked here.
+
+## Completion log
+- 2026-10-11 20:33 +05:30 - Deferred.

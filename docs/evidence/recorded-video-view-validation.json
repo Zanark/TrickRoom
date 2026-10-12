@@ -1,0 +1,63 @@
+{
+  "recorded_at": "2026-10-12T20:38:00.584322+05:30",
+  "scope": "Recorded-video test UI, replay routing and honest source labels; no detector changes.",
+  "unit_test_scope": "Focused modules, not a full-suite rerun.",
+  "unit_test_modules": [
+    "tests.test_imported_animation",
+    "tests.test_models_cli_runtime",
+    "tests.test_render",
+    "tests.test_video_test_controls"
+  ],
+  "focused_tests": {
+    "tests": 53,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "native_studio_checks": [
+    "native-window-render",
+    "demo-labelled-no-camera",
+    "cropped-body-status",
+    "presentation-controls",
+    "reference-avatar-defaults-and-optional-diagnostics",
+    "perspective-room-toggle",
+    "clean-output-window",
+    "invalid-source-no-camera",
+    "disconnect",
+    "restart-demo",
+    "actual-model-synthetic-replay-and-eof-controls",
+    "recorded-video-picker-and-labelled-test-view",
+    "replay-last-video-with-new-worker",
+    "close"
+  ],
+  "selected_recording": {
+    "passed": true,
+    "source_kind": "file",
+    "input_size": [
+      478,
+      850
+    ],
+    "inferred_frames": 125,
+    "pose_present_frames": 69,
+    "face_present_frames": 61,
+    "checks": [
+      "actual-button-file-selection",
+      "recording-labelled-not-live-or-demo",
+      "built-in-synthetic-stage",
+      "imported-glb-stage",
+      "clean-output-and-black-debug-views",
+      "raw-preview-remains-off",
+      "bounded-disconnect-and-cleanup"
+    ],
+    "raw_frames_saved": false,
+    "landmarks_saved": false,
+    "source_path_saved": false,
+    "live_camera_opened": false,
+    "callback_errors": [],
+    "shutdown_complete": true,
+    "source_unchanged": true
+  },
+  "prior_implementation_receipt": "core-motion-validation.json",
+  "sensing_accuracy_improvement_claimed": false,
+  "private_source_path_or_credentials_recorded": false
+}

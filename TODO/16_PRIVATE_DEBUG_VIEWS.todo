@@ -1,0 +1,32 @@
+# Opt-in private input and tracking debug views
+
+Status: DONE
+Milestone: M2 diagnostic UX
+Dependencies: 03_BODY_FACE_TRACKING.todo, 05_STUDIO_AND_LAUNCH.todo
+
+## Purpose
+Provide the explicitly requested raw input window, skeleton-only black view and connected
+face-landmark black view without leaking them into the avatar/clean output.
+
+## Tasks
+- [x] Add three separate default-off debug toggles/windows and close/reopen behavior.
+- [x] Pair opt-in raw retention with processed observations; clear on disable/stop/staleness.
+- [x] Draw measured skeleton and face connections on black with honest input-orientation labels.
+- [x] Configure requested auth defaults only in ignored user-encrypted local storage.
+- [x] Validate privacy/lifecycle/render behavior and maintain guides/journal/context.
+
+## Acceptance criteria
+- [x] No debug pixels enter the main or clean output; raw preview is explicit and private.
+- [x] No credentials are hard-coded, documented, logged or stored in context.
+- [x] Missing/old inputs clear rather than inventing a detected skeleton/face.
+
+## Completion evidence
+-159tests/no skips; nine native debug-window lifecycle groups passed without callback errors.
+- Actual public-fixture detection:33pose/478face points,1322unique mesh edges; black views inspected.
+- DPAPI encrypted defaults and actual masked UI prefill verified without outputting values.
+- Handbook remains82pages after privacy text/source-citation refresh; HTML checks passed.
+- No owner-camera connection or raw personal recording was performed.
+
+## Completion log
+- 2026-10-12 02:29 +05:30 - DONE locally; values intentionally omitted from this record.
+- 2026-10-12 - Started from the explicit debug/auth-default requests.

@@ -1,0 +1,40 @@
+# CLI model and reference-video export
+
+Status: DONE
+Milestone: Reusable offline model-review pipeline
+Dependencies: 13_BLENDER_MODEL_RUNTIME.todo, 20_CORE_MOTION_UPGRADE.todo
+
+## Purpose
+Let another model-authoring session render a supplied GLB against a reference recording without
+opening Studio, producing synthetic video and inspectable evidence rather than claiming perfection.
+
+## Tasks
+- [x] Inspect existing headless PNG/report support and offline verification patterns.
+- [x] Add frame-by-frame, source-clock export with isolated native tracking.
+- [x] Encode and verify an MP4; produce a source-private aggregate report and optional PNG.
+- [x] Protect original inputs/existing outputs and clean up interrupted/failed exports.
+- [x] Add CLI/encoder/lifecycle regressions and exercise the supplied model/recording.
+- [x] Document copyable cross-directory commands and model-review limitations.
+
+## Acceptance criteria
+- [x] Every frame in the selected source interval is inferred/rendered once, without real-time drops.
+- [x] Source-relative timing is explicit and output duration/frame count are verified.
+- [x] Only synthetic images enter output; no input audio/raw pixels/landmark dump is included.
+- [x] Model/profile/reference inputs and pre-existing output files cannot be overwritten.
+- [x] Native failures, invalid input, cancellation and incomplete output are explicit.
+- [x] Another chat can invoke the isolated Python executable with absolute paths from its own base.
+- [x] Reports distinguish tracking availability, structural validation and subjective visual approval.
+
+## Completion evidence
+- Added --render-video, source start/duration/size, clean output, JSON evidence and optional PNG.
+-374full-suite/37focused cases and Ruff pass. Actual full render preserves2209frames with zero
+  skips; encoded73.439941s at640x480. Worker exit0; staged outputs verified before publication.
+- Cross-directory91-frame export and actual PowerShell four-frame clean export pass. Synthetic PNG/
+  encoded contact sheet inspected. Inputs/existing outputs protected; incomplete temp files removed.
+- docs\16-cli-video-rendering.md provides the other-chat handoff. Handbook83pages/181citations.
+- Scoped receipt:docs\evidence\cli-video-export-validation.json. Private outputs:.local\cli-video-export.
+- Concurrent retarget.py/test_rig_twist.py work was observed and is preserved, not part of this change.
+
+## Completion log
+- 2026-10-13 - Owner requested CLI video rendering for model-authoring/review in another chat.
+- 2026-10-13 - Offline export, full recording, cross-directory/launcher checks and handoff completed.

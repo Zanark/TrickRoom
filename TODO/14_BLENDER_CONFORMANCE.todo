@@ -1,0 +1,30 @@
+# Blender interoperability fixture and authoring utilities
+
+Status: DONE
+Milestone: M2 interoperability
+Dependencies: 13_BLENDER_MODEL_RUNTIME.todo
+
+## Purpose
+Use an original technical Blender rig to prove the exported model contract independently
+of the future final-art character.
+
+## Tasks
+- [x] Build/save/export a canonical rig, weighted meshes, facial keys, texture and clips.
+- [x] Supply reusable Blender preflight and export scripts.
+- [x] Verify rest pose, weighted deformation, facial mapping, texture orientation and clip sampling.
+- [x] Record actual Blender/runtime versions, outputs, hashes and limitations.
+
+## Acceptance criteria
+- [x] Exported files are imported and exercised by the actual runtime.
+- [x] No claim of final character art, arbitrary Blender feature support or actual phone qualification.
+
+## Completion evidence
+- Blender4.5.14 LTS built/exported both morph-gaze and eye-bone technical fixtures.
+- Main export:23mapped bones,964vertices,606triangles,5primitives,1texture,12shape keys,2clips.
+- Runtime/Blender vertex errors:2.2469e-7 wave,5.8990e-8 face; eye-gaze movement verified.
+- Reusable preflight/export reproduced the GLB SHA256; source .blend was not overwritten.
+- examples\blender\conformance-build.json and .local\blender-conformance reports hold exact hashes.
+
+## Completion log
+- 2026-10-12 - DONE. Technical fixtures are not the final reference-art character.
+- 2026-10-11 23:49 +05:30 - Started.

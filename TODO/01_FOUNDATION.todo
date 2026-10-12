@@ -1,0 +1,26 @@
+# Prototype foundation
+
+Status: DONE
+Milestone: M0
+Dependencies: None
+
+## Purpose
+Create an independent full-body prototype, informed but not constrained by prior avatar work.
+
+## Tasks
+- [x] Read project history, existing README and TODO conventions.
+- [x] Define first milestone and defer final character/rig/room work.
+- [x] Register a separate context base and preserve sibling boundaries.
+- [x] Establish runnable package, source boundaries and written acceptance.
+
+## Acceptance criteria
+- [x] A source-runnable isolated Python project and explicit milestone scope exist.
+
+## Completion evidence
+- Initial repository: ca7d6cc; only README.md before this work.
+- pyproject.toml, AGENTS.md, docs\00-scope-and-acceptance.md, isolated .venv and registered base.
+- Source is an uncommitted working tree, not a claimed new commit.
+
+## Completion log
+- 2026-10-11 21:29 +05:30 - DONE locally; setup/package and source checks passed.
+- 2026-10-11 20:33 +05:30 - Started; implementation not yet validated.

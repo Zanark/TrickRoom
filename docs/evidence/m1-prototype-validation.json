@@ -1,0 +1,209 @@
+{
+  "recorded_at": "2026-10-11T21:32:00.357880+05:30",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10",
+  "source": {
+    "kind": "uncommitted-working-tree",
+    "sha256": "be0ad4ddacfe27abe5ce6d26af7854e9f49ec4fadf52d7bc10b08a6501cbe3a1",
+    "files": {
+      "pyproject.toml": "18873c0f49cefa0679c147a52e9ae16f4fbca1cc525c9d6542aa5a8f1199de77",
+      "requirements-lock.txt": "687af44bca6fbc5ca4e4e82c77be5f043fa9ada38482dd8c94854fed21ebd5bf",
+      "Setup-TrickRoom.ps1": "2470681db7fb6cb969dc7a9334c79cc309d45cb58c3ca710d0c97f2c2a23d9c9",
+      "src/trickroom/__init__.py": "d2788cd782bca764ac0652eb1ff2679d9a444a5c97c7fe6609a852ba21ca25c2",
+      "src/trickroom/__main__.py": "25e1e754936490279c81e7a820dfa95136c6842eb4c3ca2b6fde78396c7a5d71",
+      "src/trickroom/camera.py": "03d2d0c50a515726f941ed3727c42fd8f18d2b2a35d8f017b0546868e70287df",
+      "src/trickroom/cli.py": "c636fe27fbd340988941566094435f940e5f67755303f997f0958ef5d5baf4fd",
+      "src/trickroom/demo.py": "0d3414d00e6d16c8141d36900e4163d672b18a7c1deff57931d6074469928d7b",
+      "src/trickroom/filters.py": "4f0d681fe0ce2bcf8353283970907ef0bb97a9b9cfdc3417b16298a9f6c507ec",
+      "src/trickroom/models.py": "0a39549b1bc238bdc500e154d1a4f89d18cbceb8aaa21fe04a0ce468d0ca5ab6",
+      "src/trickroom/render.py": "253039955a7c4d903350e69b1efd2df9e639c498035d914d44df8101d3231ff5",
+      "src/trickroom/runtime.py": "c4e4dd35ae80ab024b3613df6fc799a223f81d690cba8df834fdd6aefad3b65e",
+      "src/trickroom/state.py": "fa887776210a3ee507f0707738e2370bee831354b27b1e5ea4143307a6924f0e",
+      "src/trickroom/studio.py": "db75bd7452784dafd97baefebc0614d2e4c370dbdf1cef262046df7f1e33c288",
+      "src/trickroom/tracking.py": "af49f95e91bf6314fb53ffdcd62a6606a1a0c05b5d81255a27103db2608b1645",
+      "Start-TrickRoom.ps1": "d2ef25594c307bf9ca33c4e253cf35e07e115c8fa339a1f8cf5b9febd8d17737",
+      "tests/test_camera.py": "0a007b6d92f239c9252c65508e2770aad3543aa5a71fd2306a630cbddf072390",
+      "tests/test_models_cli_runtime.py": "c71ec70b63c92f7c7b7910ed62302b41da8458d6745517186dc618b497da4dc9",
+      "tests/test_render.py": "eef9a5578dfb23e884962cdf19253193ced1434020dac38feb24daa29008e1e5",
+      "tests/test_state_and_filters.py": "bdaac6ef5ab5e3fc24b4deb3224996858e7ac7513d2d602d11984d8c079245f4",
+      "tests/test_tracking_contracts.py": "4fe50fb1ec60adf12133d18cbee05c78ed685136715fddc2779466349857baa5",
+      "tools/check_docs.py": "0fa7836f7aa8c1e05c7b7a06adffaa6e09ed669923915f588411915f1ff06bda",
+      "tools/check_studio.py": "6717ee311f8ffed983970a993dfc31659aa8617d2e03d00ef139ddf835cc5816",
+      "tools/record_evidence.py": "a7dd93c76a90475c9e810178bb18dceb444caccc551e13f27a0ddf5fb37f7721",
+      "tools/render_gallery.py": "90530037f6fdd167208e6da06f6a2d3ea1ae6ec6a5cf335879ec77ac0adb5aec",
+      "tools/verify_stream.py": "74bc8eaf285ac21770a947945f69d58ea321931c1e10e80866625a530309e255",
+      "tools/verify_tracking.py": "58a3324cbd3fc889b55bbd2651716add1334b1751d95d065a1080f0c2b30e5ca"
+    }
+  },
+  "unit_tests": {
+    "tests": 70,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "docs": {
+    "markdown_files": 15,
+    "local_links": 23,
+    "workstreams": 10
+  },
+  "receipts": {
+    "actual_inference": {
+      "recorded_at": "2026-10-11T21:26:39.838570+05:30",
+      "evidence_class": "actual-model inference on a public still and deterministic crops",
+      "fixtures": [
+        {
+          "url": "https://storage.googleapis.com/mediapipe-assets/pose.jpg",
+          "sha256": "c8a830ed683c0276d713dd5aeda28f415f10cd6291972084a40d0d8b934ed62b"
+        },
+        {
+          "url": "https://cdn.pixabay.com/photo/2019/03/12/20/39/girl-4051811_960_720.jpg",
+          "sha256": "99e0649aa4f2553b0213982f544146565a1028877c4bb9fbe3884453659d8cdc"
+        }
+      ],
+      "input_media_in_report": false,
+      "owner_camera_tested": false,
+      "real_motion_or_end_to_end_latency_measured": false,
+      "cases": {
+        "full-body-profile": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            667
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 25.96,
+          "warm_p95_inference_ms": 27.65,
+          "synthetic_image": "full-body-profile-synthetic.png",
+          "passed": true
+        },
+        "body-and-expressive-face": {
+          "frames": 16,
+          "input_size": [
+            960,
+            640
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 16,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": true,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 25.2,
+          "warm_p95_inference_ms": 27.99,
+          "synthetic_image": "body-and-expressive-face-synthetic.png",
+          "passed": true
+        },
+        "cropped-lower-legs": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            527
+          ],
+          "visible_landmarks": 24,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "PARTIAL BODY",
+          "warm_mean_inference_ms": 23.34,
+          "warm_p95_inference_ms": 26.99,
+          "synthetic_image": "cropped-lower-legs-synthetic.png",
+          "passed": true
+        },
+        "portrait-frame": {
+          "frames": 16,
+          "input_size": [
+            460,
+            667
+          ],
+          "visible_landmarks": 33,
+          "face_frames": 0,
+          "body_frames": 16,
+          "contours": 1,
+          "face_crop_used": false,
+          "status": "FULL BODY",
+          "warm_mean_inference_ms": 22.08,
+          "warm_p95_inference_ms": 23.93,
+          "synthetic_image": "portrait-frame-synthetic.png",
+          "passed": true
+        },
+        "blank": {
+          "frames": 16,
+          "input_size": [
+            1000,
+            667
+          ],
+          "visible_landmarks": 0,
+          "face_frames": 0,
+          "body_frames": 0,
+          "contours": 0,
+          "face_crop_used": false,
+          "status": "NOT FOUND",
+          "warm_mean_inference_ms": 16.38,
+          "warm_p95_inference_ms": 17.45,
+          "synthetic_image": "blank-synthetic.png",
+          "passed": true
+        }
+      },
+      "same_session_motion_and_reacquisition": {
+        "kind": "deterministic image translation, not a real motion recording",
+        "translated_input_px": 35,
+        "observed_body_shift_px": 31.19,
+        "observed_face_shift_px": 34.24,
+        "blank_clears_tracking": true,
+        "body_and_face_reacquired": true,
+        "passed": true
+      }
+    },
+    "stream": {
+      "recorded_at": "2026-10-11T21:27:18.276556+05:30",
+      "evidence_class": "30 Hz loopback MJPEG, transformed public still, real inference",
+      "owner_camera_opened": false,
+      "real_motion_recording": false,
+      "camera_to_display_latency_measured": false,
+      "input_frames": 112,
+      "inferred_frames": 111,
+      "body_frames": 111,
+      "face_frames": 111,
+      "dropped_frames": 0,
+      "reported_inference_hz": 31.51,
+      "mean_inference_ms": 27.34,
+      "mean_renderer_ms": 7.18,
+      "mean_postdecode_observation_age_ms": 45.62,
+      "p95_postdecode_observation_age_ms": 67.12,
+      "passed": true,
+      "shutdown_complete": true
+    },
+    "native_ui": {
+      "checks": [
+        "native-window-render",
+        "demo-labelled-no-camera",
+        "cropped-body-status",
+        "presentation-controls",
+        "clean-output-window",
+        "invalid-source-no-camera",
+        "disconnect",
+        "restart-demo",
+        "actual-model-synthetic-replay-and-eof-controls",
+        "close"
+      ],
+      "callback_errors": [],
+      "passed": true,
+      "owner_camera_opened": false,
+      "user_approval_claimed": false
+    }
+  },
+  "boundaries": {
+    "owner_camera_tested": false,
+    "real_motion_recording_tested": false,
+    "user_visual_approval_obtained": false,
+    "physical_camera_to_display_latency_measured": false,
+    "final_blender_avatar_or_rig_built": false,
+    "raw_camera_media_committed": false
+  }
+}

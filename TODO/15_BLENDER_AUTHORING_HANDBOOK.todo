@@ -1,0 +1,33 @@
+# Detailed Blender authoring handbook
+
+Status: DONE
+Milestone: M2 documentation
+Dependencies: 13_BLENDER_MODEL_RUNTIME.todo, 14_BLENDER_CONFORMANCE.todo
+
+## Purpose
+Deliver a detailed50-100page document explaining how to model, rig, weight, animate, export,
+validate and troubleshoot a character for the implemented TrickRoom Blender pipeline.
+
+## Tasks
+- [x] Trace finalized code/export contract and author original source-grounded chapters.
+- [x] Include rig/axis/weight/morph/material/clip diagrams, recipes, checks and failure examples.
+- [x] Build actual PDF plus offline HTML/source; inspect pagination and figure/text layout.
+- [x] Enforce50-100actual PDF pages and document the tested feature boundaries precisely.
+
+## Acceptance criteria
+- [x] Complete readable50-100page PDF, not blank/padded pages or a plan for a future guide.
+- [x] Instructions agree with the tested exported fixture, importer and animation runtime.
+
+## Completion evidence
+- Delivered docs\TrickRoom-Blender-Authoring-Handbook.pdf:82A5 pages,35chapters/workshops,
+ 13249word tokens,175resolved source citations, two locally rendered Mermaid diagrams.
+- Offline HTML, editable/resolved Markdown and edition-manifest.json are in docs\book.
+- All PDF pages checked for empty/out-of-bounds text; representative cover/body/table/diagram/
+  code pages inspected. HTML35headings/8decoded embedded figures, no horizontal overflow.
+- Exact output hashes are in docs\book\edition-manifest.json; source/runtime limits are explicit.
+- Follow-up16 refreshed the private-debug boundary and source citations; current word/hash
+  counts come from the edition manifest rather than the earlier completion snapshot.
+
+## Completion log
+- 2026-10-12 - DONE after actual implementation/export validation, not a speculative design guide.
+- 2026-10-11 23:49 +05:30 - Planned after the support pipeline is verified.

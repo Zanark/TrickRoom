@@ -1,0 +1,42 @@
+# Studio and playback interaction responsiveness
+
+Status: DONE
+Milestone: Responsive native Studio controls
+Dependencies: 24_REPLAY_TIMELINE.todo
+
+## Purpose
+Remove measured UI-thread stalls, especially while dragging the replay timeline, without
+changing tracking, frame selection, clean-output pixels or privacy boundaries.
+
+## Tasks
+- [x] Profile the imported-avatar redraw path.
+- [x] Measure queued native-window Tk-event latency before and after the fix.
+- [x] Move heavy drawing off Tk, yield between image updates and cache static mesh work.
+- [x] Cover redraw scheduling, visibility equivalence and source/lifecycle behavior.
+- [x] Update documentation, evidence, journal and current-base continuity.
+
+## Acceptance criteria
+- [x] Native-window queued drag events have recorded latency and improved responsiveness.
+- [x] One drag still commits one seek on release, never per pointer movement.
+- [x] Main/clean/debug redraws do not form one long UI callback.
+- [x] Static mesh caching preserves exact visibility and synthetic rendering.
+- [x] Errors, shutdown and stale/private-input clearing remain explicit.
+- [x] Focused tests, Ruff and affected native checks pass with retained failure evidence.
+
+## Completion evidence
+- Before-fix imported-avatar profiling with authored observations measured two-view median
+  111.51ms, p95 153.08ms under cProfile. This is not an uninstrumented performance guarantee.
+- Profile: .local\ui-responsiveness\before\render-profile.txt.
+- Queued-event p95 paused/playing:127.23/131.85ms before,18.25/20.74ms completed,
+  14.89/18.48ms repeat. All80positions per phase delivered; one seek per drag.
+-312full-suite cases pass; native Studio/model/motion/debug groups19/9/10/9 and timeline7/8pass.
+  Eight authored before/after studio/clean images match exactly. No sensing-accuracy claim.
+- GraphicsWorker owns renderer mutations and OpenGL; Tk independently revokes stale displays.
+  Raw input stays separate. Source/model/profile unchanged, no live camera or publication.
+- Handbook82pages/179citations. Scoped receipt:docs\evidence\studio-responsiveness-validation.json.
+- Retained cooperative-only/avatar-only performance failures and one concurrent-book timing-test
+  failure. Serial full-suite and two final latency runs pass; no safety deadline was weakened.
+
+## Completion log
+- 2026-10-13 - Owner reported laggy UI, especially during timeline dragging; investigation started.
+- 2026-10-13 - Single-owner background graphics, stale-display safeguards and measured fix completed.

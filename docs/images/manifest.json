@@ -1,0 +1,17 @@
+{
+  "kind": "synthetic-renderer-demo-not-camera-validation",
+  "source": "tools/render_gallery.py and src/trickroom/demo.py",
+  "raw_camera_pixels": false,
+  "files": {
+    "01-full-body.png": "6dd41b2fb4d7d33dc793bcdec85a20c6fe4eb55fbe09980593c16910f5ac4cac",
+    "02-left-wink.png": "e4dfd00e7e2c02bfe9d3e3c4a8c49cf016a15963ff0b0e5925e788f913e93401",
+    "03-mouth-smile.png": "05505e44c0278bf1f5390b11970ec58d887dbe5e5cabdd2a14d96f557196c5e4",
+    "04-cropped-legs.png": "7d027dbdecb744977e9d79ec5926d77d7b1d7fbadea33b0d8870618c7a662d6a",
+    "05-face-unavailable.png": "67d5446e4054b22f1e641fce3b86ace20ca19c906a0643dfc3cb15d7b6c660d4",
+    "06-tracking-stale.png": "ca6609cef0f08b4bd86125e8989dabc07d087ef1243a6eb962bca8b67b79530e",
+    "studio-collapsed.png": "8bbc94f721f852a1fa1aaf6df5f4b4d272d8e706b341ff87b65e8c2f2f1204c4",
+    "studio.png": "e9f5e9c2da2a37ecf3709b62e128f81099dbed86852dd18df789f645ef897c42",
+    "tracking-contact-sheet.png": "adaaf2f07c01023dbc0f97935dbf1b2b44e4bbf0b50e9ad7c93860ccaa7f84d9",
+    "tracking-demo.gif": "0eb7529965dc7e29d31a5a297ce78655263ee672fade20b35ae22806c46a056a"
+  }
+}
