@@ -29,6 +29,11 @@ Times use Asia/Kolkata. Raw camera media, source addresses and credentials do no
 - SDK Clearcut warnings recurred; no telemetry setting or network-silence claim changed.
 - TODO26 complete. Other-chat guide:docs\16-cli-video-rendering.md. Handbook83pages/181citations
   rebuilt and HTML checked. Receipt:docs\evidence\cli-video-export-validation.json. No publication.
+- Final scoped readback confirms all33packaged runtime/resource files, launcher sharing-copy
+  equality and book manifests. Repository-wide aggregate refresh is blocked by the independently
+  written27_HEAD_TRACKING_HANDOVER.todo missing required completion headers. Its content and
+  the previous aggregate receipt were preserved; the checker was not bypassed. Concurrent limb
+  and CLI tasks both acquired prefix26; use full filenames rather than renumbering completed work.
 
 ## 2026-10-13 - Rear-facing head discrepancy corrected at the face-loss handover
 

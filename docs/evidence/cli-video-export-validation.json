@@ -56,8 +56,22 @@
   "resolved_source_citations": 181,
   "concurrent_work_preserved": [
     "Pre-existing concurrent retarget.py changes and test_rig_twist.py are included in the tested tree, not attributed to CLI export.",
-    "A stable local model/profile copy isolates the full render from ongoing external authoring."
+    "A stable local model/profile copy isolates the full render from ongoing external authoring.",
+    "Separately authored limb-twist and head-handover tasks were retained without changing their implementation or task identifiers."
   ],
+  "scoped_readback": {
+    "packaged_runtime_resource_files_match": 33,
+    "video_export_module_sha256": "9b4ed21e782f9804399b84d06176b506e4926223a0fbe5d99323a563339ded83",
+    "cli_module_sha256": "0f985cd4e67ddb5dad861e4bab1e16aaa7521398cffa67cdeae0027fe6b64135",
+    "launcher_sharing_copy_matches": true,
+    "book_manifests_match_files": true
+  },
+  "aggregate_documentation_gate": {
+    "passed": false,
+    "blocked_by": "27_HEAD_TRACKING_HANDOVER.todo lacks the catalogue-required completion section headers.",
+    "action": "Preserved the other task and the prior aggregate receipt; did not bypass the documentation checker.",
+    "identifier_note": "Two independently created workstreams use numeric prefix 26; use their full filenames until coordinated catalogue reconciliation."
+  },
   "qualification_notes": [
     "The full render preceded additive settings fields in the JSON report; final settings fields were verified by the real launcher export.",
     "One focused run hit the known pre-existing two-second early-stop test budget. Its XML is retained; serial focused and full suites passed unchanged.",

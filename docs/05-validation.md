@@ -32,6 +32,10 @@ The handbook is now83pages with181resolved source citations and a passing offlin
 Usage and cross-chat handoff: [CLI model review](16-cli-video-rendering.md). Scoped evidence:
 `docs\evidence\cli-video-export-validation.json`; actual videos/reports/previews:
 `.local\cli-video-export`. Previous aggregate: `docs\evidence\before-cli-video-export-validation.json`.
+The scoped export receipt and package readback are complete. A repository-wide aggregate refresh
+is blocked by an independently written head-handover TODO missing the required completion section
+headers; the previous aggregate remains intact. Concurrent limb/CLI entries share numeric prefix26,
+so use full TODO filenames until that catalogue housekeeping is coordinated.
 
 ## Studio responsiveness revision
 
