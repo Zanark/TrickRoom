@@ -3,6 +3,39 @@
 Newest entries first. Record decisions, failures, changes and evidence, not just completed features.
 Times use Asia/Kolkata. Raw camera media, source addresses and credentials do not belong here.
 
+## 2026-10-14 - Stage size anchored to a captured base distance
+
+- Owner reported that the scripted demo draws a large character, a recorded source draws a much
+  smaller one, and an imported GLB is smaller still. Reproduced and measured rather than assumed:
+  demo built-in71.0%of stage height, demo GLB70.0%, the supplied recorded capture22.0%and the
+  supplied imported capture21.7%. Both screenshots offered as the target are the same file.
+- Root cause is not a defect in the scale filter. presentation.calibration_ratio returns
+  median(measured image span / projected posed span) /max(frame_size) and presentation.present
+  multiplies max(frame_size) back in, so the drawn size equals apparent pixel size with no
+  reference framing. The imported path reads smaller because median bone-span ratios include
+  foreshortened limbs, while the built-in character is posed straight from landmark extents.
+- room.py already carries a real pinhole camera with focal, 1.65m eye height, a floor plane and
+  an inverse floor_point used by the shoe shadows. The character never used any of it; the room
+  is a cached background and the figure is placed in image space, so the two only share a frame.
+- Added src\trickroom\placement.py: StageAnchor captures the first fully visible body as the
+  session base distance, scales later observations by the ratio of spans, and derives a room
+  depth from that ratio because apparent size varies with inverse distance. Depth is clamped to
+  the room bounds and reports when clamping occurred. The anchor is session-only, resets on a
+  source frame-size change or explicit recalibration, and is never written to disk.
+- tests\test_stage_anchor.py adds31focused cases: capture, inverse-depth scaling, clamping,
+  partial bodies that must not fabricate a placement, reacquisition after loss, frame-size
+  changes, explicit reset and invalid configuration. Full suite405tests with no failures,
+  errors or skips; Ruff check and format pass.
+- Scope is deliberately bounded. The anchor is not yet wired into the imported or built-in
+  presentation paths, the character is not yet placed on the floor plane, and no native or
+  recorded-source evidence has been produced. TODO28 stays IN_PROGRESS for that work.
+- This is a presentation anchor derived from image spans. It is not a measured physical distance,
+  a calibrated focal length, a contact estimate or a tracking-accuracy improvement. No camera was
+  opened, no model, recording or profile was modified, and nothing was published.
+- Also corrected27_HEAD_TRACKING_HANDOVER.todo, which used '## Evidence' and no completion log.
+  tools\check_docs.py requires the catalogue headings, so the repository-wide documentation gate
+  had been failing since that workstream landed. Its recorded content is unchanged.
+
 ## 2026-10-13 - CLI reference-video export completed
 
 - Added explicit --render-video for local recordings: all selected frames, source clock, owned

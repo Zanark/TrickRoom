@@ -23,7 +23,7 @@ locking valid independent head turns to the torso.
 - [x] Missing head landmarks do not become tracked or visible merely because of this fix.
 - [x] The reported recording frame shows the expected pose-derived head direction.
 
-## Evidence
+## Completion evidence
 - tests\test_head_tracking_handover.py plus existing rig motion/twist regressions.
 - Private comparison work in the Blender3DModels production workspace.
 - At34.9706s a brief face estimate reports near-front orientation while the body is rear-facing.
@@ -40,3 +40,7 @@ locking valid independent head turns to the torso.
 ## Limits
 This does not certify face detections or resolve all monocular front/back pose ambiguity.
 No physical camera, user running application, GLB, rig weights or model geometry is changed.
+
+## Completion log
+- 2026-10-13 - Reported rear-facing body with a camera-facing head at 35 seconds; reproduced
+  with continuous history, corrected the face-loss handover and recorded the comparison.
