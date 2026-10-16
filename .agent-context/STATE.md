@@ -1,12 +1,57 @@
-> **Last updated:** 2026-10-13 (Asia/Kolkata) - CLI reference-video export complete; shared catalogue gate noted.
-> **Last context offload:** 2026-10-13T05:18:52.7347045+05:30
+> **Last updated:** 2026-10-16 (Asia/Kolkata) - ghost camera flyable from Studio; stage anchor started; timeline redraw cut.
+> **Last context offload:** 2026-10-16T19:55:06+05:30
 
 # TrickRoom state
 
 > Identity: the full-body VTubing engineering and creative-prototyping partner.
 > Resume from verified evidence; plans, technical compatibility and artistic approval are different.
 
+## Working location change
+
+Work since 2026-10-14 happens in a Copilot worktree on branch
+test-user-copilot-workspace, not directly in this base. The base checkout sits on
+agentic/localCopilot, which deliberately tracks .venv, .local, models and node_modules so an
+assistant can read previously ignored evidence. That branch must never be pushed: it carries
+.local\camera-auth.dpapi and about 858MB. The working branch was reset onto clean origin/main
+and keeps every ignore rule active, so none of that can reach a commit from there.
+
+The worktree has no .venv of its own. Run its source with this base's interpreter:
+PYTHONPATH=<worktree>\src, TRICKROOM_MODELS=C:\devdesk\homedesk\TrickRoom\models, using
+.venv\Scripts\python.exe here. Without PYTHONPATH the editable install silently resolves to this
+base's src, so you would test the wrong tree.
+
+Four commits are on that branch and none are pushed: restored ignore rules, the stage base
+distance anchor, the ghost camera and its Studio controls, TRICKROOM_AVATAR, and the timeline
+redraw fix.
+
 ## Current focus
+
+GHOST CAMERA USABLE; 29_GHOST_CAMERA.todo is IN_PROGRESS. Studio section 08 flies the view with
+WASD, Q/E or Space/Ctrl, Shift for precision, mouse look, field-of-view and speed sliders, reset
+and a pose readout. Esc releases the pointer before it disconnects. Applies to imported GLBs only.
+
+The renderer never had a camera: its shader maps pixel coordinates straight to clip space and the
+room was a cached background. No shader change was needed. ghostcam.project_to_screen takes world
+metres through view and projection and returns pixels plus view-space depth, which feeds the
+existing depth buffer. room.camera_room reuses the room's existing world-space surfaces.
+
+Verified on the supplied recording with live inference and the owner's model: shoulder span
++49.2px front, +37.5 quarter, exactly 0.0 side on, -52.9 behind. The pose cannot follow the
+camera because evaluate() takes no camera argument; world forward stays [0,0,-1] at every yaw.
+Six-angle offline renders are distinct and populated. Real-window input checked: W moved1.554m,
+D moved0.810m, 9600px of pointer travel across a1017px stage gave633.6degrees of yaw.
+
+28_STAGE_BASE_DISTANCE.todo is IN_PROGRESS and only partly built. placement.StageAnchor captures
+the first fully visible body as a session base distance and derives depth from span ratios, with
+31 tests, but it is NOT wired into either presentation path. Measured before state: demo built-in
+71.0% of stage height, demo GLB70.0%, recorded capture22.0%, imported capture21.7%. Root cause is
+that calibration_ratio divides by max(frame_size) and present() multiplies it straight back, so
+drawn size equals apparent pixel size with no reference framing.
+
+522tests, Ruff and tools\check_docs.py pass. The docs gate had been red since workstream27 landed
+because that file used '## Evidence' instead of the required headings; that is now repaired.
+
+## Previous completed milestones
 
 CLI VIDEO EXPORT COMPLETE. 26_CLI_VIDEO_EXPORT.todo is DONE. Another model-authoring chat can
 invoke this repository's absolute .venv Python from its own working directory, passing --avatar,

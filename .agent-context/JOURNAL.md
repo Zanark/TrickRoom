@@ -3,6 +3,44 @@
 > Identity: the full-body VTubing engineering and creative-prototyping partner.
 > Newest at top. A resumed session must preserve the distinction between plans and evidence.
 
+## 2026-10-16 - Ghost camera delivered; stage anchor started; working from a worktree
+
+- A movable third-person camera now exists and is flyable from Studio section08. Researched
+  against primary engine source first, Quake's GPL tree and Source SDK2013, not recollection.
+  The governing idea is that a replay records authoritative state and the camera is a view over
+  it, never part of it. Modes are named rather than numbered because Valve's own enum shifted
+  ROAMING from6to7. Movement is noclip. Forward follows the look vector while vertical stays
+  world-up. The wish velocity is clamped before acceleration so diagonals keep direction. Shift
+  halves speed for precision and is not a sprint.
+- Key architectural finding: the renderer never had a camera at all, and still does not need one
+  in its shaders. Vertices arrive as pixel coordinates, so projection happens before the data
+  reaches the rasteriser and view-space depth feeds the existing depth buffer. The room already
+  defined its surfaces in world coordinates, so it was reused rather than rebuilt.
+- Verified against the owner's recording with live inference and their own model, after they
+  reported the character seeming to face the camera. It does not: shoulder span is +49.2px front,
+  exactly0.0 side on and -52.9 behind, and world forward stays [0,0,-1] at every camera yaw.
+  That is structural, since evaluate() takes no camera argument. The earlier impression was most
+  likely the broken pointer capture, which meant they could strafe but never look.
+- Several real defects were found by validating rather than assuming, and are worth remembering
+  as a pattern: position was integrated by end-of-step velocity, leaving movement frame-rate
+  dependent by about3%; mouse look was swallowed on a zero-length frame; pointer bindings sat on
+  the frame rather than the label that covers it, so clicking did nothing. The focused tests
+  could not catch the last one because they inject deltas and never touch a widget.
+- 28_STAGE_BASE_DISTANCE.todo was started but is deliberately incomplete. The anchor exists and is
+  tested; it is not wired into either presentation path, so nothing on screen has changed yet.
+- TRICKROOM_AVATAR now supplies a default model. Hard-coding the owner's path was rejected because
+  it would put a private location into source and contradict the session-only rule.
+- Timeline flicker was measured before being fixed. State, layout and slider monotonicity were all
+  provably stable; the real cause was writing the slider variable sixty times a second for a thumb
+  that moves a pixel a second. Quantising to thumb pixels cut writes from one per tick to107 per
+  ten seconds without changing playback.
+- Work now happens in a Copilot worktree on test-user-copilot-workspace, off clean origin/main,
+  with ignore rules fully active. The base's agentic/localCopilot branch exists only so previously
+  ignored evidence can be read, and must never be pushed.
+- 522tests, Ruff and the docs gate pass. The docs gate had been failing since workstream27 landed
+  with non-catalogue headings; that is repaired. Nothing has been pushed.
+- Offload marker2026-10-16T19:55:06+05:30.
+
 ## 2026-10-13 - CLI model-review export completed with scoped evidence
 
 - Added explicit reference-file -> synthetic MP4, JSON and optional PNG; no Studio or live camera.

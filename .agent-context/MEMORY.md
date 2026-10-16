@@ -86,7 +86,39 @@ No personal information is stored. Creative acceptance remains the project owner
 - Same-frame pose and face inference runs in the child; expressions bypass motion smoothing.
   Optional face-response shaping modifies only presentation, not raw diagnostics or meters.
 
+- The ghost camera is a view over observations and never part of them. It holds no landmarks,
+  asset or runtime handle, and evaluate() takes no camera argument, so a viewpoint change cannot
+  alter tracking, timestamps, availability or diagnostics. Keep it that way.
+- Camera modes are named, never numbered. Valve's own spectator enum shifted ROAMING from 6 to 7
+  when a mode was inserted, breaking every integer comparison written against it.
+- Movement scales with frame time; mouse look must not. A pointer delta is already a displacement.
+  Apply look before any zero-frame-time gate, or a stalled frame silently swallows it.
+- Ghost movement is noclip: no gravity, collision or friction. Forward follows the full look
+  vector so flying pitched descends, while vertical input stays world-up. Clamp the wish velocity
+  before acceleration; clamping afterwards distorts diagonals. The modifier halves speed.
+- Pitch clamps at 89 degrees, not a gameplay limit. Two failures meet at the pole: cos(pitch)
+  reaches zero so yaw is unrecoverable, and the Euler decomposition loses a degree of freedom.
+- Projection happens before the rasteriser, which still consumes pixel coordinates. World metres
+  go through view and projection and return pixels plus view-space depth for the existing depth
+  buffer. Near-plane geometry is dropped, not clipped, so it thins out rather than tearing.
+- TRICKROOM_AVATAR supplies a default model and its sidecar. An explicit --avatar always wins and
+  a stale path raises rather than falling back, because a silent fallback to the built-in
+  character looks like the model failing to load. Never hard-code a personal model path.
+- Stage size follows apparent pixel size because calibration_ratio divides by max(frame_size) and
+  present multiplies it back. placement.StageAnchor fixes the reference but is not yet wired in.
+
 ## Gotchas
+
+- Studio harnesses construct the object with only the fields a test needs, so any new per-frame
+  step must tolerate missing attributes instead of raising. Widgets in those tests can be mocks,
+  so winfo_width() may not return an int; fall back rather than guessing a value.
+- Pointer events land on the stage label, which fills its frame. Binding the frame alone never
+  fires. Tests that inject input directly cannot catch that class of defect; drive real Tk events.
+- Keeping a captured pointer useful requires warping it back to the stage centre and ignoring the
+  returning event, otherwise the cursor reaches the edge and turning stops part way round.
+- Writing a Tk variable every tick redraws its widget even when the displayed value is unchanged.
+  Quantise to what the user can actually see. Measure flicker before theorising: state churn,
+  layout oscillation and non-monotonic values were all provably absent here.
 
 - Prior inferred-depth and hood-marker experiments are cautionary history, not reliable body tracking.
 - Face detail decreases with whole-body framing; cropping improves detector framing, not real detail.
