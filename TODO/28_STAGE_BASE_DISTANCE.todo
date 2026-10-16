@@ -1,0 +1,54 @@
+# Base-distance stage anchoring and room-consistent placement
+
+Status: IN_PROGRESS
+Milestone: Consistent character size across demo, recorded and imported sources
+Dependencies: 12_PERSPECTIVE_LAB.todo, 20_CORE_MOTION_UPGRADE.todo, 22_IMPORTED_SCALE_FRAMING.todo
+
+## Purpose
+Presentation scale follows the measured body span directly, so the character is drawn as large
+as the performer happens to appear in the source frame. The scripted demo fills the stage while
+a performer standing back from a phone camera becomes small, and the imported GLB reads smaller
+still because it estimates that span from median bone ratios rather than landmark extents.
+
+Anchor the session to a base distance instead: the first fully visible body defines the size the
+character is drawn at, and later observations scale by the ratio of spans. The same ratio yields
+a room depth so the figure can stand on the floor plane rather than float in image space.
+
+## Tasks
+- [x] Measure the reported mismatch on clean renders and the supplied screenshots.
+- [x] Trace the scale path through presentation, retargeting and the room projection.
+- [x] Add a session-scoped base-distance anchor with capture, reset and depth mapping.
+- [x] Cover capture, perspective scaling, clamping, reacquisition and source changes with tests.
+- [ ] Drive imported-model presentation from the anchor instead of raw apparent span.
+- [ ] Drive the built-in character from the same anchor so both paths agree.
+- [ ] Place the character on the room floor plane at the derived depth.
+- [ ] Expose Recalibrate and reset the anchor on source changes in Studio.
+- [ ] Record native and recorded-source evidence, then update guides and the handbook.
+
+## Acceptance criteria
+- [x] The first fully visible body fixes the drawn size for the session.
+- [x] Apparent size varying with distance scales the character by the inverse of depth.
+- [x] Derived depth stays inside the room bounds and reports when it was clamped.
+- [x] A partial body or an unanchored session never fabricates a placement.
+- [x] The anchor is session-only and is never written to disk.
+- [ ] Built-in and imported avatars are drawn at a comparable size on the same source.
+- [ ] Stepping back moves the character up the floor grid rather than only shrinking it.
+
+## Completion evidence
+- Measured before state: demo built-in 71.0% of stage height, demo GLB 70.0%, the supplied
+  reference-video capture 22.0% and the supplied imported-model capture 21.7%. The two demo
+  screenshots the owner supplied as the target are byte-identical (SHA256 a6634d38...).
+- Root cause: presentation.calibration_ratio returns median(measured image span / projected posed
+  span) / max(frame_size), which presentation.present multiplies back by max(frame_size), so the
+  drawn size equals the performer's apparent pixel size with no reference framing.
+- src\trickroom\placement.py adds StageAnchor, StagePlacement and body_span.
+- tests\test_stage_anchor.py: 31 focused cases covering capture, inverse-depth scaling, clamping,
+  partial bodies, reacquisition, frame-size changes, explicit reset and invalid configuration.
+- Full suite 405 tests, no failures, errors or skips; Ruff check and format pass.
+- This is a presentation anchor derived from image spans. It is not a measured physical distance,
+  a calibrated focal length, a floor-contact estimate or any claim about tracking accuracy.
+- Renderer integration, room-floor placement and native evidence are not yet done.
+
+## Completion log
+- 2026-10-14 - Reported by the owner: demo large, recorded source small, imported model smaller.
+  Reproduced and measured; anchoring module and focused regressions landed. Integration remains.

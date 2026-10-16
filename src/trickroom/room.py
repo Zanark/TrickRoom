@@ -71,6 +71,49 @@ class RoomProjection:
 
 
 @dataclass(frozen=True)
+class CameraProjection:
+    """Project the room through a movable camera instead of the fixed stage view.
+
+    This mirrors RoomProjection's interface so the same surface definitions can
+    be drawn either way. Points at or behind the near plane are returned as NaN
+    rather than raising, because a free camera routinely puts part of the room
+    behind itself; callers skip those polygons.
+    """
+
+    camera: object
+    width: int
+    height: int
+    top: int = 0
+    bottom: int = 0
+    half_width: float = 3.0
+    ceiling: float = 3.6
+    near: float = 0.6
+    back: float = 8.4
+    tile: float = 0.6
+
+    def project(self, points) -> NDArray[np.float64]:
+        from trickroom.ghostcam import project_to_screen
+
+        screen, valid = project_to_screen(points, self.camera, self.width, self.height)
+        result = screen[:, :2].copy()
+        result[~valid] = np.nan
+        return result
+
+
+def _visible(polygon: NDArray[np.float64], width: int, height: int) -> bool:
+    """Reject polygons that cross the near plane or sit far outside the frame."""
+    if not np.isfinite(polygon).all():
+        return False
+    margin = max(width, height) * 4
+    return bool(
+        polygon[:, 0].max() > -margin
+        and polygon[:, 0].min() < width + margin
+        and polygon[:, 1].max() > -margin
+        and polygon[:, 1].min() < height + margin
+    )
+
+
+@dataclass(frozen=True)
 class RoomBackground:
     pixels: NDArray[np.uint8]
     floor_mask: NDArray[np.uint8]
@@ -94,33 +137,34 @@ def _surface(image, projection: RoomProjection, origin, u_axis, v_axis, u_size, 
             u1, u2 = us[column : column + 2]
             v1, v2 = vs[row : row + 2]
             corners = np.array((world(u1, v1), world(u2, v1), world(u2, v2), world(u1, v2)))
-            polygon = np.rint(projection.project(corners)).astype(np.int32)
+            projected = projection.project(corners)
+            if not _visible(projected, image.shape[1], image.shape[0]):
+                continue
+            polygon = np.rint(projected).astype(np.int32)
             variation = (((column * 7 + row * 13) % 9) - 4) * 0.003
             depth_shade = 1.03 - 0.08 * float(corners[:, 2].mean()) / projection.back
             cv2.fillConvexPoly(image, polygon, _shade(tint, depth_shade + variation))
     for u in us:
-        ends = np.rint(projection.project((world(u, 0), world(u, v_size)))).astype(np.int32)
+        line = projection.project((world(u, 0), world(u, v_size)))
+        if not _visible(line, image.shape[1], image.shape[0]):
+            continue
+        ends = np.rint(line).astype(np.int32)
         cv2.line(image, tuple(ends[0]), tuple(ends[1]), GRID_COLOR, 1, cv2.LINE_AA)
     for v in vs:
-        ends = np.rint(projection.project((world(0, v), world(u_size, v)))).astype(np.int32)
+        line = projection.project((world(0, v), world(u_size, v)))
+        if not _visible(line, image.shape[1], image.shape[0]):
+            continue
+        ends = np.rint(line).astype(np.int32)
         cv2.line(image, tuple(ends[0]), tuple(ends[1]), GRID_COLOR, 1, cv2.LINE_AA)
     border = projection.project(
         (world(0, 0), world(u_size, 0), world(u_size, v_size), world(0, v_size))
     )
-    cv2.polylines(image, [np.rint(border).astype(np.int32)], True, BORDER_COLOR, 1, cv2.LINE_AA)
+    if _visible(border, image.shape[1], image.shape[0]):
+        cv2.polylines(image, [np.rint(border).astype(np.int32)], True, BORDER_COLOR, 1, cv2.LINE_AA)
 
 
-@lru_cache(maxsize=4)
-def room_background(width: int, height: int, hud: bool = True) -> RoomBackground:
-    projection = RoomProjection.for_stage(width, height, hud)
-    image = np.full((height, width, 3), PANEL_COLORS["back"], np.uint8)
-    half, near, back, ceiling = (
-        projection.half_width,
-        projection.near,
-        projection.back,
-        projection.ceiling,
-    )
-    surfaces = (
+def _surfaces(half: float, near: float, back: float, ceiling: float):
+    return (
         ((-half, 0, near), (1, 0, 0), (0, 0, 1), half * 2, back - near, PANEL_COLORS["floor"]),
         (
             (-half, ceiling, near),
@@ -134,8 +178,24 @@ def room_background(width: int, height: int, hud: bool = True) -> RoomBackground
         ((half, 0, near), (0, 0, 1), (0, 1, 0), back - near, ceiling, PANEL_COLORS["right"]),
         ((-half, 0, back), (1, 0, 0), (0, 1, 0), half * 2, ceiling, PANEL_COLORS["back"]),
     )
-    for surface in surfaces:
+
+
+def _paint(image, projection, half, near, back, ceiling):
+    for surface in _surfaces(half, near, back, ceiling):
         _surface(image, projection, *surface)
+
+
+@lru_cache(maxsize=4)
+def room_background(width: int, height: int, hud: bool = True) -> RoomBackground:
+    projection = RoomProjection.for_stage(width, height, hud)
+    image = np.full((height, width, 3), PANEL_COLORS["back"], np.uint8)
+    half, near, back, ceiling = (
+        projection.half_width,
+        projection.near,
+        projection.back,
+        projection.ceiling,
+    )
+    _paint(image, projection, half, near, back, ceiling)
     floor = projection.project(
         ((-half, 0, near), (half, 0, near), (half, 0, back), (-half, 0, back))
     )
@@ -143,6 +203,39 @@ def room_background(width: int, height: int, hud: bool = True) -> RoomBackground
     cv2.fillConvexPoly(floor_mask, np.rint(floor).astype(np.int32), 255)
     floor_mask[: projection.top] = 0
     floor_mask[projection.bottom :] = 0
+    image.flags.writeable = False
+    floor_mask.flags.writeable = False
+    return RoomBackground(image, floor_mask, projection)
+
+
+def camera_room(camera, width: int, height: int) -> RoomBackground:
+    """The same room, drawn from wherever the ghost camera happens to be.
+
+    Not cached: the image depends on the camera pose, which changes every frame
+    while flying. Polygons crossing the near plane are skipped rather than
+    clipped, so geometry very close to the camera thins out instead of tearing.
+    """
+    projection = CameraProjection(camera, width, height, top=0, bottom=height)
+    image = np.full((height, width, 3), PANEL_COLORS["back"], np.uint8)
+    _paint(
+        image,
+        projection,
+        projection.half_width,
+        projection.near,
+        projection.back,
+        projection.ceiling,
+    )
+    floor = projection.project(
+        (
+            (-projection.half_width, 0, projection.near),
+            (projection.half_width, 0, projection.near),
+            (projection.half_width, 0, projection.back),
+            (-projection.half_width, 0, projection.back),
+        )
+    )
+    floor_mask = np.zeros((height, width), np.uint8)
+    if _visible(floor, width, height):
+        cv2.fillConvexPoly(floor_mask, np.rint(floor).astype(np.int32), 255)
     image.flags.writeable = False
     floor_mask.flags.writeable = False
     return RoomBackground(image, floor_mask, projection)

@@ -203,6 +203,55 @@ def present(
     return ModelPresentation(batches, footprints, evaluation)
 
 
+def camera_batches(instance, evaluation, camera, width: int, height: int, origin=(0.0, 0.0, 3.0)):
+    """Project the posed rig through a movable camera instead of scaling it to the frame.
+
+    The rig already carries real geometry in metres, so viewing it from another
+    angle needs no change to the renderer: world positions are projected to
+    pixels here and the existing depth-tested rasteriser consumes them exactly
+    as before. View-space depth replaces the scaled model z so triangles still
+    order correctly.
+
+    Triangles with any vertex at or behind the near plane are dropped. That is a
+    deliberate simplification: proper near-plane clipping would split them.
+    """
+    from trickroom.ghostcam import project_to_screen
+
+    base = np.asarray(origin, dtype=float).reshape(3)
+    batches = []
+    asset = instance.asset
+    for i, deformed in enumerate(evaluation.primitives):
+        primitive = deformed.source
+        indices = primitive.indices[evaluation.visible[i]]
+        if not len(indices):
+            continue
+        screen, valid = project_to_screen(deformed.positions + base, camera, width, height)
+        keep = valid[indices].all(axis=1)
+        indices = indices[keep]
+        if not len(indices):
+            continue
+        if deformed.normals is None:
+            triangles = deformed.positions[indices]
+            normal = np.cross(triangles[:, 1] - triangles[:, 0], triangles[:, 2] - triangles[:, 0])
+            normal /= np.maximum(np.linalg.norm(normal, axis=1, keepdims=True), 1e-9)
+            normals = np.repeat(normal[:, None, :], 3, axis=1)
+        else:
+            normals = deformed.normals[indices]
+        material = asset.materials[primitive.material]
+        texture = asset.textures[material.texture] if material.texture is not None else None
+        batches.append(
+            TexturedBatch(
+                screen[indices],
+                normals,
+                primitive.uv[indices],
+                primitive.colors[indices].copy(),
+                material,
+                texture,
+            )
+        )
+    return batches
+
+
 def head_presentation(instance: AvatarInstance, evaluation: Evaluation, width: int, height: int):
     bounds = _head_bounds(instance, evaluation)
     dimensions = bounds[1] - bounds[0]

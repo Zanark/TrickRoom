@@ -10,7 +10,6 @@ node_modules/
 *.blend1
 *.blend2
 .local/
-# .agent-context/
 .env
 .env.*
 !.env.example

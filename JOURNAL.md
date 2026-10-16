@@ -3,6 +3,168 @@
 Newest entries first. Record decisions, failures, changes and evidence, not just completed features.
 Times use Asia/Kolkata. Raw camera media, source addresses and credentials do not belong here.
 
+## 2026-10-16 - Timeline redraw rate cut, and the ghost camera checked on real tracking
+
+- Owner reported the bottom playback bar flickering during video playback, and asked for the
+  ghost camera to be checked against their actual recording rather than the scripted demo.
+- Measured the timeline before changing anything, because the obvious explanations were wrong.
+  The slider position is monotonic with zero backward jumps; button text, slider enabled state,
+  timeline visibility and capture state produce zero flips over 529 samples; and every layout
+  dimension including the bar's position and height is completely static. The flicker is not
+  state churn and not layout oscillation.
+- What is real: _update_playback writes the slider variable on every tick, about sixty times a
+  second, while the thumb only advances a pixel or so per second. Each write redraws the scale
+  while the avatar is competing for the same UI thread. The position is now quantised to the
+  thumb's own pixel resolution and written only when it would land somewhere new, and the time
+  label likewise only when its text changes. Writes fall from one per tick to 107 per ten
+  seconds, which is exactly the 786px slider times ten seconds of a 73.44s recording. Playback
+  still advances correctly at 10.01s per ten seconds.
+- Where the slider width cannot be read, as in harnesses that use a mock widget, the old
+  every-tick behaviour is kept rather than guessing a resolution. Ten timeline tests caught that
+  case before it could ship.
+- Ghost camera verified against the supplied recording with live inference running and the
+  owner's own model loaded. Shoulder span across the screen measures +49.2px from the front,
+  +37.5 at a quarter turn, exactly 0.0 side on, and -52.9 from behind. Zero means the shoulders
+  are edge on and the negative value means the character is being seen from the back, so the
+  pose does not follow the camera. A separate check confirmed the character's world forward
+  stays [0,0,-1] at every camera yaw, which is structural: evaluate() takes no camera argument.
+- 522tests, no failures, errors or skips; Ruff and tools\check_docs.py pass; native replay
+  timeline and Studio checks pass. No source recording, model or profile was modified.
+
+## 2026-10-16 - Stage clicks reach the camera, and yaw is no longer cut short
+
+- Owner reported that clicking the preview did nothing. The cause was a binding on the wrong
+  widget: the stage label is packed fill/expand inside its frame, so it covers the frame entirely
+  and every pointer event lands on the label. Binding the frame alone could never fire.
+- The focused tests could not have caught this. They inject look deltas straight into the camera
+  and never touch a widget, so they passed while the feature was unreachable. Added
+  tools\check_ghost_input.py, which generates genuine Tk Button-1 and Motion events instead.
+- Also fixed the limitation recorded in the previous entry rather than leaving it documented.
+  The pointer is now warped back to the middle of the stage after each motion event and the
+  returning event is ignored, so turning never runs out of room. Measured9600px of pointer travel
+  across a1017px stage accumulating633.6degrees, more than a full circle and exactly the travel
+  times the0.066degrees-per-count sensitivity. Before this the cursor left the stage after about
+  eight events and the camera stopped.
+- Checked through the real window: click captures, motion turns, pitch clamps at89degrees, Esc
+  releases without disconnecting, and no Tk callback errors occur.
+- One of my own thresholds was wrong first time round:60events of60px cannot reach a full circle
+  at this sensitivity, and the237.6degrees it did produce was exactly correct. The threshold was
+  raised rather than the sensitivity being quietly changed to make the check pass.
+
+## 2026-10-16 - A personal model can be the default without hard-coding its path
+
+- Owner asked for a specific exported character to load by default. Hard-coding that path would
+  put a private location into source and contradict the existing rule that selections stay
+  session-only and are never written into settings, so TRICKROOM_AVATAR follows the pattern
+  already used by TRICKROOM_MODELS and the camera variables.
+- An explicit --avatar always wins. Unset or blank means the built-in character. A sidecar
+  .trickroom.json beside the model is picked up automatically, and an explicit --avatar-profile is
+  never overwritten. A configured path that no longer resolves raises naming the variable and the
+  path rather than falling back silently, because a silent fallback to the built-in character
+  would look like the model failing to load.
+- The default is applied to video export as well as the studio and headless paths.
+- Verified with the owner's actual export: it validates as profile1 with13985vertices,6406
+  triangles and no warnings, and with the variable set a demo run loaded it and rendered73frames
+  with bones TRACKED. 11focused cases cover unset, blank, sidecar discovery, explicit overrides,
+  a stale path and a directory.
+- No model path, private location or asset was added to the repository.
+
+## 2026-10-16 - Ghost camera is flyable from Studio section 08
+
+- Added the control the previous entry was missing: section08 with an enable toggle,
+  click-to-capture pointer look, WASD, Q/E and Space/Ctrl, Shift precision, field-of-view and
+  speed sliders, reset and a live pose readout. Esc releases the pointer before it disconnects,
+  so flying never costs the source.
+- Input is collected in Studio and handed to the camera as an abstract command rather than read
+  inside it. A focused entry or scale simply stops producing movement, which is why typing in the
+  source field cannot fly the camera.
+- Verified through a real Studio window, not only unit tests: W moved1.554m forward, D moved
+  0.810m right, mouse look reached yaw9.9/pitch-2.6, the field-of-view control took effect at
+  35degrees, reset returned to the start pose and released capture, and no Tk callback errors
+  occurred.
+- Two genuine defects surfaced during validation. Mouse look was being swallowed on a zero-length
+  frame: update returned early on dt==0 after the caller had already cleared the pending delta.
+  Look is a displacement and must not depend on frame time, so it is now applied before that gate.
+  release_pointer also touched preview_frame unguarded, which broke harnesses that build a Studio
+  with only the fields they need. One of my own test expectations was wrong as well, comparing
+  absolute height against zero when the camera starts at1.65m eye height.
+- 511tests, no failures, errors or skips; Ruff and tools\check_docs.py pass. Native Studio passes
+  with the extra section; panel heights move to819/2479/312px and the collapsed layout still fits
+  the1020x720 minimum. Model studio and the six-angle end-to-end check still pass.
+- Unchanged limits: imported GLBs only, because the built-in character is posed from image-space
+  landmarks and has no real depth. Orbit and attached modes have no subject wired. Near-plane
+  triangles are dropped rather than split. The viewpoint cannot improve a monocular pose estimate.
+
+## 2026-10-16 - Ghost camera renders the stage from any viewpoint
+
+- Owner asked for a movable camera, separate from the capture camera, to take shots from any
+  angle. Researched replay and spectator systems against primary source first: Quake's GPL tree
+  and Source SDK2013, not recollection. The governing principle is that a replay records
+  authoritative state and the camera is a reconstructable view over it, never part of it. Quake
+  writes recorded view angles beside the network message rather than inside it.
+- Key finding before writing anything: TrickRoom had no camera at all. The shader maps pixel
+  coordinates straight to clip space, placement was a uniform scale plus a translation, and the
+  room was a cached background. The stage was 2.5D, so this was not a control to bolt on.
+- The renderer still has no view stage and did not need one. project_to_screen takes world metres
+  through view and projection, divides, and returns pixels plus view-space depth. That depth feeds
+  the existing depth buffer, so the rasteriser never learns a camera exists. The room already
+  defined its five surfaces in world coordinates, so camera_room reuses them unchanged.
+- Borrowed deliberately, with reasons recorded in docs\17-ghost-camera.md: modes are named rather
+  than numbered because Valve's own enum shifted ROAMING from6to7; movement is noclip; forward
+  follows the look vector while vertical stays world-up; the wish velocity is clamped before
+  acceleration so diagonals keep their direction; the modifier halves speed for precision.
+- Verified end to end. One identical pose rendered from front, three-quarter, side, behind, low
+  and high drew all606triangles in every shot, every pair of images differs, exit0. Subject
+  pixels vary as a silhouette should,16070from the side against33975from behind, and the high
+  shot foreshortens to233px against about394px level.
+- 493tests, no failures, errors or skips; Ruff and tools\check_docs.py pass. Native Studio still
+  passes19groups with no callback errors and the CLI demo still exits0, so the room refactor did
+  not regress the application.
+- Two real defects were caught by validating rather than assuming. Position was integrated by the
+  end-of-step velocity, leaving movement frame-rate dependent by about three percent between15and
+  120fps; it now uses the analytic integral of the exponential approach and agrees to1e-9. Two of
+  my own test expectations were also wrong: wrap_yaw(540) is-180 in a half-open range, and a dolly
+  zoom moving closer must widen the angle rather than narrow it.
+- Honest limits. There is no Studio button or pointer capture yet, so this is reachable from
+  tools\check_ghost_camera.py and not from the application. Only imported rigs can be viewed
+  off-axis; the built-in character is posed from image-space landmarks and has no real depth.
+  Near-plane triangles are dropped rather than split. None of this improves a monocular pose
+  estimate: a front view hides depth error that a steep angle will expose. No camera was opened
+  and no raw media or landmarks were written.
+
+## 2026-10-14 - Stage size anchored to a captured base distance
+
+- Owner reported that the scripted demo draws a large character, a recorded source draws a much
+  smaller one, and an imported GLB is smaller still. Reproduced and measured rather than assumed:
+  demo built-in71.0%of stage height, demo GLB70.0%, the supplied recorded capture22.0%and the
+  supplied imported capture21.7%. Both screenshots offered as the target are the same file.
+- Root cause is not a defect in the scale filter. presentation.calibration_ratio returns
+  median(measured image span / projected posed span) /max(frame_size) and presentation.present
+  multiplies max(frame_size) back in, so the drawn size equals apparent pixel size with no
+  reference framing. The imported path reads smaller because median bone-span ratios include
+  foreshortened limbs, while the built-in character is posed straight from landmark extents.
+- room.py already carries a real pinhole camera with focal, 1.65m eye height, a floor plane and
+  an inverse floor_point used by the shoe shadows. The character never used any of it; the room
+  is a cached background and the figure is placed in image space, so the two only share a frame.
+- Added src\trickroom\placement.py: StageAnchor captures the first fully visible body as the
+  session base distance, scales later observations by the ratio of spans, and derives a room
+  depth from that ratio because apparent size varies with inverse distance. Depth is clamped to
+  the room bounds and reports when clamping occurred. The anchor is session-only, resets on a
+  source frame-size change or explicit recalibration, and is never written to disk.
+- tests\test_stage_anchor.py adds31focused cases: capture, inverse-depth scaling, clamping,
+  partial bodies that must not fabricate a placement, reacquisition after loss, frame-size
+  changes, explicit reset and invalid configuration. Full suite405tests with no failures,
+  errors or skips; Ruff check and format pass.
+- Scope is deliberately bounded. The anchor is not yet wired into the imported or built-in
+  presentation paths, the character is not yet placed on the floor plane, and no native or
+  recorded-source evidence has been produced. TODO28 stays IN_PROGRESS for that work.
+- This is a presentation anchor derived from image spans. It is not a measured physical distance,
+  a calibrated focal length, a contact estimate or a tracking-accuracy improvement. No camera was
+  opened, no model, recording or profile was modified, and nothing was published.
+- Also corrected27_HEAD_TRACKING_HANDOVER.todo, which used '## Evidence' and no completion log.
+  tools\check_docs.py requires the catalogue headings, so the repository-wide documentation gate
+  had been failing since that workstream landed. Its recorded content is unchanged.
+
 ## 2026-10-13 - CLI reference-video export completed
 
 - Added explicit --render-video for local recordings: all selected frames, source clock, owned

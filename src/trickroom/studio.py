@@ -19,13 +19,17 @@ from PIL import Image, ImageTk
 from trickroom import debug_views
 from trickroom.assets.gltf import load_asset
 from trickroom.assets.motion import MotionOptions
+from trickroom.assets.presentation import camera_batches
 from trickroom.assets.profile import AssetError
 from trickroom.assets.retarget import AvatarInstance
 from trickroom.camera import Source
 from trickroom.demo import demo_observation
 from trickroom.face_response import CHANNELS
+from trickroom.ghostcam import MAX_FOV, MIN_FOV, CameraCommand, GhostCamera
 from trickroom.graphics_worker import GraphicsWorker
+from trickroom.raster import draw_textured
 from trickroom.render import Renderer, StageOptions
+from trickroom.room import camera_room
 from trickroom.runtime import Runtime
 from trickroom.state import Observation
 
@@ -139,6 +143,8 @@ class Studio:
         self._test_video: Path | None = None
         self._timeline_visible = False
         self._playback_config = None
+        self._playback_pixel = None
+        self._playback_label = None
         self._scrubbing = False
         self._pending_seek: float | None = None
         self._requested_paused: bool | None = None
@@ -165,11 +171,28 @@ class Studio:
         self.meters = {
             name: tk.DoubleVar(value=0) for name in ("Left blink", "Right blink", "Mouth", "Smile")
         }
+        self.ghost_camera = GhostCamera()
+        self.ghost_enabled = tk.BooleanVar(value=False)
+        self.ghost_fov = tk.DoubleVar(value=self.ghost_camera.fov_y)
+        self.ghost_speed = tk.DoubleVar(value=self.ghost_camera.speed)
+        self.ghost_info = tk.StringVar(value="Ghost camera off. The stage view is unchanged.")
+        self._ghost_keys: set[str] = set()
+        self._ghost_look = [0.0, 0.0]
+        self._ghost_pointer: tuple[int, int] | None = None
+        self._ghost_captured = False
+        self._ghost_clock: float | None = None
         self._configure()
         self._build()
         self.render_worker = GraphicsWorker(self.renderer)
         self.root.protocol("WM_DELETE_WINDOW", self.close)
-        self.root.bind("<Escape>", lambda _event: self.disconnect())
+        self.root.bind("<Escape>", self._escape)
+        self.root.bind("<KeyPress>", self._ghost_key_press, add="+")
+        self.root.bind("<KeyRelease>", self._ghost_key_release, add="+")
+        # The stage label fills its frame, so pointer events land on the label.
+        # Binding the frame alone never fires.
+        for widget in (self.preview, self.preview_frame):
+            widget.bind("<Button-1>", self._capture_pointer, add="+")
+            widget.bind("<Motion>", self._ghost_motion, add="+")
         self._tick()
         self._render_tick()
         if avatar is not None:
@@ -536,6 +559,56 @@ class Studio:
             wraplength=270,
             style="Muted.TLabel",
         ).pack(fill="x", pady=6)
+
+        section("08 / GHOST CAMERA")
+        ttk.Checkbutton(
+            panel,
+            text="Fly the view (imported model only)",
+            variable=self.ghost_enabled,
+            command=self.toggle_ghost_camera,
+        ).pack(anchor="w", pady=2)
+        ttk.Label(
+            panel,
+            text=(
+                "Click the stage to capture the mouse, then look with the mouse.\n"
+                "W/A/S/D move, Q/E or Space/Ctrl rise and fall, Shift is precision.\n"
+                "Esc releases the mouse. Tracking is unaffected by where you fly."
+            ),
+            wraplength=270,
+            style="Muted.TLabel",
+        ).pack(fill="x", pady=4)
+        fov_row = ttk.Frame(panel)
+        fov_row.pack(fill="x", pady=3)
+        ttk.Label(fov_row, text="Field of view", width=13).pack(side="left")
+        ttk.Scale(
+            fov_row,
+            from_=MIN_FOV,
+            to=MAX_FOV,
+            variable=self.ghost_fov,
+            command=lambda _value: self.apply_ghost_fov(),
+        ).pack(side="right", fill="x", expand=True)
+        speed_row = ttk.Frame(panel)
+        speed_row.pack(fill="x", pady=3)
+        ttk.Label(speed_row, text="Speed m/s", width=13).pack(side="left")
+        ttk.Scale(speed_row, from_=0.5, to=8.0, variable=self.ghost_speed).pack(
+            side="right", fill="x", expand=True
+        )
+        ttk.Button(panel, text="Reset view", command=self.reset_ghost_camera).pack(
+            fill="x", pady=(6, 2)
+        )
+        ttk.Label(panel, textvariable=self.ghost_info, style="Mono.TLabel", wraplength=270).pack(
+            anchor="w", pady=4
+        )
+        ttk.Label(
+            panel,
+            text=(
+                "The viewpoint is presentation only. It cannot improve a single-camera "
+                "pose estimate, so steep angles expose depth error a front view hides."
+            ),
+            wraplength=270,
+            style="Muted.TLabel",
+        ).pack(fill="x", pady=4)
+
         footer = ttk.Frame(shell)
         footer.pack(fill="x", pady=(12, 0))
         ttk.Label(
@@ -546,6 +619,167 @@ class Studio:
         ttk.Label(
             footer, text="Built-in + Blender GLB / humanoid profile 1", style="Muted.TLabel"
         ).pack(side="right")
+
+    # --- ghost camera -----------------------------------------------------
+    # Input is collected here and handed to the camera as an abstract command.
+    # Keeping device handling outside the camera means a focused control simply
+    # stops producing movement instead of fighting it.
+
+    MOVE_KEYS = {
+        "w": "forward",
+        "s": "back",
+        "a": "left",
+        "d": "right",
+        "e": "up",
+        "q": "down",
+        "space": "up",
+        "control_l": "down",
+        "control_r": "down",
+        "shift_l": "slow",
+        "shift_r": "slow",
+    }
+
+    def _escape(self, _event=None) -> None:
+        """Escape releases the pointer first, and only then disconnects."""
+        if self._ghost_captured:
+            self.release_pointer()
+            return
+        self.disconnect()
+
+    def _ghost_active(self) -> bool:
+        enabled = getattr(self, "ghost_enabled", None)
+        return bool(enabled.get()) if enabled is not None else False
+
+    def _ghost_key_press(self, event) -> None:
+        if not self._ghost_active():
+            return
+        key = (event.keysym or "").lower()
+        if key in self.MOVE_KEYS and not isinstance(
+            self.root.focus_get(), ttk.Entry | tk.Entry | ttk.Scale
+        ):
+            self._ghost_keys.add(key)
+
+    def _ghost_key_release(self, event) -> None:
+        self._ghost_keys.discard((event.keysym or "").lower())
+
+    def _stage_centre(self) -> tuple[int, int] | None:
+        """Middle of the stage label, used as the anchor the pointer returns to."""
+        widget = getattr(self, "preview", None)
+        if widget is None or not widget.winfo_exists():
+            return None
+        width, height = widget.winfo_width(), widget.winfo_height()
+        if width < 16 or height < 16:
+            return None
+        return width // 2, height // 2
+
+    def _capture_pointer(self, _event=None) -> None:
+        if not self._ghost_active():
+            return
+        self._ghost_captured = True
+        self._ghost_pointer = None
+        try:
+            self.preview.focus_set()
+            self.preview.configure(cursor="none")
+            self.preview_frame.configure(cursor="none")
+        except tk.TclError:
+            pass
+        self._recentre_pointer()
+        self.ghost_info.set("MOUSE CAPTURED / Esc releases")
+
+    def _recentre_pointer(self) -> None:
+        """Put the pointer back in the middle so turning is never cut short.
+
+        Without this the cursor reaches the edge of the stage, motion events
+        stop and the camera stops turning part way round. Warping back each
+        time keeps yaw genuinely unlimited.
+        """
+        centre = self._stage_centre()
+        if centre is None or not self._ghost_captured:
+            return
+        try:
+            self.preview.event_generate("<Motion>", warp=True, x=centre[0], y=centre[1])
+        except tk.TclError:
+            pass
+
+    def release_pointer(self) -> None:
+        self._ghost_captured = False
+        self._ghost_pointer = None
+        self._ghost_keys.clear()
+        self._ghost_look = [0.0, 0.0]
+        for name in ("preview", "preview_frame"):
+            widget = getattr(self, name, None)
+            if widget is None:
+                continue
+            try:
+                widget.configure(cursor="")
+            except tk.TclError:
+                pass
+
+    def _ghost_motion(self, event) -> None:
+        if not (self._ghost_active() and self._ghost_captured):
+            return
+        centre = self._stage_centre()
+        if centre is None:
+            # No usable stage to anchor to; fall back to plain deltas.
+            if self._ghost_pointer is not None:
+                self._ghost_look[0] += event.x - self._ghost_pointer[0]
+                self._ghost_look[1] += event.y - self._ghost_pointer[1]
+            self._ghost_pointer = (event.x, event.y)
+            return
+        if (event.x, event.y) == centre:
+            return  # our own warp coming back, not the user moving
+        self._ghost_look[0] += event.x - centre[0]
+        self._ghost_look[1] += event.y - centre[1]
+        self._recentre_pointer()
+
+    def toggle_ghost_camera(self) -> None:
+        if not self._ghost_active():
+            self.release_pointer()
+            self.ghost_info.set("Ghost camera off. The stage view is unchanged.")
+            return
+        self.ghost_info.set("Click the stage to capture the mouse.")
+
+    def apply_ghost_fov(self) -> None:
+        try:
+            self.ghost_camera.set_fov(float(self.ghost_fov.get()))
+        except ValueError:
+            pass
+
+    def reset_ghost_camera(self) -> None:
+        self.ghost_camera.reset()
+        self.ghost_fov.set(self.ghost_camera.fov_y)
+        self.release_pointer()
+
+    def _advance_ghost_camera(self, now: float) -> None:
+        # Harnesses build a Studio with only the fields a test needs, so this
+        # step must be inert rather than raising when the camera is absent.
+        if getattr(self, "ghost_camera", None) is None:
+            return
+        previous = getattr(self, "_ghost_clock", None)
+        self._ghost_clock = now
+        if not self._ghost_active():
+            return
+        held = self._ghost_keys
+        command = CameraCommand(
+            forward=("w" in held) - ("s" in held),
+            side=("d" in held) - ("a" in held),
+            up=(("e" in held) or ("space" in held)) - (("q" in held) or ("control_l" in held)),
+            yaw_delta=self._ghost_look[0],
+            pitch_delta=self._ghost_look[1],
+            slow=("shift_l" in held) or ("shift_r" in held),
+        )
+        self._ghost_look = [0.0, 0.0]
+        speed = float(self.ghost_speed.get())
+        if speed > 0:
+            self.ghost_camera.speed = speed
+        self.ghost_camera.update(command, now - previous if previous is not None else 0.0)
+        pose = self.ghost_camera.pose()
+        x, y, z = pose["position"]
+        self.ghost_info.set(
+            f"x {x:+.2f}  y {y:+.2f}  z {z:+.2f}\n"
+            f"yaw {pose['yaw']:+.1f}  pitch {pose['pitch']:+.1f}  fov {pose['fov']:.0f}\n"
+            + ("MOUSE CAPTURED / Esc releases" if self._ghost_captured else "Click stage for mouse")
+        )
 
     def set_sections_expanded(self, expanded: bool) -> None:
         for section in self.sections.values():
@@ -941,6 +1175,8 @@ class Studio:
         if not visible:
             self._pending_seek = self._requested_paused = None
             self._playback_config = None
+            self._playback_pixel = None
+            self._playback_label = None
             return
         capture, status = self.runtime.camera.status, self.runtime.status
         if self._pending_seek is not None:
@@ -983,9 +1219,28 @@ class Studio:
                 and status.state != "ENDED"
                 else capture.position_seconds
             )
-            self.playback_position.set(min(position, duration) if duration > 0 else 0)
+            position = min(position, duration) if duration > 0 else 0
+            # The thumb only moves a few pixels a second, but this runs every
+            # tick. Writing the variable each time redraws the scale about
+            # sixty times a second for no visible change, which shows up as
+            # shimmer while the avatar is competing for the UI thread. Quantise
+            # to the thumb's own pixel resolution and only write when it would
+            # actually land somewhere new.
+            width = self.playback_slider.winfo_width()
+            if not isinstance(width, int) or width <= 1 or duration <= 0:
+                # Width unknown, so the thumb cannot be quantised. Fall back to
+                # updating every tick rather than guessing a resolution.
+                pixel = None
+            else:
+                pixel = round(position / duration * width)
+            if pixel is None or pixel != getattr(self, "_playback_pixel", None):
+                self._playback_pixel = pixel
+                self.playback_position.set(position)
             total = format_replay_time(duration) if duration > 0 else "--:--"
-            self.playback_time.set(f"{format_replay_time(position)} / {total}")
+            label = f"{format_replay_time(position)} / {total}"
+            if label != getattr(self, "_playback_label", None):
+                self._playback_label = label
+                self.playback_time.set(label)
 
     def _connection_buttons(self, idle: bool) -> None:
         self.connect_button.configure(state="normal" if idle else "disabled")
@@ -1266,6 +1521,7 @@ class Studio:
 
     def _tick(self) -> None:
         now = time.perf_counter()
+        self._advance_ghost_camera(now)
         if self._closing:
             if self.render_worker.error is not None:
                 self.exit_code = 2
@@ -1344,6 +1600,8 @@ class Studio:
         demo = self.demo
         renderer = self.renderer
 
+        ghost = self.ghost_camera if self.ghost_enabled.get() else None
+
         def draw():
             renderer.motion_options = motion
             renderer.face_response.enabled = face_enabled
@@ -1351,6 +1609,13 @@ class Studio:
                 index = CHANNELS.index(channel)
                 if renderer.face_response.gains[index] != gain:
                     renderer.face_response.set_gain(channel, gain)
+            if ghost is not None and renderer.imported is not None and state is not None:
+                frame = camera_room(ghost, w, h).pixels.copy()
+                evaluation = renderer.imported.evaluate(state, now)
+                batches = camera_batches(renderer.imported, evaluation, ghost, w, h)
+                if batches:
+                    draw_textured(frame, batches)
+                return Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
             image = renderer.render(
                 state,
                 (w, h),

@@ -69,7 +69,7 @@ would hide entry/exit motion.
 
 ## Studio controls
 
-All seven numbered sections are independently collapsible. Click a `[-]` or `[+]` header to
+All eight numbered sections are independently collapsible. Click a `[-]` or `[+]` header to
 fold or open its controls, or focus the header with Tab and press Space/Enter. **Input** starts
 open and the other sections start folded; **Expand all** and **Collapse all** remain above
 the scroll area. Collapse all also returns the panel to the top.
@@ -79,7 +79,31 @@ remain intact. It does **not** disable an enabled private debug option or close 
 window. Use the actual checkbox, window close button or Disconnect/Esc for those actions.
 Expansion choices last for the current studio session and are not written to settings.
 
-![All seven control sections folded in the synthetic demo](images/studio-collapsed.png)
+![All control sections folded in the synthetic demo](images/studio-collapsed.png)
+
+## 08 / Ghost camera
+
+Tick **Fly the view** to move the viewpoint independently of the capture camera. The performer's
+pose is unaffected by where you fly; this only changes where that pose is watched from.
+
+| Control | Action |
+| --- | --- |
+| Click the stage | Capture the mouse for looking; the cursor hides |
+| Mouse | Look. Yaw turns without limit; pitch stops just short of straight up or down |
+| `W` `A` `S` `D` | Move forward, left, back, right along the view |
+| `Q` / `E`, or `Ctrl` / `Space` | Descend and rise. Always world vertical, never view relative |
+| `Shift` | Precision. Halves speed; it is not a sprint |
+| `Esc` | Release the mouse. A second press disconnects as usual |
+| Field of view | 20 to 120 degrees. Narrow flattens, wide exaggerates depth |
+| Speed | 0.5 to 8 metres per second |
+| Reset view | Return to the starting pose and stop |
+
+The readout shows position, yaw, pitch, field of view and whether the mouse is captured.
+
+Two limits worth knowing before you use it. It applies to **imported GLB models only**: the
+built-in character is posed from image-space landmarks and has no real depth to view from another
+angle. And the viewpoint cannot improve a single-camera pose estimate, so steep angles expose
+depth error that a front view hides. See [ghost camera](17-ghost-camera.md).
 
 The **Private Debug Windows** section has separate default-off options for raw input,
 skeleton on black and connected face landmarks on black. Raw input exposes the real feed in
@@ -201,6 +225,19 @@ A file with incorrect FPS metadata can therefore play at the wrong real-world sp
 not a recording-time repair feature.
 DirectShow device opening/reading depends on the device driver and is not as strictly bounded
 as HTTP socket timeouts.
+
+`TRICKROOM_AVATAR` names a GLB to load when `--avatar` is not given, so a personal character can
+be the default without its path entering source, documentation or saved settings. Its
+`.trickroom.json` sidecar is picked up automatically when one sits beside it. An explicit
+`--avatar` always wins, an unset or blank value means the built-in character, and a path that no
+longer resolves is reported rather than silently ignored.
+
+```powershell
+$env:TRICKROOM_AVATAR = 'C:\path\to\Character.glb'   # this session
+[Environment]::SetEnvironmentVariable('TRICKROOM_AVATAR', 'C:\path\to\Character.glb', 'User')
+```
+
+`TRICKROOM_MODELS` relocates the MediaPipe task files.
 
 `TRICKROOM_CAMERA_URL`, `TRICKROOM_CAMERA_USER` and `TRICKROOM_CAMERA_PASSWORD` can supply
 process-local configuration. Auth environment variables override encrypted local defaults.
