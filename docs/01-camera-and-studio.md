@@ -226,6 +226,19 @@ not a recording-time repair feature.
 DirectShow device opening/reading depends on the device driver and is not as strictly bounded
 as HTTP socket timeouts.
 
+`TRICKROOM_AVATAR` names a GLB to load when `--avatar` is not given, so a personal character can
+be the default without its path entering source, documentation or saved settings. Its
+`.trickroom.json` sidecar is picked up automatically when one sits beside it. An explicit
+`--avatar` always wins, an unset or blank value means the built-in character, and a path that no
+longer resolves is reported rather than silently ignored.
+
+```powershell
+$env:TRICKROOM_AVATAR = 'C:\path\to\Character.glb'   # this session
+[Environment]::SetEnvironmentVariable('TRICKROOM_AVATAR', 'C:\path\to\Character.glb', 'User')
+```
+
+`TRICKROOM_MODELS` relocates the MediaPipe task files.
+
 `TRICKROOM_CAMERA_URL`, `TRICKROOM_CAMERA_USER` and `TRICKROOM_CAMERA_PASSWORD` can supply
 process-local configuration. Auth environment variables override encrypted local defaults.
 UI edits override the prefilled fields for that session and are not automatically saved.

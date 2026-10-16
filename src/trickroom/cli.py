@@ -24,6 +24,37 @@ from trickroom.render import Renderer, StageOptions
 from trickroom.runtime import Runtime
 
 
+def default_avatar() -> Path | None:
+    """A model to load when none is given on the command line.
+
+    Read from TRICKROOM_AVATAR so a personal character can be the default
+    without its path entering source, documentation or saved settings. An unset
+    or blank value simply means the built-in character, and a path that no
+    longer exists is reported rather than silently ignored.
+    """
+    configured = os.environ.get("TRICKROOM_AVATAR", "").strip()
+    if not configured:
+        return None
+    path = Path(configured).expanduser()
+    if not path.is_file():
+        raise ValueError(f"TRICKROOM_AVATAR does not point at a file: {path}")
+    return path
+
+
+def apply_default_avatar(args) -> None:
+    """Fill in the avatar and its sidecar when the command line omitted them."""
+    if args.avatar is not None:
+        return
+    path = default_avatar()
+    if path is None:
+        return
+    args.avatar = path
+    if args.avatar_profile is None:
+        sidecar = path.with_suffix(".trickroom.json")
+        if sidecar.is_file():
+            args.avatar_profile = sidecar
+
+
 def positive_seconds(value: str) -> float:
     result = float(value)
     if not math.isfinite(result) or not 0 < result <= 86400:
@@ -269,6 +300,7 @@ def main(argv: list[str] | None = None) -> int:
                 raise ValueError("Run model download/validation separately from video export.")
             from trickroom.video_export import export_video
 
+            apply_default_avatar(args)
             return export_video(args, save_png)
         if args.start_seconds or args.clean_output or args.render_size != (960, 720):
             raise ValueError("Export start/size/clean options require --render-video.")
@@ -289,6 +321,9 @@ def main(argv: list[str] | None = None) -> int:
                 args.report.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
             print(json.dumps(report, indent=2))
             return 0
+        apply_default_avatar(args)
+        if args.avatar is not None and not args.avatar.is_file():
+            raise ValueError(f"Avatar file not found: {args.avatar}")
         if (args.avatar_profile or args.avatar_mode != "live") and args.avatar is None:
             raise ValueError(
                 "--avatar-profile and --avatar-mode require --avatar or --validate-avatar."

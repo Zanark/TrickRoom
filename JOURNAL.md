@@ -3,6 +3,24 @@
 Newest entries first. Record decisions, failures, changes and evidence, not just completed features.
 Times use Asia/Kolkata. Raw camera media, source addresses and credentials do not belong here.
 
+## 2026-10-16 - A personal model can be the default without hard-coding its path
+
+- Owner asked for a specific exported character to load by default. Hard-coding that path would
+  put a private location into source and contradict the existing rule that selections stay
+  session-only and are never written into settings, so TRICKROOM_AVATAR follows the pattern
+  already used by TRICKROOM_MODELS and the camera variables.
+- An explicit --avatar always wins. Unset or blank means the built-in character. A sidecar
+  .trickroom.json beside the model is picked up automatically, and an explicit --avatar-profile is
+  never overwritten. A configured path that no longer resolves raises naming the variable and the
+  path rather than falling back silently, because a silent fallback to the built-in character
+  would look like the model failing to load.
+- The default is applied to video export as well as the studio and headless paths.
+- Verified with the owner's actual export: it validates as profile1 with13985vertices,6406
+  triangles and no warnings, and with the variable set a demo run loaded it and rendered73frames
+  with bones TRACKED. 11focused cases cover unset, blank, sidecar discovery, explicit overrides,
+  a stale path and a directory.
+- No model path, private location or asset was added to the repository.
+
 ## 2026-10-16 - Ghost camera is flyable from Studio section 08
 
 - Added the control the previous entry was missing: section08 with an enable toggle,
