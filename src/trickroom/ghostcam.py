@@ -247,11 +247,14 @@ class GhostCamera:
         """Integrate one frame of input. Movement is frame-rate independent."""
         if not math.isfinite(dt) or dt < 0:
             raise ValueError("Frame time must be finite and non-negative.")
+        # Look is applied before any frame-time gate. A pointer delta is already
+        # a displacement, so it must not be scaled by dt and must not be lost on
+        # a zero-length frame: the caller has no way to hand it back.
+        if command.yaw_delta or command.pitch_delta:
+            self.look(command.yaw_delta, command.pitch_delta)
         if dt == 0:
             return
         dt = min(dt, 0.25)
-        if command.yaw_delta or command.pitch_delta:
-            self.look(command.yaw_delta, command.pitch_delta)
         if self.mode == ATTACHED:
             self.velocity = np.zeros(3)
             return

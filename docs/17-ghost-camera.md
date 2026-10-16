@@ -1,8 +1,8 @@
 # Ghost camera: viewing the stage from anywhere
 
-Status: the camera, the projection path, the camera-driven room and an offline multi-angle
-renderer work and are covered by tests. There is no Studio button or live pointer control yet, so
-the feature is reachable from `tools\check_ghost_camera.py` rather than from the application. Read
+Status: usable. Section **08 / GHOST CAMERA** in the Studio control panel flies the view with
+WASD and the mouse, and `tools\check_ghost_camera.py` renders stills from any angle offline. It
+applies to imported GLB models only. Read
 [what is not implemented yet](#what-is-not-implemented-yet) before relying on anything here.
 
 The capture camera decides what the performer is doing. The ghost camera decides where that
@@ -206,12 +206,17 @@ Implemented and covered by tests:
 Verified end to end by `tools\check_ghost_camera.py`, which renders one identical pose from six
 positions and checks every shot is distinct and contains the subject.
 
+Studio section 08 provides the enable toggle, click-to-capture pointer look, WASD and
+`Q`/`E`/`Space`/`Ctrl` movement, `Shift` precision, field-of-view and speed sliders, a reset and a
+live pose readout. `Esc` releases the pointer before it disconnects, so flying never costs you the
+source. Input is collected in Studio and handed to the camera as an abstract command, which is why
+a focused text field simply stops producing movement instead of fighting the camera.
+
 Not implemented:
 
-- **No Studio button, no pointer capture, no key bindings.** This is the gap between "the feature
-  works" and "you can use it", and it is the next task.
 - The built-in procedural character has no camera path. It is posed from image-space landmarks and
-  has no real depth to view, so only imported GLBs can be viewed from another angle.
+  has no real depth to view, so only imported GLBs can be viewed from another angle. With the
+  built-in character the stage renders normally and the camera controls do nothing.
 - Orbit and attached modes are defined and validated but have no subject wired to them.
 - Near-plane clipping drops triangles instead of splitting them.
 - No cinematic paths, no stored shot list, no export from a chosen angle.

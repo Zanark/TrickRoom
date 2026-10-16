@@ -3,6 +3,32 @@
 Newest entries first. Record decisions, failures, changes and evidence, not just completed features.
 Times use Asia/Kolkata. Raw camera media, source addresses and credentials do not belong here.
 
+## 2026-10-16 - Ghost camera is flyable from Studio section 08
+
+- Added the control the previous entry was missing: section08 with an enable toggle,
+  click-to-capture pointer look, WASD, Q/E and Space/Ctrl, Shift precision, field-of-view and
+  speed sliders, reset and a live pose readout. Esc releases the pointer before it disconnects,
+  so flying never costs the source.
+- Input is collected in Studio and handed to the camera as an abstract command rather than read
+  inside it. A focused entry or scale simply stops producing movement, which is why typing in the
+  source field cannot fly the camera.
+- Verified through a real Studio window, not only unit tests: W moved1.554m forward, D moved
+  0.810m right, mouse look reached yaw9.9/pitch-2.6, the field-of-view control took effect at
+  35degrees, reset returned to the start pose and released capture, and no Tk callback errors
+  occurred.
+- Two genuine defects surfaced during validation. Mouse look was being swallowed on a zero-length
+  frame: update returned early on dt==0 after the caller had already cleared the pending delta.
+  Look is a displacement and must not depend on frame time, so it is now applied before that gate.
+  release_pointer also touched preview_frame unguarded, which broke harnesses that build a Studio
+  with only the fields they need. One of my own test expectations was wrong as well, comparing
+  absolute height against zero when the camera starts at1.65m eye height.
+- 511tests, no failures, errors or skips; Ruff and tools\check_docs.py pass. Native Studio passes
+  with the extra section; panel heights move to819/2479/312px and the collapsed layout still fits
+  the1020x720 minimum. Model studio and the six-angle end-to-end check still pass.
+- Unchanged limits: imported GLBs only, because the built-in character is posed from image-space
+  landmarks and has no real depth. Orbit and attached modes have no subject wired. Near-plane
+  triangles are dropped rather than split. The viewpoint cannot improve a monocular pose estimate.
+
 ## 2026-10-16 - Ghost camera renders the stage from any viewpoint
 
 - Owner asked for a movable camera, separate from the capture camera, to take shots from any

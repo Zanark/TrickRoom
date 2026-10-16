@@ -61,9 +61,11 @@ def check(destination: Path) -> None:
             "05 / PRESENTATION",
             "06 / PRIVATE DEBUG WINDOWS",
             "07 / TRACKING INPUT",
+            "08 / GHOST CAMERA",
         ]
         assert [section.expanded for section in studio.sections.values()] == [
             True,
+            False,
             False,
             False,
             False,

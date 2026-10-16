@@ -5,10 +5,11 @@ Milestone: M1 prototype and M2 model support complete locally; final art and int
 Dependencies: None
 
 ## Current state
-- Workstream29 is IN_PROGRESS: a movable ghost camera now renders an imported rig and the room
-  from any viewpoint. One pose rendered from six angles produces six distinct populated images.
-  493tests, Ruff and the docs gate pass; native Studio and CLI are unregressed. No Studio control
-  or pointer capture yet, so it is reachable from tools\check_ghost_camera.py, not the app.
+- Workstream29 is IN_PROGRESS: a movable ghost camera renders an imported rig and the room from
+  any viewpoint, and Studio section08 flies it with WASD and the mouse. One pose from six angles
+  gives six distinct populated images; a real Studio window moved1.554m on W with no callback
+  errors.511tests, Ruff and the docs gate pass. Imported GLBs only; orbit/attached modes, near
+  plane clipping and stored shots remain.
 - Workstream28 is IN_PROGRESS: the first fully visible body now anchors a session base distance,
   so stage size stops following raw apparent span. Measured before state was71.0%stage height for
   the demo versus22.0%recorded and21.7%imported.405tests pass, including31focused anchor cases.

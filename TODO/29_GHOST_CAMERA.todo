@@ -23,7 +23,7 @@ and the recorded observations must be completely unaffected by where the camera 
 - [x] Draw the perspective lab through the movable camera, reusing its world surfaces.
 - [x] Render an imported rig from an arbitrary viewpoint.
 - [x] Prove it end to end: one pose, six angles, every shot distinct and populated.
-- [ ] Add the Studio control, pointer capture and key bindings.
+- [x] Add the Studio control, pointer capture and key bindings.
 - [ ] Wire a subject to orbit and attached modes.
 - [ ] Split triangles against the near plane instead of dropping them.
 - [ ] Give the built-in character a camera path, or document it as imported-only.
@@ -40,7 +40,9 @@ and the recorded observations must be completely unaffected by where the camera 
 - [x] The character and the room are drawn through the same camera.
 - [x] Looking away from the room does not raise or tear.
 - [x] Off-axis views are labelled as monocular estimates rather than measured geometry.
-- [ ] The viewpoint can be moved from the application rather than from a tool.
+- [x] The viewpoint can be moved from the application rather than from a tool.
+- [x] Releasing the pointer does not disconnect the source.
+- [x] A focused text field does not turn typing into camera movement.
 
 ## Completion evidence
 - src\trickroom\ghostcam.py adds GhostCamera, CameraCommand, named modes, basis, view_matrix,
@@ -69,7 +71,12 @@ and the recorded observations must be completely unaffected by where the camera 
   front view hides.
 
 ## Completion log
+- 2026-10-16 - Studio section08 added with WASD, mouse look, pointer capture, field-of-view,
+  speed, reset and a pose readout. Driven through a real Studio window: W moved1.554m forward,
+  D moved0.810m right, mouse look reached yaw9.9/pitch-2.6, the field-of-view control took
+  effect, reset returned to the start pose and no Tk callback errors occurred.511tests pass.
+  Native Studio passes with the new section; collapsed layout is312px and still fits1020x720.
 - 2026-10-16 - Projection path, camera-driven room, imported-rig rendering and the six-angle
-  end-to-end check completed and validated. Studio control and live input remain.
+  end-to-end check completed and validated.
 - 2026-10-14 - Requested by the owner. Researched against Quake and Source SDK source, implemented
   the camera module, tests and documentation.
