@@ -3,6 +3,43 @@
 Newest entries first. Record decisions, failures, changes and evidence, not just completed features.
 Times use Asia/Kolkata. Raw camera media, source addresses and credentials do not belong here.
 
+## 2026-10-16 - Ghost camera renders the stage from any viewpoint
+
+- Owner asked for a movable camera, separate from the capture camera, to take shots from any
+  angle. Researched replay and spectator systems against primary source first: Quake's GPL tree
+  and Source SDK2013, not recollection. The governing principle is that a replay records
+  authoritative state and the camera is a reconstructable view over it, never part of it. Quake
+  writes recorded view angles beside the network message rather than inside it.
+- Key finding before writing anything: TrickRoom had no camera at all. The shader maps pixel
+  coordinates straight to clip space, placement was a uniform scale plus a translation, and the
+  room was a cached background. The stage was 2.5D, so this was not a control to bolt on.
+- The renderer still has no view stage and did not need one. project_to_screen takes world metres
+  through view and projection, divides, and returns pixels plus view-space depth. That depth feeds
+  the existing depth buffer, so the rasteriser never learns a camera exists. The room already
+  defined its five surfaces in world coordinates, so camera_room reuses them unchanged.
+- Borrowed deliberately, with reasons recorded in docs\17-ghost-camera.md: modes are named rather
+  than numbered because Valve's own enum shifted ROAMING from6to7; movement is noclip; forward
+  follows the look vector while vertical stays world-up; the wish velocity is clamped before
+  acceleration so diagonals keep their direction; the modifier halves speed for precision.
+- Verified end to end. One identical pose rendered from front, three-quarter, side, behind, low
+  and high drew all606triangles in every shot, every pair of images differs, exit0. Subject
+  pixels vary as a silhouette should,16070from the side against33975from behind, and the high
+  shot foreshortens to233px against about394px level.
+- 493tests, no failures, errors or skips; Ruff and tools\check_docs.py pass. Native Studio still
+  passes19groups with no callback errors and the CLI demo still exits0, so the room refactor did
+  not regress the application.
+- Two real defects were caught by validating rather than assuming. Position was integrated by the
+  end-of-step velocity, leaving movement frame-rate dependent by about three percent between15and
+  120fps; it now uses the analytic integral of the exponential approach and agrees to1e-9. Two of
+  my own test expectations were also wrong: wrap_yaw(540) is-180 in a half-open range, and a dolly
+  zoom moving closer must widen the angle rather than narrow it.
+- Honest limits. There is no Studio button or pointer capture yet, so this is reachable from
+  tools\check_ghost_camera.py and not from the application. Only imported rigs can be viewed
+  off-axis; the built-in character is posed from image-space landmarks and has no real depth.
+  Near-plane triangles are dropped rather than split. None of this improves a monocular pose
+  estimate: a front view hides depth error that a steep angle will expose. No camera was opened
+  and no raw media or landmarks were written.
+
 ## 2026-10-14 - Stage size anchored to a captured base distance
 
 - Owner reported that the scripted demo draws a large character, a recorded source draws a much

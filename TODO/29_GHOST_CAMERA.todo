@@ -1,0 +1,75 @@
+# Movable ghost camera for framing shots
+
+Status: IN_PROGRESS
+Milestone: A viewpoint that can be moved independently of the capture camera
+Dependencies: 12_PERSPECTIVE_LAB.todo, 13_BLENDER_MODEL_RUNTIME.todo, 28_STAGE_BASE_DISTANCE.todo
+
+## Purpose
+The capture camera decides what the performer is doing. There is currently no way to decide where
+that performance is watched from, because the renderer has no camera at all: vertices arrive in
+pixel coordinates, placement is a scale and a translation, and the room is a cached background.
+
+Add a free-fly ghost camera so shots can be framed from any position, following replay-system
+practice where the camera is a view over recorded state and never part of it. Capture, tracking
+and the recorded observations must be completely unaffected by where the camera is.
+
+## Tasks
+- [x] Research replay and spectator camera systems against primary engine source.
+- [x] Add camera state, named modes, noclip movement, mouse look and framing helpers.
+- [x] Add view and projection matrices for the project's existing coordinate convention.
+- [x] Cover frame-rate independence, clamping and validation with tests.
+- [x] Document the design, the borrowed principles and the honest limits.
+- [x] Project world geometry to pixels so the existing rasteriser needs no shader change.
+- [x] Draw the perspective lab through the movable camera, reusing its world surfaces.
+- [x] Render an imported rig from an arbitrary viewpoint.
+- [x] Prove it end to end: one pose, six angles, every shot distinct and populated.
+- [ ] Add the Studio control, pointer capture and key bindings.
+- [ ] Wire a subject to orbit and attached modes.
+- [ ] Split triangles against the near plane instead of dropping them.
+- [ ] Give the built-in character a camera path, or document it as imported-only.
+- [ ] Add stored shots, and decide whether cinematic paths belong in this workstream.
+- [ ] Produce recorded-source evidence from several angles.
+
+## Acceptance criteria
+- [x] The camera holds no observation, asset or runtime state.
+- [x] Moving the camera cannot alter tracking, timestamps, availability or diagnostics.
+- [x] Pitch is clamped short of the pole so yaw stays recoverable.
+- [x] Movement is frame-rate independent and mouse look is not scaled by frame time.
+- [x] A long frame cannot reverse or teleport the camera.
+- [x] Moving the camera visibly changes the rendered viewpoint.
+- [x] The character and the room are drawn through the same camera.
+- [x] Looking away from the room does not raise or tear.
+- [x] Off-axis views are labelled as monocular estimates rather than measured geometry.
+- [ ] The viewpoint can be moved from the application rather than from a tool.
+
+## Completion evidence
+- src\trickroom\ghostcam.py adds GhostCamera, CameraCommand, named modes, basis, view_matrix,
+  perspective, project_to_screen, framing_distance and dolly_zoom.
+- src\trickroom\room.py adds CameraProjection and camera_room, reusing the existing world-space
+  surface definitions. The fixed stage projection is unchanged and still cached.
+- src\trickroom\assets\presentation.py adds camera_batches for the imported rig.
+- tools\check_ghost_camera.py renders one identical pose from six positions.
+- Full suite 493 tests, no failures, errors or skips. Ruff check and format pass.
+  tools\check_docs.py exits 0.
+- End-to-end run: front, three-quarter, side, behind, low and high all drew all 606 triangles,
+  every pair of images differs, and passed is true with exit 0. Subject pixels vary with angle as
+  a human silhouette should: 16070 from the side against 33975 from behind. The high shot measures
+  233px tall against about 394px for the level shots, which is the expected foreshortening.
+- No regression: tools\check_studio.py still passes 19 native groups with no callback errors, and
+  a CLI demo render still completes with exit 0.
+- Two bugs were found and fixed during validation rather than being written around. Position was
+  integrated by the end-of-step velocity, which left movement frame-rate dependent by about three
+  percent between 15 and 120fps; it now uses the analytic integral of the exponential approach.
+  Two test expectations were also wrong: wrap_yaw(540) is -180 in a half-open range, and a dolly
+  zoom moving closer must widen the angle, not narrow it.
+- Limits: there is no Studio control yet, so this is reachable from the tool and not the
+  application. Only imported rigs can be viewed off-axis; the built-in character is posed from
+  image-space landmarks and has no real depth. Near-plane triangles are dropped, not clipped.
+  Nothing here improves a monocular pose estimate, and steep angles will expose depth error that a
+  front view hides.
+
+## Completion log
+- 2026-10-16 - Projection path, camera-driven room, imported-rig rendering and the six-angle
+  end-to-end check completed and validated. Studio control and live input remain.
+- 2026-10-14 - Requested by the owner. Researched against Quake and Source SDK source, implemented
+  the camera module, tests and documentation.
