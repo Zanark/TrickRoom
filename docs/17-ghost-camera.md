@@ -206,6 +206,18 @@ Implemented and covered by tests:
 Verified end to end by `tools\check_ghost_camera.py`, which renders one identical pose from six
 positions and checks every shot is distinct and contains the subject.
 
+While the pointer is captured it is warped back to the middle of the stage after every motion
+event, and the returning event is ignored. Without that the cursor reaches the edge of the stage,
+motion events stop and the camera stops turning part way round. With it, yaw is genuinely
+unlimited: a check pushes 9600 pixels of pointer travel across a 1017 pixel stage and accumulates
+633.6 degrees, which is more than a full circle and exactly the travel multiplied by the 0.066
+degrees-per-count sensitivity.
+
+Pointer events are bound to the stage **label**, not the frame around it. The label fills the
+frame, so a binding on the frame alone never fires. That was a real defect: the focused tests
+injected look deltas directly and could not see it, which is why
+`tools\check_ghost_input.py` drives genuine Tk click and motion events instead.
+
 Studio section 08 provides the enable toggle, click-to-capture pointer look, WASD and
 `Q`/`E`/`Space`/`Ctrl` movement, `Shift` precision, field-of-view and speed sliders, a reset and a
 live pose readout. `Esc` releases the pointer before it disconnects, so flying never costs you the

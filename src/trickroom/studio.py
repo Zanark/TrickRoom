@@ -186,8 +186,11 @@ class Studio:
         self.root.bind("<Escape>", self._escape)
         self.root.bind("<KeyPress>", self._ghost_key_press, add="+")
         self.root.bind("<KeyRelease>", self._ghost_key_release, add="+")
-        self.preview_frame.bind("<Button-1>", self._capture_pointer, add="+")
-        self.preview_frame.bind("<Motion>", self._ghost_motion, add="+")
+        # The stage label fills its frame, so pointer events land on the label.
+        # Binding the frame alone never fires.
+        for widget in (self.preview, self.preview_frame):
+            widget.bind("<Button-1>", self._capture_pointer, add="+")
+            widget.bind("<Motion>", self._ghost_motion, add="+")
         self._tick()
         self._render_tick()
         if avatar is not None:
@@ -657,14 +660,42 @@ class Studio:
     def _ghost_key_release(self, event) -> None:
         self._ghost_keys.discard((event.keysym or "").lower())
 
+    def _stage_centre(self) -> tuple[int, int] | None:
+        """Middle of the stage label, used as the anchor the pointer returns to."""
+        widget = getattr(self, "preview", None)
+        if widget is None or not widget.winfo_exists():
+            return None
+        width, height = widget.winfo_width(), widget.winfo_height()
+        if width < 16 or height < 16:
+            return None
+        return width // 2, height // 2
+
     def _capture_pointer(self, _event=None) -> None:
         if not self._ghost_active():
             return
         self._ghost_captured = True
         self._ghost_pointer = None
-        self.preview_frame.focus_set()
         try:
+            self.preview.focus_set()
+            self.preview.configure(cursor="none")
             self.preview_frame.configure(cursor="none")
+        except tk.TclError:
+            pass
+        self._recentre_pointer()
+        self.ghost_info.set("MOUSE CAPTURED / Esc releases")
+
+    def _recentre_pointer(self) -> None:
+        """Put the pointer back in the middle so turning is never cut short.
+
+        Without this the cursor reaches the edge of the stage, motion events
+        stop and the camera stops turning part way round. Warping back each
+        time keeps yaw genuinely unlimited.
+        """
+        centre = self._stage_centre()
+        if centre is None or not self._ghost_captured:
+            return
+        try:
+            self.preview.event_generate("<Motion>", warp=True, x=centre[0], y=centre[1])
         except tk.TclError:
             pass
 
@@ -673,21 +704,31 @@ class Studio:
         self._ghost_pointer = None
         self._ghost_keys.clear()
         self._ghost_look = [0.0, 0.0]
-        frame = getattr(self, "preview_frame", None)
-        if frame is None:
-            return
-        try:
-            frame.configure(cursor="")
-        except tk.TclError:
-            pass
+        for name in ("preview", "preview_frame"):
+            widget = getattr(self, name, None)
+            if widget is None:
+                continue
+            try:
+                widget.configure(cursor="")
+            except tk.TclError:
+                pass
 
     def _ghost_motion(self, event) -> None:
         if not (self._ghost_active() and self._ghost_captured):
             return
-        if self._ghost_pointer is not None:
-            self._ghost_look[0] += event.x - self._ghost_pointer[0]
-            self._ghost_look[1] += event.y - self._ghost_pointer[1]
-        self._ghost_pointer = (event.x, event.y)
+        centre = self._stage_centre()
+        if centre is None:
+            # No usable stage to anchor to; fall back to plain deltas.
+            if self._ghost_pointer is not None:
+                self._ghost_look[0] += event.x - self._ghost_pointer[0]
+                self._ghost_look[1] += event.y - self._ghost_pointer[1]
+            self._ghost_pointer = (event.x, event.y)
+            return
+        if (event.x, event.y) == centre:
+            return  # our own warp coming back, not the user moving
+        self._ghost_look[0] += event.x - centre[0]
+        self._ghost_look[1] += event.y - centre[1]
+        self._recentre_pointer()
 
     def toggle_ghost_camera(self) -> None:
         if not self._ghost_active():

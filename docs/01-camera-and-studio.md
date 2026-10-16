@@ -88,8 +88,8 @@ pose is unaffected by where you fly; this only changes where that pose is watche
 
 | Control | Action |
 | --- | --- |
-| Click the stage | Capture the mouse for looking |
-| Mouse | Look. Pitch stops just short of straight up or down |
+| Click the stage | Capture the mouse for looking; the cursor hides |
+| Mouse | Look. Yaw turns without limit; pitch stops just short of straight up or down |
 | `W` `A` `S` `D` | Move forward, left, back, right along the view |
 | `Q` / `E`, or `Ctrl` / `Space` | Descend and rise. Always world vertical, never view relative |
 | `Shift` | Precision. Halves speed; it is not a sprint |

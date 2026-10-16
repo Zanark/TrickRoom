@@ -3,6 +3,26 @@
 Newest entries first. Record decisions, failures, changes and evidence, not just completed features.
 Times use Asia/Kolkata. Raw camera media, source addresses and credentials do not belong here.
 
+## 2026-10-16 - Stage clicks reach the camera, and yaw is no longer cut short
+
+- Owner reported that clicking the preview did nothing. The cause was a binding on the wrong
+  widget: the stage label is packed fill/expand inside its frame, so it covers the frame entirely
+  and every pointer event lands on the label. Binding the frame alone could never fire.
+- The focused tests could not have caught this. They inject look deltas straight into the camera
+  and never touch a widget, so they passed while the feature was unreachable. Added
+  tools\check_ghost_input.py, which generates genuine Tk Button-1 and Motion events instead.
+- Also fixed the limitation recorded in the previous entry rather than leaving it documented.
+  The pointer is now warped back to the middle of the stage after each motion event and the
+  returning event is ignored, so turning never runs out of room. Measured9600px of pointer travel
+  across a1017px stage accumulating633.6degrees, more than a full circle and exactly the travel
+  times the0.066degrees-per-count sensitivity. Before this the cursor left the stage after about
+  eight events and the camera stopped.
+- Checked through the real window: click captures, motion turns, pitch clamps at89degrees, Esc
+  releases without disconnecting, and no Tk callback errors occur.
+- One of my own thresholds was wrong first time round:60events of60px cannot reach a full circle
+  at this sensitivity, and the237.6degrees it did produce was exactly correct. The threshold was
+  raised rather than the sensitivity being quietly changed to make the check pass.
+
 ## 2026-10-16 - A personal model can be the default without hard-coding its path
 
 - Owner asked for a specific exported character to load by default. Hard-coding that path would
