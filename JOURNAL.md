@@ -3,6 +3,34 @@
 Newest entries first. Record decisions, failures, changes and evidence, not just completed features.
 Times use Asia/Kolkata. Raw camera media, source addresses and credentials do not belong here.
 
+## 2026-10-16 - Timeline redraw rate cut, and the ghost camera checked on real tracking
+
+- Owner reported the bottom playback bar flickering during video playback, and asked for the
+  ghost camera to be checked against their actual recording rather than the scripted demo.
+- Measured the timeline before changing anything, because the obvious explanations were wrong.
+  The slider position is monotonic with zero backward jumps; button text, slider enabled state,
+  timeline visibility and capture state produce zero flips over 529 samples; and every layout
+  dimension including the bar's position and height is completely static. The flicker is not
+  state churn and not layout oscillation.
+- What is real: _update_playback writes the slider variable on every tick, about sixty times a
+  second, while the thumb only advances a pixel or so per second. Each write redraws the scale
+  while the avatar is competing for the same UI thread. The position is now quantised to the
+  thumb's own pixel resolution and written only when it would land somewhere new, and the time
+  label likewise only when its text changes. Writes fall from one per tick to 107 per ten
+  seconds, which is exactly the 786px slider times ten seconds of a 73.44s recording. Playback
+  still advances correctly at 10.01s per ten seconds.
+- Where the slider width cannot be read, as in harnesses that use a mock widget, the old
+  every-tick behaviour is kept rather than guessing a resolution. Ten timeline tests caught that
+  case before it could ship.
+- Ghost camera verified against the supplied recording with live inference running and the
+  owner's own model loaded. Shoulder span across the screen measures +49.2px from the front,
+  +37.5 at a quarter turn, exactly 0.0 side on, and -52.9 from behind. Zero means the shoulders
+  are edge on and the negative value means the character is being seen from the back, so the
+  pose does not follow the camera. A separate check confirmed the character's world forward
+  stays [0,0,-1] at every camera yaw, which is structural: evaluate() takes no camera argument.
+- 522tests, no failures, errors or skips; Ruff and tools\check_docs.py pass; native replay
+  timeline and Studio checks pass. No source recording, model or profile was modified.
+
 ## 2026-10-16 - Stage clicks reach the camera, and yaw is no longer cut short
 
 - Owner reported that clicking the preview did nothing. The cause was a binding on the wrong

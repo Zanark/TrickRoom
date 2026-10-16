@@ -143,6 +143,8 @@ class Studio:
         self._test_video: Path | None = None
         self._timeline_visible = False
         self._playback_config = None
+        self._playback_pixel = None
+        self._playback_label = None
         self._scrubbing = False
         self._pending_seek: float | None = None
         self._requested_paused: bool | None = None
@@ -1173,6 +1175,8 @@ class Studio:
         if not visible:
             self._pending_seek = self._requested_paused = None
             self._playback_config = None
+            self._playback_pixel = None
+            self._playback_label = None
             return
         capture, status = self.runtime.camera.status, self.runtime.status
         if self._pending_seek is not None:
@@ -1215,9 +1219,28 @@ class Studio:
                 and status.state != "ENDED"
                 else capture.position_seconds
             )
-            self.playback_position.set(min(position, duration) if duration > 0 else 0)
+            position = min(position, duration) if duration > 0 else 0
+            # The thumb only moves a few pixels a second, but this runs every
+            # tick. Writing the variable each time redraws the scale about
+            # sixty times a second for no visible change, which shows up as
+            # shimmer while the avatar is competing for the UI thread. Quantise
+            # to the thumb's own pixel resolution and only write when it would
+            # actually land somewhere new.
+            width = self.playback_slider.winfo_width()
+            if not isinstance(width, int) or width <= 1 or duration <= 0:
+                # Width unknown, so the thumb cannot be quantised. Fall back to
+                # updating every tick rather than guessing a resolution.
+                pixel = None
+            else:
+                pixel = round(position / duration * width)
+            if pixel is None or pixel != getattr(self, "_playback_pixel", None):
+                self._playback_pixel = pixel
+                self.playback_position.set(position)
             total = format_replay_time(duration) if duration > 0 else "--:--"
-            self.playback_time.set(f"{format_replay_time(position)} / {total}")
+            label = f"{format_replay_time(position)} / {total}"
+            if label != getattr(self, "_playback_label", None):
+                self._playback_label = label
+                self.playback_time.set(label)
 
     def _connection_buttons(self, idle: bool) -> None:
         self.connect_button.configure(state="normal" if idle else "disabled")
